@@ -160,10 +160,85 @@ async function markets() {
     try {
       const g = await get('https://query1.finance.yahoo.com/v8/finance/chart/' + encodeURIComponent(sym) + '?interval=1d&range=1d', 'json');
       const m = g.chart.result[0].meta;
-      if (Number.isFinite(m.regularMarketPrice)) out[k] = { value: m.regularMarketPrice, date: new Date(m.regularMarketTime * 1000).toISOString().slice(0, 10) };
+      if (Number.isFinite(m.regularMarketPrice)) out[k] = { value: m.regularMarketPrice, prev: Number.isFinite(m.chartPreviousClose) ? m.chartPreviousClose : null, date: new Date(m.regularMarketTime * 1000).toISOString().slice(0, 10) };
     } catch (e) { console.error('quote failed:', sym, e.message); }
   }));
   if (!Object.keys(out).length) throw new Error('no quotes returned');
+  return out;
+}
+
+// ---------- newer feeds ----------
+async function outages() {
+  const u = Math.floor(now / 1000);
+  const g = await get('https://api.ioda.inetintel.cc.gatech.edu/v2/outages/summary?from=' + (u - 86400) + '&until=' + u + '&entityType=country&limit=60', 'json');
+  let rows = g.data || g; if (Array.isArray(rows) && Array.isArray(rows[0])) rows = rows[0];
+  if (!Array.isArray(rows)) throw new Error('unexpected shape: ' + Object.keys(g).join(','));
+  if (rows[0]) console.log('DEBUG ioda sample', JSON.stringify(rows[0]).slice(0, 400));
+  return rows.map((r) => ({ code: (r.entity && r.entity.code) || '', name: (r.entity && r.entity.name) || '', score: +((r.scores && (r.scores.overall ?? r.scores.total)) ?? r.score ?? 0), events: r.event_cnt ?? null }))
+    .filter((r) => r.name && r.score > 0).sort((a, b) => b.score - a.score).slice(0, 15);
+}
+const FIRMS_BOXES = { Ukraine: '22,44,41,53', 'Iran and the Gulf': '44,24,62,38', Levant: '34,29.5,37,34', Yemen: '42,12,50,18' };
+async function heat() {
+  const key = process.env.FIRMS_KEY; if (!key) { const e = new Error('needs a free NASA key'); e.needsKey = true; throw e; }
+  const out = [];
+  for (const [region, box] of Object.entries(FIRMS_BOXES)) {
+    const csv = await get('https://firms.modaps.eosdis.nasa.gov/api/area/csv/' + key + '/VIIRS_SNPP_NRT/' + box + '/1');
+    const lines = csv.trim().split(/\r?\n/); const head = lines[0].split(','); const ix = (n) => head.indexOf(n);
+    if (ix('latitude') < 0) throw new Error('FIRMS said: ' + lines[0].slice(0, 80));
+    const rows = lines.slice(1).map((l) => l.split(',')).map((c) => ({ lat: +c[ix('latitude')], lon: +c[ix('longitude')], frp: +c[ix('frp')], conf: c[ix('confidence')], d: c[ix('acq_date')], tm: c[ix('acq_time')], region }))
+      .filter((r) => Number.isFinite(r.lat) && r.conf !== 'l').sort((a, b) => b.frp - a.frp).slice(0, 350);
+    out.push(...rows);
+  }
+  return out;
+}
+async function frontline() {
+  const g = await get('https://deepstatemap.live/api/history/last', 'json', 40000);
+  const fc = g.map || g; const feats = (fc.features || []).filter((f) => f.geometry && /Polygon/.test(f.geometry.type));
+  if (!feats.length) throw new Error('no polygons: ' + Object.keys(g).join(','));
+  console.log('DEBUG deepstate', feats.length, 'polygons;', [...new Set(feats.map((f) => String((f.properties || {}).name).slice(0, 60)))].slice(0, 25).join(' | '));
+  const total = feats.reduce((n, f) => n + JSON.stringify(f.geometry.coordinates).length, 0); const step = Math.max(1, Math.ceil(total / 600000));
+  const ring = (r) => { const o = r.filter((_, i) => i % step === 0 || i === r.length - 1).map((c) => [+c[0].toFixed(3), +c[1].toFixed(3)]); return o.length >= 4 ? o : null; };
+  const geom = (g2) => g2.type === 'Polygon' ? { type: 'Polygon', coordinates: g2.coordinates.map(ring).filter(Boolean) } : { type: 'MultiPolygon', coordinates: g2.coordinates.map((p) => p.map(ring).filter(Boolean)).filter((p) => p.length) };
+  const keep = feats.map((f) => ({ name: String((f.properties || {}).name || ''), geometry: geom(f.geometry) })).filter((f) => f.geometry.coordinates.length);
+  await mkdir('site/data', { recursive: true });
+  await writeFile('site/data/frontline.json', JSON.stringify({ updated: g.datetime || g.id || now, generated: now, features: keep }));
+  return { count: keep.length, updated: g.datetime || null };
+}
+const ODDS_RE = /\b(Iran|Israel|Gaza|Hezbollah|Houthi|Hormuz|Russia|Ukraine|Putin|Zelensky|NATO|ceasefire|nuclear|Taiwan|China invade|North Korea|Kim Jong|airstrike|strike on|war\b|invade|invasion|troops|Khamenei|regime)/i;
+async function odds() {
+  const all = [];
+  for (const off of [0, 100, 200, 300, 400]) {
+    const page = await get('https://gamma-api.polymarket.com/markets?closed=false&active=true&limit=100&offset=' + off + '&order=volume24hr&ascending=false', 'json');
+    if (!Array.isArray(page)) throw new Error('unexpected shape'); all.push(...page); if (page.length < 100) break;
+  }
+  const out = [];
+  for (const m of all) {
+    if (!ODDS_RE.test(m.question || '')) continue;
+    let prices; let names; try { prices = JSON.parse(m.outcomePrices); names = JSON.parse(m.outcomes); } catch { continue; }
+    const yi = names.findIndex((n) => /^yes$/i.test(n)); if (yi < 0 || !Number.isFinite(+prices[yi])) continue;
+    const slug = (m.events && m.events[0] && m.events[0].slug) || m.slug;
+    out.push({ q: String(m.question).slice(0, 160), yes: +(+prices[yi]).toFixed(3), vol: Math.round(+m.volume24hr || 0), end: m.endDate || null, url: 'https://polymarket.com/event/' + slug });
+  }
+  if (!out.length) throw new Error('no matching markets among ' + all.length);
+  return out.sort((a, b) => b.vol - a.vol).slice(0, 25);
+}
+const HOME_STATES = ['OK', 'TX', 'KS', 'MO', 'AR', 'NM', 'CO'];
+async function home() {
+  const g = await get('https://api.weather.gov/alerts/active?status=actual&message_type=alert&severity=Extreme,Severe', 'json');
+  const items = (g.features || []).map((f) => {
+    const p = f.properties || {}; const ugc = (p.geocode && p.geocode.UGC) || [];
+    const poly = f.geometry && f.geometry.type === 'Polygon' ? f.geometry.coordinates[0].map((c) => [+c[1].toFixed(2), +c[0].toFixed(2)]) : null;
+    return { event: p.event, area: String(p.areaDesc || '').slice(0, 140), states: [...new Set(ugc.map((u) => u.slice(0, 2)))], severity: p.severity, expires: Date.parse(p.expires || p.ends || '') || null, url: p['@id'] || '', poly };
+  }).filter((x) => x.event);
+  const counts = {}; items.forEach((x) => { counts[x.event] = (counts[x.event] || 0) + 1; });
+  const out = { total: items.length, counts: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8), states: HOME_STATES, mine: items.filter((x) => x.states.some((st) => HOME_STATES.includes(st))).slice(0, 40).map(({ poly, ...r }) => r), polys: items.filter((x) => x.poly).slice(0, 200).map((x) => ({ event: x.event, area: x.area, expires: x.expires, poly: x.poly })), outages: null };
+  try {
+    const o = await get('https://ornl.opendatasoft.com/api/explore/v2.1/catalog/datasets/odin-real-time-outages-county/records?limit=100', 'json', 20000);
+    const recs = o.results || [];
+    if (recs[0]) console.log('DEBUG odin sample', JSON.stringify(recs[0]).slice(0, 500));
+    const numKey = recs[0] && Object.keys(recs[0]).find((k) => /meters?_?affected|customers?_?(out|affected)/i.test(k));
+    if (numKey) out.outages = recs.map((r) => ({ state: r.state || r.state_name || '', county: r.county || r.name || r.county_name || '', n: +r[numKey] || 0, lat: r.geo_point_2d && r.geo_point_2d.lat, lon: r.geo_point_2d && r.geo_point_2d.lon })).filter((r) => r.n > 0).sort((a, b) => b.n - a.n).slice(0, 60);
+  } catch (e) { console.error('odin failed:', e.message); }
   return out;
 }
 
@@ -178,17 +253,45 @@ async function feed(name, fn, count) {
     return v;
   } catch (e) {
     const old = prev.status && prev.status[name];
-    status[name] = { ok: false, at: (old && old.at) || null, error: String(e.message || e).slice(0, 120), ...(status[name] && status[name].note ? { note: status[name].note } : {}) };
+    status[name] = { ok: false, at: (old && old.at) || null, error: String(e.message || e).slice(0, 120), ...(e.needsKey ? { needsKey: true } : {}), ...(status[name] && status[name].note ? { note: status[name].note } : {}) };
     console.error('feed failed:', name, '-', e.message);
+    if (name === 'front') { try { const old2 = await get(SITE + '/data/frontline.json', 'text', 20000); await writeFile('site/data/frontline.json', old2); } catch { /* none yet */ } }
     return prev[name] ?? null;
   }
 }
-const [hl, q, hz, k, ac, rw, sw, mk] = await Promise.all([
+await mkdir('site/data', { recursive: true });
+const [hl, q, hz, k, ac, rw, sw, mk, og, ht, fr, od, hm] = await Promise.all([
   feed('headlines', headlines), feed('quakes', quakes, (v) => v.length), feed('hazards', hazards, (v) => v.length), feed('kev', kev, (v) => v.week),
   feed('aircraft', aircraft, (v) => v.length), feed('ransomware', ransomware, (v) => v.items.length), feed('space', space), feed('markets', markets),
+  feed('outages', outages, (v) => v.length), feed('heat', heat, (v) => v.length), feed('front', frontline, (v) => v.count), feed('odds', odds, (v) => v.length), feed('home', home, (v) => v.total),
 ]);
-const live = { generated: now, status, headlines: hl, quakes: q, hazards: hz, kev: k, aircraft: ac, ransomware: rw, space: sw, markets: mk };
-await mkdir('site/data', { recursive: true });
+
+// ---------- history (for trends) ----------
+const tempo = {}; (hl || []).forEach((h) => { if (now - h.t < 24 * H) tempo[h.domain] = (tempo[h.domain] || 0) + 1; });
+const history = (prev.history || []).filter((p) => now - p.t < 7 * 24 * H);
+if (!history.length || now - history[history.length - 1].t > 25 * 60000) history.push({ t: now, war: tempo.war || 0, nuclear: tempo.nuclear || 0, cyber: tempo.cyber || 0, ai: tempo.ai || 0, ac: ac ? ac.length : null, nt: ac ? ac.filter((a) => a.notable).length : null, kp: sw ? sw.kp : null, br: mk && mk.brent ? mk.brent.value : null, kev: k ? k.total : null });
+
+// ---------- alerts ----------
+const first = !prev.alerts; const sent = (prev.alerts && prev.alerts.sent) || {}; const fresh = [];
+const alert = (key, title, body, pri) => { if (sent[key]) return; sent[key] = now; if (!first) fresh.push({ key, t: now, title, body, pri }); };
+try {
+  const { readFile } = await import('node:fs/promises');
+  const a = JSON.parse(await readFile('site/data/assessed.json', 'utf8'));
+  a.events.filter((e) => e.severity >= 5).forEach((e) => alert('ev:' + e.id, 'Severity 5: ' + e.title, e.detail, 5));
+} catch (e) { console.error('alerts: assessed unreadable', e.message); }
+(ac || []).filter((a) => /^(E4|E6)/i.test(a.type) && typeof a.alt === 'number').forEach((a) => alert('ac:' + a.hex + ':' + Math.floor(now / (8 * H)), 'Command aircraft airborne: ' + a.type + ' ' + (a.call || a.reg || a.hex), 'At ' + a.lat.toFixed(1) + ', ' + a.lon.toFixed(1) + ', ' + a.alt + ' ft.', 4));
+if (sw && sw.kp >= 7) alert('kp:' + new Date(now).toISOString().slice(0, 10), 'Severe geomagnetic storm: Kp ' + sw.kp, 'Kp 7 or higher can stress grid transformers and disrupt HF radio and GPS.', 4);
+(q || []).filter((e) => e.mag >= 6.5).forEach((e) => alert('eq:' + e.id, 'M' + e.mag.toFixed(1) + ' earthquake: ' + e.place, 'Depth ' + Math.round(e.depth) + ' km.', 3));
+if (mk && mk.brent && mk.brent.prev) { const pct = (mk.brent.value / mk.brent.prev - 1) * 100; if (Math.abs(pct) >= 5) alert('brent:' + mk.brent.date, 'Brent crude ' + (pct > 0 ? 'up ' : 'down ') + Math.abs(pct).toFixed(1) + '% today', 'Now $' + mk.brent.value.toFixed(2) + ' a barrel.', 3); }
+for (const key of Object.keys(sent)) if (now - sent[key] > 14 * 24 * H) delete sent[key];
+const topic = process.env.NTFY_TOPIC;
+if (topic) for (const f of fresh.slice(0, 6)) {
+  try { await fetch('https://ntfy.sh/' + encodeURIComponent(topic), { method: 'POST', body: f.body || f.title, headers: { Title: f.title.replace(/[^\x20-\x7E]/g, ''), Priority: String(f.pri || 3), Tags: 'warning', Click: SITE || '' }, signal: AbortSignal.timeout(15000) }); } catch (e) { console.error('ntfy failed:', e.message); }
+}
+const alerts = { sent, push: Boolean(topic), log: [...fresh.map(({ key, t, title, body }) => ({ key, t, title, body })), ...((prev.alerts && prev.alerts.log) || [])].filter((x) => now - x.t < 48 * H).slice(0, 30) };
+console.log('alerts: ' + fresh.length + ' new' + (topic ? ', pushed' : ', push not configured'));
+
+const live = { generated: now, status, headlines: hl, quakes: q, hazards: hz, kev: k, aircraft: ac, ransomware: rw, space: sw, markets: mk, outages: og, heat: ht, front: fr, odds: od, home: hm, history, alerts };
 await writeFile('site/data/live.json', JSON.stringify(live));
 console.log(Object.entries(status).map(([n, s]) => n + ': ' + (s.ok ? 'ok' : 'FAILED ' + s.error) + (s.count != null ? ' (' + s.count + ')' : '') + (s.note ? ' ' + s.note : '')).join('\n'));
 if (!Object.values(status).some((s) => s.ok)) process.exit(1);

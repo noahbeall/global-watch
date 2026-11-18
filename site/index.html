@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Global Watch</title>
+<title>Watchfloor</title>
 <meta name="description" content="Live open-source monitor of conflict, nuclear, cyber, AI and natural-hazard activity worldwide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vendor/leaflet.css?v=5">
-<link rel="stylesheet" href="vendor/MarkerCluster.css?v=5">
-<link rel="stylesheet" href="style.css?v=5">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css?v=6">
+<link rel="stylesheet" href="vendor/MarkerCluster.css?v=6">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <header class="bar">
-  <h1>Global Watch</h1>
+  <h1>Watchfloor</h1>
   <details class="status" id="status">
     <summary><span class="dot" id="status-dot"></span><span id="status-text">Connecting to feeds…</span></summary>
     <ul id="status-list"></ul>
@@ -22,8 +22,15 @@
   <time class="utc" id="utc"></time>
 </header>
 
+<div class="alerts" id="alerts" role="status" hidden></div>
+
 <main class="deck">
   <aside class="rail" aria-label="Threat picture">
+    <section>
+      <h2>What changed</h2>
+      <p class="sub" id="digest-sub">Trends appear after a few updates</p>
+      <div id="digest"></div>
+    </section>
     <section>
       <h2>Threat levels</h2>
       <p class="sub" id="levels-sub">Analyst ratings from 1 to 5</p>
@@ -62,9 +69,11 @@
   <aside class="feed" aria-label="Feeds">
     <div class="tabs" role="tablist">
       <button role="tab" data-tab="headlines" aria-selected="true">Headlines</button>
-      <button role="tab" data-tab="assessed" aria-selected="false">Key events</button>
+      <button role="tab" data-tab="assessed" aria-selected="false">Events</button>
       <button role="tab" data-tab="cyber" aria-selected="false">Cyber</button>
       <button role="tab" data-tab="air" aria-selected="false">Aircraft</button>
+      <button role="tab" data-tab="odds" aria-selected="false">Odds</button>
+      <button role="tab" data-tab="home" aria-selected="false">Home</button>
       <button role="tab" data-tab="sources" aria-selected="false">Sources</button>
     </div>
     <div class="chips" id="hfilter" role="group" aria-label="Filter headlines"></div>
@@ -80,6 +89,11 @@
         <li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV</a> for software flaws under active attack</li>
         <li><a href="https://www.ransomware.live" target="_blank" rel="noopener">Ransomware.live</a> for victims posted on leak sites</li>
         <li><a href="https://www.swpc.noaa.gov" target="_blank" rel="noopener">NOAA Space Weather</a> for the geomagnetic Kp index</li>
+        <li><a href="https://deepstatemap.live" target="_blank" rel="noopener">DeepStateMap</a> for Russian-held territory in Ukraine</li>
+        <li><a href="https://ioda.live" target="_blank" rel="noopener">IODA</a> for countries with internet outage signals</li>
+        <li><a href="https://polymarket.com" target="_blank" rel="noopener">Polymarket</a> for crowd odds on escalation</li>
+        <li><a href="https://www.weather.gov" target="_blank" rel="noopener">National Weather Service</a> for US severe weather alerts</li>
+        <li><a href="https://firms.modaps.eosdis.nasa.gov/map/" target="_blank" rel="noopener">NASA FIRMS</a> for satellite heat detections in conflict zones</li>
         <li><a href="https://finance.yahoo.com/commodities/" target="_blank" rel="noopener">Yahoo Finance</a> for oil, gas, gold and volatility quotes</li>
       </ul>
       <h3>Conflict</h3>
@@ -124,8 +138,8 @@
     </div>
   </aside>
 </main>
-<script src="vendor/leaflet.js?v=5"></script>
-<script src="vendor/leaflet.markercluster.js?v=5"></script>
-<script src="app.js?v=5"></script>
+<script src="vendor/leaflet.js?v=6"></script>
+<script src="vendor/leaflet.markercluster.js?v=6"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

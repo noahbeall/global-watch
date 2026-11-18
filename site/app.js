@@ -28,7 +28,7 @@
   }
   map.on('zoomend moveend', drawLabels);
   fetch('data/world.json?v=4').then((r) => r.json()).then((w) => {
-    countries = w;
+    countries = w; drawOutages();
     L.geoJSON({ type: 'FeatureCollection', features: w.map((c) => ({ type: 'Feature', properties: {}, geometry: c.g })) }, { pane: 'base', interactive: false, style: { color: '#55555a', weight: 0.8, fillColor: '#262628', fillOpacity: 1 } }).addTo(base);
     drawLabels();
   }).catch(() => {});
@@ -49,6 +49,10 @@
     { id: 'headlines', name: 'Headlines', c: DOM.war[0], group: cluster, on: true },
     { id: 'aircraft', name: 'Military aircraft', c: '#cfe6ff', group: L.layerGroup(), on: true },
     { id: 'ransomware', name: 'Ransomware victims', c: DOM.cyber[0], group: L.layerGroup(), on: true },
+    { id: 'front', name: 'Ukraine front line', c: '#ff3b30', group: L.layerGroup(), on: true },
+    { id: 'outages', name: 'Internet outages', c: '#ff5fd2', group: L.layerGroup(), on: false },
+    { id: 'heat', name: 'Heat detections', c: '#ff7a1a', group: L.layerGroup(), on: false },
+    { id: 'wx', name: 'US severe weather', c: '#ffd43b', group: L.layerGroup(), on: false },
     { id: 'quakes', name: 'Earthquakes', c: '#ffa94d', group: L.layerGroup(), on: false },
     { id: 'hazards', name: 'Fires, storms, volcanoes', c: '#5fd38d', group: L.layerGroup(), on: false },
   ];
@@ -111,7 +115,29 @@
     const hg = layer('hazards').group; hg.clearLayers();
     (v.hazards || []).forEach((h) => L.circleMarker([h.lat, h.lon], { radius: 5, color: '#5fd38d', weight: 1.5, fillColor: '#5fd38d', fillOpacity: 0.5 }).bindPopup(() => pop(h.kind + ', ' + ago(h.t), '#5fd38d', h.title, [], h.url, 'NASA EONET source')).addTo(hg));
     layer('hazards').count.textContent = (v.hazards || []).length || '';
-    drawQuakes(); drawAircraft();
+    const tg = layer('heat').group; tg.clearLayers();
+    (v.heat || []).forEach((h) => L.circleMarker([h.lat, h.lon], { radius: Math.min(6, 2 + Math.sqrt(h.frp || 1) / 3), stroke: false, fillColor: '#ff7a1a', fillOpacity: 0.7 }).bindPopup(() => pop('Satellite heat detection, ' + h.region, '#ff7a1a', 'Fire radiative power ' + Math.round(h.frp) + ' MW', ['Seen ' + h.d + ' ' + String(h.tm).padStart(4, '0') + ' UTC. A fire, a strike or an industrial flare can all look like this.'], 'https://firms.modaps.eosdis.nasa.gov/map/', 'NASA FIRMS')).addTo(tg));
+    layer('heat').count.textContent = (v.heat || []).length || '';
+    const wg = layer('wx').group; wg.clearLayers(); const hp = (v.home && v.home.polys) || [];
+    hp.forEach((w) => L.polygon(w.poly, { color: '#ffd43b', weight: 1.5, fillColor: '#ffd43b', fillOpacity: 0.18 }).bindPopup(() => pop('US weather warning', '#ffd43b', w.event, [w.area, w.expires ? 'Expires ' + new Date(w.expires).toLocaleString() : ''], 'https://www.weather.gov/', 'National Weather Service')).addTo(wg));
+    layer('wx').count.textContent = hp.length || '';
+    drawOutages(); drawQuakes(); drawAircraft();
+  }
+  function drawOutages() {
+    const g = layer('outages').group; g.clearLayers(); const rows = (S.live && S.live.outages) || []; let n = 0;
+    rows.forEach((r, i) => {
+      const nm = r.name.toLowerCase(); const c = countries.find((x) => x.name.toLowerCase() === nm) || countries.find((x) => x.name.toLowerCase().startsWith(nm) || nm.startsWith(x.name.toLowerCase()));
+      if (!c) return; n++;
+      L.circleMarker(c.c, { radius: Math.max(7, 18 - i), color: '#ff5fd2', weight: 2, dashArray: '4 3', fillColor: '#ff5fd2', fillOpacity: 0.12 }).bindPopup(() => pop('Internet disruption signal', '#ff5fd2', r.name, ['Ranked ' + (i + 1) + ' of ' + rows.length + ' for outage signals in the past 24 hours.'], 'https://ioda.live/country/' + encodeURIComponent(r.code), 'IODA detail')).addTo(g);
+    });
+    layer('outages').count.textContent = n || '';
+  }
+  function loadFront() {
+    getJson('data/frontline.json?t=' + Math.floor(Date.now() / 900000)).then((f) => {
+      const g = layer('front').group; g.clearLayers();
+      L.geoJSON({ type: 'FeatureCollection', features: f.features.map((x) => ({ type: 'Feature', properties: { name: x.name }, geometry: x.geometry })) }, { interactive: false, style: { color: '#ff3b30', weight: 1.2, fillColor: '#ff3b30', fillOpacity: 0.16 } }).addTo(g);
+      layer('front').count.textContent = '';
+    }).catch(() => { layer('front').count.textContent = ''; });
   }
   function drawQuakes() {
     const q = S.quakes || (S.live && S.live.quakes) || []; const g = layer('quakes').group; g.clearLayers();
@@ -142,6 +168,31 @@
       s.title = 'Trend: ' + l.trend + '. Select for the reasoning.';
       d.append(s, el('p', '', l.basis)); return d;
     }));
+  }
+  function spark(vals, color) {
+    const v = vals.filter((x) => typeof x === 'number'); if (v.length < 3) return el('span', 'spark-na', '');
+    const min = Math.min(...v), max = Math.max(...v), w = 96, h = 22; const pts = v.map((y, i) => (i / (v.length - 1) * w).toFixed(1) + ',' + (h - 2 - (max === min ? 0.5 : (y - min) / (max - min)) * (h - 4)).toFixed(1)).join(' ');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); svg.setAttribute('class', 'spark'); svg.setAttribute('aria-hidden', 'true');
+    const pl = document.createElementNS('http://www.w3.org/2000/svg', 'polyline'); pl.setAttribute('points', pts); pl.setAttribute('fill', 'none'); pl.setAttribute('stroke', color); pl.setAttribute('stroke-width', '1.6'); svg.append(pl); return svg;
+  }
+  function drawDigest() {
+    const v = S.live || {}; const hist = v.history || []; const box = $('digest'); const sub = $('digest-sub');
+    if (hist.length < 2) { sub.textContent = 'Trends appear after a few updates'; box.replaceChildren(); return; }
+    const nowP = hist[hist.length - 1]; const target = nowP.t - 864e5; const base = hist.reduce((b, p) => (Math.abs(p.t - target) < Math.abs(b.t - target) ? p : b), hist[0]);
+    const hrs = Math.round((nowP.t - base.t) / 36e5); sub.textContent = 'Change over the past ' + (hrs >= 23 ? '24 hours' : hrs < 1 ? 'hour' : hrs + ' hours');
+    const recent = hist.filter((p) => p.t >= nowP.t - 2 * 864e5);
+    const row = (label, key, color, fmt) => {
+      const a = nowP[key], b = base[key]; const r = el('div', 'dg-row'); const d = typeof a === 'number' && typeof b === 'number' ? a - b : null;
+      const delta = el('span', 'dg-d' + (d > 0 ? ' up' : d < 0 ? ' down' : ''), d == null ? '' : d === 0 ? 'no change' : (d > 0 ? '+' : '−') + fmt(Math.abs(d)));
+      r.append(el('span', '', label), spark(recent.map((p) => p[key]), color), el('b', '', typeof a === 'number' ? fmt(a) : '–'), delta); return r;
+    };
+    const f0 = (x) => num(x), f2 = (x) => num(x, 2);
+    box.replaceChildren(row('Conflict news', 'war', DOM.war[0], f0), row('Cyber news', 'cyber', DOM.cyber[0], f0), row('Aircraft', 'ac', '#cfe6ff', f0), row('Brent crude', 'br', DOM.energy[0], f2), row('Kp index', 'kp', DOM.nuclear[0], (x) => num(x, 1)));
+  }
+  function drawAlerts() {
+    const v = S.live || {}; const log = (v.alerts && v.alerts.log) || []; const bar = $('alerts');
+    bar.hidden = !log.length; if (!log.length) return;
+    bar.replaceChildren(el('strong', '', log.length === 1 ? 'Alert' : log.length + ' alerts'), ...log.slice(0, 4).map((a) => { const s = el('span', 'al'); s.append(el('b', '', a.title), ' ' + ago(a.t)); s.title = a.body || ''; return s; }));
   }
   function drawTempo() {
     const hs = (S.live && S.live.headlines) || []; const cut = Date.now() - 864e5; const n = {};
@@ -221,6 +272,28 @@
         const d = item(DOM.war[0]); const meta = el('div', 'meta'); meta.append(el('span', '', ago(x.t)), el('span', '', 'group: ' + x.group)); if (x.country) meta.append(el('span', '', x.country)); if (x.sector) meta.append(el('span', '', x.sector));
         d.append(el('h4', '', x.victim), meta); out.push(d);
       }); else out.push(el('p', 'empty', 'No ransomware posts loaded yet.'));
+    } else if (S.tab === 'odds') {
+      const o = v.odds || [];
+      out.push(el('p', 'note', 'What bettors on Polymarket currently pay for "yes". A price is a crowd estimate, not a forecast you should rely on, and thin markets can be badly off.'));
+      o.forEach((m) => {
+        const d = item(m.yes >= 0.5 ? DOM.war[0] : m.yes >= 0.2 ? DOM.nuclear[0] : '#6b6b70'); const t = el('h4'); t.append(link(m.url, m.q));
+        const bar = el('div', 'odds'); const fill = el('i'); fill.style.width = Math.round(m.yes * 100) + '%'; bar.append(fill);
+        const meta = el('div', 'meta'); meta.append(el('b', 'pct', Math.round(m.yes * 100) + '% yes'), el('span', '', '$' + num(m.vol) + ' traded today')); if (m.end) meta.append(el('span', '', 'closes ' + String(m.end).slice(0, 10)));
+        d.append(t, bar, meta); out.push(d);
+      });
+      if (!o.length) out.push(el('p', 'empty', 'No prediction-market data has loaded yet.'));
+    } else if (S.tab === 'home') {
+      const h = v.home;
+      if (!h) out.push(el('p', 'empty', 'US weather and outage data has not loaded yet.'));
+      else {
+        out.push(el('p', 'note', h.total + ' severe or extreme weather alerts are active across the US. Turn on the "US severe weather" map layer to see the warning areas.'));
+        out.push(el('h3', '', 'Alerts in ' + h.states.join(', ')));
+        h.mine.forEach((a) => { const d = item('#ffd43b'); const meta = el('div', 'meta'); meta.append(el('span', 'tag' + (a.severity === 'Extreme' ? ' hot' : ''), a.severity), el('span', '', a.states.join(', '))); if (a.expires) meta.append(el('span', '', 'until ' + new Date(a.expires).toLocaleString('en-US', { weekday: 'short', hour: 'numeric', minute: '2-digit' }))); d.append(el('h4', '', a.event), el('p', '', a.area), meta); out.push(d); });
+        if (!h.mine.length) out.push(el('p', 'empty', 'No severe weather alerts in these states right now.'));
+        out.push(el('h3', '', 'Most common alerts nationwide'));
+        const ul = el('ul'); h.counts.forEach(([name, n]) => ul.append(el('li', '', n + ' × ' + name))); out.push(ul);
+        if (h.outages && h.outages.length) { out.push(el('h3', '', 'Largest power outages by county')); h.outages.slice(0, 15).forEach((o) => { const d = item(DOM.nuclear[0]); const meta = el('div', 'meta'); meta.append(el('span', '', num(o.n) + ' customers out')); d.append(el('h4', '', o.county + (o.state ? ', ' + o.state : '')), meta); out.push(d); }); }
+      }
     } else if (S.tab === 'air') {
       const a = S.aircraft || v.aircraft || []; const n = a.filter((p) => p.notable);
       out.push(el('p', 'note', num(a.length) + ' military aircraft are broadcasting a position. Listed here are tankers, bombers, surveillance and command aircraft, which tend to move before events do.'));
@@ -236,15 +309,15 @@
   document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => { S.tab = b.dataset.tab; drawList(); }));
 
   // ---------- status ----------
-  const NAMES = { headlines: 'News headlines', aircraft: 'Military aircraft', quakes: 'Earthquakes', hazards: 'Natural hazards', kev: 'Exploited flaws', ransomware: 'Ransomware posts', space: 'Space weather', markets: 'Market quotes' };
+  const NAMES = { headlines: 'News headlines', aircraft: 'Military aircraft', quakes: 'Earthquakes', hazards: 'Natural hazards', kev: 'Exploited flaws', ransomware: 'Ransomware posts', space: 'Space weather', markets: 'Market quotes', front: 'Ukraine front line', outages: 'Internet outages', odds: 'Prediction markets', home: 'US weather and outages', heat: 'Heat detections' };
   function drawStatus() {
     const v = S.live; const dot = $('status-dot'); const txt = $('status-text');
     if (!v || !v.generated) { dot.className = 'dot warn'; txt.textContent = 'Waiting for the first feed update'; return; }
-    const st = v.status || {}; const bad = Object.keys(NAMES).filter((k) => st[k] && !st[k].ok); const age = (Date.now() - v.generated) / 60000;
+    const st = v.status || {}; const bad = Object.keys(NAMES).filter((k) => st[k] && !st[k].ok && !st[k].needsKey); const age = (Date.now() - v.generated) / 60000;
     dot.className = 'dot ' + (age > 50 ? 'bad' : bad.length || age > 30 ? 'warn' : 'ok');
     txt.textContent = (age > 50 ? 'Feeds are stale, last updated ' : 'Feeds updated ') + ago(v.generated) + (bad.length ? ', ' + bad.length + ' not responding' : '');
     $('status-list').replaceChildren(...Object.keys(NAMES).map((k) => {
-      const s = st[k] || {}; const li = el('li'); li.append(el('span', 'dot ' + (s.ok ? 'ok' : 'bad')), el('span', '', NAMES[k]), el('span', '', s.ok ? (k === 'quakes' && S.quakes ? 'live from USGS' : k === 'aircraft' && S.aircraft ? 'live from adsb.lol' : ago(s.at || v.generated)) : s.error ? 'failed: ' + s.error : 'no data yet')); return li;
+      const s = st[k] || {}; const li = el('li'); li.append(el('span', 'dot ' + (s.ok ? 'ok' : s.needsKey ? 'warn' : 'bad')), el('span', '', NAMES[k]), el('span', '', s.ok ? (k === 'quakes' && S.quakes ? 'live from USGS' : k === 'aircraft' && S.aircraft ? 'live from adsb.lol' : ago(s.at || v.generated)) : s.needsKey ? s.error : s.error ? 'failed: ' + s.error : 'no data yet')); return li;
     }));
   }
   function tick() { $('utc').textContent = new Date().toISOString().slice(0, 19).replace('T', ' ') + ' UTC'; }
@@ -254,7 +327,7 @@
   async function loadLive() {
     try {
       const v = await getJson('data/live.json?t=' + Math.floor(Date.now() / 30000));
-      if (!S.live || v.generated !== S.live.generated) { S.live = v; drawLive(); drawTempo(); drawList(); }
+      if (!S.live || v.generated !== S.live.generated) { S.live = v; drawLive(); drawTempo(); drawDigest(); drawAlerts(); drawList(); loadFront(); }
     } catch (e) { /* keep showing the last good copy */ }
     drawReadings(); drawStatus();
   }

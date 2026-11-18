@@ -25,6 +25,9 @@ jobs:
           node-version: 20
       - name: Pull live feeds
         run: SITE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}" node scripts/fetch.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          FIRMS_KEY: ${{ secrets.FIRMS_KEY }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
