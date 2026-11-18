@@ -292,7 +292,7 @@
         if (!h.mine.length) out.push(el('p', 'empty', 'No severe weather alerts in these states right now.'));
         out.push(el('h3', '', 'Most common alerts nationwide'));
         const ul = el('ul'); h.counts.forEach(([name, n]) => ul.append(el('li', '', n + ' × ' + name))); out.push(ul);
-        if (h.outages && h.outages.length) { out.push(el('h3', '', 'Largest power outages by county')); h.outages.slice(0, 15).forEach((o) => { const d = item(DOM.nuclear[0]); const meta = el('div', 'meta'); meta.append(el('span', '', num(o.n) + ' customers out')); d.append(el('h4', '', o.county + (o.state ? ', ' + o.state : '')), meta); out.push(d); }); }
+        if (h.outages && h.outages.length) { out.push(el('h3', '', 'Power outages reported, by state'), el('p', 'note', 'Customers out, from utilities that report to the DOE outage network. Many utilities do not, so treat these as a floor.')); const ul2 = el('ul'); h.outages.slice(0, 12).forEach((o) => { const li = el('li', '', ''); li.append(el('a', '', o.state), ' ' + num(o.n) + (h.states.includes(o.state) ? ' (your region)' : '')); ul2.append(li); }); out.push(ul2); }
       }
     } else if (S.tab === 'air') {
       const a = S.aircraft || v.aircraft || []; const n = a.filter((p) => p.notable);

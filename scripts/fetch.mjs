@@ -173,7 +173,6 @@ async function outages() {
   const g = await get('https://api.ioda.inetintel.cc.gatech.edu/v2/outages/summary?from=' + (u - 86400) + '&until=' + u + '&entityType=country&limit=60', 'json');
   let rows = g.data || g; if (Array.isArray(rows) && Array.isArray(rows[0])) rows = rows[0];
   if (!Array.isArray(rows)) throw new Error('unexpected shape: ' + Object.keys(g).join(','));
-  if (rows[0]) console.log('DEBUG ioda sample', JSON.stringify(rows[0]).slice(0, 400));
   return rows.map((r) => ({ code: (r.entity && r.entity.code) || '', name: (r.entity && r.entity.name) || '', score: +((r.scores && (r.scores.overall ?? r.scores.total)) ?? r.score ?? 0), events: r.event_cnt ?? null }))
     .filter((r) => r.name && r.score > 0).sort((a, b) => b.score - a.score).slice(0, 15);
 }
@@ -193,9 +192,8 @@ async function heat() {
 }
 async function frontline() {
   const g = await get('https://deepstatemap.live/api/history/last', 'json', 40000);
-  const fc = g.map || g; const feats = (fc.features || []).filter((f) => f.geometry && /Polygon/.test(f.geometry.type));
+  const fc = g.map || g; const feats = (fc.features || []).filter((f) => f.geometry && /Polygon/.test(f.geometry.type) && /occupied/i.test(String((f.properties || {}).name)));
   if (!feats.length) throw new Error('no polygons: ' + Object.keys(g).join(','));
-  console.log('DEBUG deepstate', feats.length, 'polygons;', [...new Set(feats.map((f) => String((f.properties || {}).name).slice(0, 60)))].slice(0, 25).join(' | '));
   const total = feats.reduce((n, f) => n + JSON.stringify(f.geometry.coordinates).length, 0); const step = Math.max(1, Math.ceil(total / 600000));
   const ring = (r) => { const o = r.filter((_, i) => i % step === 0 || i === r.length - 1).map((c) => [+c[0].toFixed(3), +c[1].toFixed(3)]); return o.length >= 4 ? o : null; };
   const geom = (g2) => g2.type === 'Polygon' ? { type: 'Polygon', coordinates: g2.coordinates.map(ring).filter(Boolean) } : { type: 'MultiPolygon', coordinates: g2.coordinates.map((p) => p.map(ring).filter(Boolean)).filter((p) => p.length) };
@@ -223,6 +221,7 @@ async function odds() {
   return out.sort((a, b) => b.vol - a.vol).slice(0, 25);
 }
 const HOME_STATES = ['OK', 'TX', 'KS', 'MO', 'AR', 'NM', 'CO'];
+const FIPS = { '01': 'AL', '02': 'AK', '04': 'AZ', '05': 'AR', '06': 'CA', '08': 'CO', '09': 'CT', 10: 'DE', 11: 'DC', 12: 'FL', 13: 'GA', 15: 'HI', 16: 'ID', 17: 'IL', 18: 'IN', 19: 'IA', 20: 'KS', 21: 'KY', 22: 'LA', 23: 'ME', 24: 'MD', 25: 'MA', 26: 'MI', 27: 'MN', 28: 'MS', 29: 'MO', 30: 'MT', 31: 'NE', 32: 'NV', 33: 'NH', 34: 'NJ', 35: 'NM', 36: 'NY', 37: 'NC', 38: 'ND', 39: 'OH', 40: 'OK', 41: 'OR', 42: 'PA', 44: 'RI', 45: 'SC', 46: 'SD', 47: 'TN', 48: 'TX', 49: 'UT', 50: 'VT', 51: 'VA', 53: 'WA', 54: 'WV', 55: 'WI', 56: 'WY', 72: 'PR' };
 async function home() {
   const g = await get('https://api.weather.gov/alerts/active?status=actual&message_type=alert&severity=Extreme,Severe', 'json');
   const items = (g.features || []).map((f) => {
@@ -233,11 +232,11 @@ async function home() {
   const counts = {}; items.forEach((x) => { counts[x.event] = (counts[x.event] || 0) + 1; });
   const out = { total: items.length, counts: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8), states: HOME_STATES, mine: items.filter((x) => x.states.some((st) => HOME_STATES.includes(st))).slice(0, 40).map(({ poly, ...r }) => r), polys: items.filter((x) => x.poly).slice(0, 200).map((x) => ({ event: x.event, area: x.area, expires: x.expires, poly: x.poly })), outages: null };
   try {
-    const o = await get('https://ornl.opendatasoft.com/api/explore/v2.1/catalog/datasets/odin-real-time-outages-county/records?limit=100', 'json', 20000);
-    const recs = o.results || [];
-    if (recs[0]) console.log('DEBUG odin sample', JSON.stringify(recs[0]).slice(0, 500));
-    const numKey = recs[0] && Object.keys(recs[0]).find((k) => /meters?_?affected|customers?_?(out|affected)/i.test(k));
-    if (numKey) out.outages = recs.map((r) => ({ state: r.state || r.state_name || '', county: r.county || r.name || r.county_name || '', n: +r[numKey] || 0, lat: r.geo_point_2d && r.geo_point_2d.lat, lon: r.geo_point_2d && r.geo_point_2d.lon })).filter((r) => r.n > 0).sort((a, b) => b.n - a.n).slice(0, 60);
+    const o = await get('https://ornl.opendatasoft.com/api/explore/v2.1/catalog/datasets/odin-real-time-outages-county/records?select=' + encodeURIComponent('sum(metersaffected) as n') + '&group_by=communitydescriptor&order_by=' + encodeURIComponent('n desc') + '&limit=100', 'json', 20000);
+    const by = {};
+    for (const r of o.results || []) { const st = FIPS[String(r.communitydescriptor || '').padStart(5, '0').slice(0, 2)]; if (st && r.n > 0) by[st] = (by[st] || 0) + r.n; }
+    const rows = Object.entries(by).map(([state, n]) => ({ state, n: Math.round(n) })).sort((x, y) => y.n - x.n);
+    if (rows.length) out.outages = rows.slice(0, 20);
   } catch (e) { console.error('odin failed:', e.message); }
   return out;
 }
