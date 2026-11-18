@@ -43,9 +43,9 @@ const PLACES = [
   P('Helsinki', 60.17, 24.94, 'other', 'Finland|Finnish'), P('Minsk', 53.9, 27.57, 'ukraine', 'Minsk|Belarus'), P('Chisinau', 47.01, 28.86, 'ukraine', 'Moldova|Transnistria'), P('Tbilisi', 41.72, 44.79, 'other', 'Tbilisi|Georgia\\b(?! (state|governor|senate|tech|bulldogs))'),
   P('Brussels', 50.85, 4.35, 'other', 'Brussels|NATO|European Union'), P('London', 51.51, -0.13, 'other', 'London|Britain|British|U\\.?K\\.?'), P('Paris', 48.86, 2.35, 'other', 'Paris|France|French'), P('Berlin', 52.52, 13.4, 'other', 'Berlin|Germany|German'),
   P('Ankara', 39.93, 32.86, 'other', 'Ankara|Turkey|Turkish|Türkiye'), P('Canberra', -35.28, 149.13, 'other', 'Australia|Australian'), P('Ottawa', 45.42, -75.7, 'other', 'Canada|Canadian'),
-  P('Washington', 38.9, -77.04, 'other', 'Washington|Pentagon|White House|Congress|Trump'),
   P('Ukraine', 49.0, 32.0, 'ukraine', 'Ukraine|Ukrainian|Zelensky|Zelenskyy'), P('Russia', 56.5, 44.0, 'ukraine', 'Russia|Russian|Putin'), P('Iran', 32.4, 53.7, 'gulf', 'Iran|Iranian|IRGC'),
   P('Israel', 31.5, 34.9, 'levant', 'Israel|Israeli|IDF'), P('China', 34.5, 108.9, 'eastasia', 'China|Chinese|Xi Jinping'),
+  P('Washington', 38.9, -77.04, 'other', 'Washington|Pentagon|White House|Congress|Trump'),
 ];
 function locate(text) {
   for (const p of PLACES) if (p.re.test(text)) return { place: p.n, lat: p.lat, lon: p.lon, theater: p.th };
