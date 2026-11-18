@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vendor/leaflet.css?v=10">
-<link rel="stylesheet" href="vendor/MarkerCluster.css?v=10">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="vendor/leaflet.css?v=11">
+<link rel="stylesheet" href="vendor/MarkerCluster.css?v=11">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 <header class="bar">
@@ -49,6 +49,7 @@
 
   <section class="stage" aria-label="Map">
     <div id="map"></div>
+    <button type="button" class="layers-toggle" id="layers-toggle" aria-expanded="true" aria-controls="layers">Layers</button>
     <div class="layers" id="layers" role="group" aria-label="Map layers"></div>
     <div class="jump">
       <label for="theater">Go to</label>
@@ -68,16 +69,74 @@
 
   <aside class="feed" aria-label="Feeds">
     <div class="tabs" role="tablist">
+      <button role="tab" data-tab="overview" class="only-mobile" aria-selected="false">Overview</button>
       <button role="tab" data-tab="headlines" aria-selected="true">Headlines</button>
       <button role="tab" data-tab="assessed" aria-selected="false">Events</button>
       <button role="tab" data-tab="cyber" aria-selected="false">Cyber</button>
       <button role="tab" data-tab="air" aria-selected="false">Aircraft</button>
       <button role="tab" data-tab="odds" aria-selected="false">Odds</button>
       <button role="tab" data-tab="home" aria-selected="false">Home</button>
+      <button role="tab" data-tab="readiness" aria-selected="false">Readiness</button>
       <button role="tab" data-tab="sources" aria-selected="false">Sources</button>
     </div>
     <div class="chips" id="hfilter" role="group" aria-label="Filter headlines"></div>
     <div class="list" id="list" role="tabpanel"></div>
+    <div class="list" id="readiness" role="tabpanel" hidden>
+      <h3>Doomsday Clock</h3>
+      <p class="clock-big"><b>85</b> seconds to midnight</p>
+      <p class="note">Set January 27, 2026 by the Bulletin of the Atomic Scientists. It is the closest setting in the clock's history, four seconds nearer than 2025.</p>
+      <svg id="clock-chart" class="clock-chart" role="img" aria-label="Doomsday Clock settings from 1947 to 2026, in minutes and seconds to midnight"></svg>
+      <p class="note">Each step is a year the board moved the hands. The scale is stretched near midnight so recent moves are visible.</p>
+      <h4 class="rd">What moved it in 2026</h4>
+      <ul>
+        <li><a>Nuclear.</a> Three conflicts involving nuclear-armed states risked escalation during 2025: Russia and Ukraine, India and Pakistan, and the strikes on Iran's nuclear sites. The last US-Russia arms treaty was about to lapse and a return to explosive testing was under discussion.</li>
+        <li><a>Climate.</a> Carbon dioxide reached 150% of its preindustrial level, and 2024 and 2025 were the warmest years on record.</li>
+        <li><a>Biology.</a> The board cited research toward "mirror life", AI tools that could help design pathogens, weaker norms against state bioweapons, and reduced US public health capacity.</li>
+        <li><a>AI and disruptive technology.</a> The US, Russia and China are building AI into their militaries while safety rules were rolled back.</li>
+      </ul>
+      <h4 class="rd">What the board says would turn it back</h4>
+      <ul>
+        <li>The US and Russia resuming talks on limiting their arsenals, and every nuclear state keeping the testing moratorium</li>
+        <li>The US, Russia and China agreeing guidelines for AI in military systems, above all nuclear command and control</li>
+        <li>International steps against mirror life and AI-enabled biological threats</li>
+        <li>Rapid cuts in fossil fuel use</li>
+      </ul>
+      <h4 class="rd">How to read it</h4>
+      <p class="note">The clock is a judgment by a board of scientists and security experts, set once a year. It is not a measurement or a forecast, and it does not move with daily events. The current setting was made a month before the Iran war began on February 28, 2026, so it does not reflect that war. Past settings have been announced in late January. <a href="https://thebulletin.org/doomsday-clock/2026-statement/" target="_blank" rel="noopener">Read the 2026 statement</a></p>
+
+      <h3>What governments tell households to keep</h3>
+      <p class="note">Official advice on how long a household should be able to manage without shops, power or running water. Checked November 17, 2026.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Country</th><th>Be ready for</th><th>Water guidance</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.ready.gov/kit" target="_blank" rel="noopener">United States</a></td><td>Several days</td><td>1 gallon per person per day</td></tr>
+          <tr><td><a href="https://www.getprepared.gc.ca" target="_blank" rel="noopener">Canada</a></td><td>72 hours</td><td></td></tr>
+          <tr><td><a href="https://prepare.campaign.gov.uk" target="_blank" rel="noopener">United Kingdom</a></td><td>3 days</td><td>3 litres a day minimum, 10 for comfort</td></tr>
+          <tr><td><a href="https://www.bbk.bund.de" target="_blank" rel="noopener">Germany</a></td><td>10 days, 3 at minimum</td><td>2 litres per person per day</td></tr>
+          <tr><td><a href="https://www.notvorratsrechner.bwl.admin.ch" target="_blank" rel="noopener">Switzerland</a></td><td>About a week</td><td>9 litres per person</td></tr>
+          <tr><td><a href="https://www.msb.se" target="_blank" rel="noopener">Sweden</a></td><td>A week</td><td></td></tr>
+          <tr><td><a href="https://www.sikkerhverdag.no" target="_blank" rel="noopener">Norway</a></td><td>A week, raised from 3 days</td><td></td></tr>
+          <tr><td><a href="https://72tuntia.fi" target="_blank" rel="noopener">Finland</a></td><td>72 hours</td><td></td></tr>
+          <tr><td><a href="https://www.brs.dk" target="_blank" rel="noopener">Denmark</a></td><td>3 days</td><td></td></tr>
+          <tr><td>Estonia</td><td>A week</td><td></td></tr>
+          <tr><td>Netherlands</td><td>72 hours, raised from 48</td><td></td></tr>
+          <tr><td>France, Ireland</td><td>3 days</td><td></td></tr>
+          <tr><td>Latvia, Czech Republic</td><td>72 hours</td><td></td></tr>
+          <tr><td>Japan</td><td>3 days, a week advised</td><td></td></tr>
+          <tr><td>European Union</td><td>72 hours as the floor for all members</td><td></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">A blank cell means I did not find a figure in the sources I checked, not that the country has none. The European Commission published citizen guidelines on November 3, 2026 and leaves quantities to each member state.</p>
+      <h4 class="rd">What nearly every list includes</h4>
+      <ul>
+        <li>Drinking water and food that keeps without a fridge and needs little or no cooking</li>
+        <li>Prescription medicines and a first aid kit</li>
+        <li>A battery or wind-up radio, a torch and spare batteries, and a power bank</li>
+        <li>Cash, and copies of identity and insurance documents</li>
+        <li>Warm clothing and blankets, hygiene supplies, and what infants and pets need</li>
+      </ul>
+      <p class="note">Germany's civil protection agency suggests starting with three days and building up, and using older stock first so nothing expires.</p>
+    </div>
     <div class="list" id="sources" role="tabpanel" hidden>
       <p class="note">These are the primary sources behind this page and others worth opening directly.</p>
       <h3>On this map</h3>
@@ -139,8 +198,8 @@
     </div>
   </aside>
 </main>
-<script src="vendor/leaflet.js?v=10"></script>
-<script src="vendor/leaflet.markercluster.js?v=10"></script>
-<script src="app.js?v=10"></script>
+<script src="vendor/leaflet.js?v=11"></script>
+<script src="vendor/leaflet.markercluster.js?v=11"></script>
+<script src="app.js?v=11"></script>
 </body>
 </html>
