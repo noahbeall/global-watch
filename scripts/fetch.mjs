@@ -174,7 +174,7 @@ async function outages() {
   let rows = g.data || g; if (Array.isArray(rows) && Array.isArray(rows[0])) rows = rows[0];
   if (!Array.isArray(rows)) throw new Error('unexpected shape: ' + Object.keys(g).join(','));
   return rows.map((r) => ({ code: (r.entity && r.entity.code) || '', name: (r.entity && r.entity.name) || '', score: +((r.scores && (r.scores.overall ?? r.scores.total)) ?? r.score ?? 0), events: r.event_cnt ?? null }))
-    .filter((r) => r.name && r.score > 0).sort((a, b) => b.score - a.score).slice(0, 15);
+    .filter((r) => r.name && r.score > 0).sort((a, b) => b.score - a.score).slice(0, 40);
 }
 const FIRMS_BOXES = { Ukraine: '22,44,41,53', 'Iran and the Gulf': '44,24,62,38', Levant: '34,29.5,37,34', Yemen: '42,12,50,18' };
 async function heat() {

@@ -124,10 +124,11 @@
     drawOutages(); drawQuakes(); drawAircraft();
   }
   function drawOutages() {
-    const g = layer('outages').group; g.clearLayers(); const rows = (S.live && S.live.outages) || []; let n = 0;
+    const g = layer('outages').group; g.clearLayers(); let n = 0;
+    const find = (r) => { const nm = r.name.toLowerCase(); return countries.find((x) => x.name.toLowerCase() === nm) || countries.find((x) => x.name.toLowerCase().startsWith(nm) || nm.startsWith(x.name.toLowerCase())); };
+    const rows = ((S.live && S.live.outages) || []).map((r) => ({ ...r, c: find(r) })).filter((r) => r.c && r.c.a > 0.0008).slice(0, 12);
     rows.forEach((r, i) => {
-      const nm = r.name.toLowerCase(); const c = countries.find((x) => x.name.toLowerCase() === nm) || countries.find((x) => x.name.toLowerCase().startsWith(nm) || nm.startsWith(x.name.toLowerCase()));
-      if (!c) return; n++;
+      const c = r.c; n++;
       L.circleMarker(c.c, { radius: Math.max(7, 18 - i), color: '#ff5fd2', weight: 2, dashArray: '4 3', fillColor: '#ff5fd2', fillOpacity: 0.12 }).bindPopup(() => pop('Internet disruption signal', '#ff5fd2', r.name, ['Ranked ' + (i + 1) + ' of ' + rows.length + ' for outage signals in the past 24 hours.'], 'https://ioda.live/country/' + encodeURIComponent(r.code), 'IODA detail')).addTo(g);
     });
     layer('outages').count.textContent = n || '';
