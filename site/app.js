@@ -52,6 +52,7 @@
     { id: 'front', name: 'Ukraine front line', c: '#ff3b30', group: L.layerGroup(), on: true },
     { id: 'outages', name: 'Internet outages', c: '#ff5fd2', group: L.layerGroup(), on: false },
     { id: 'heat', name: 'Heat detections', c: '#ff7a1a', group: L.layerGroup(), on: false },
+    { id: 'radar', name: 'Weather radar', c: '#4dabf7', group: L.layerGroup(), on: false },
     { id: 'wx', name: 'US severe weather', c: '#ffd43b', group: L.layerGroup(), on: false },
     { id: 'quakes', name: 'Earthquakes', c: '#ffa94d', group: L.layerGroup(), on: false },
     { id: 'hazards', name: 'Fires, storms, volcanoes', c: '#5fd38d', group: L.layerGroup(), on: false },
@@ -132,6 +133,17 @@
       L.circleMarker(c.c, { radius: Math.max(7, 18 - i), color: '#ff5fd2', weight: 2, dashArray: '4 3', fillColor: '#ff5fd2', fillOpacity: 0.12 }).bindPopup(() => pop('Internet disruption signal', '#ff5fd2', r.name, ['Ranked ' + (i + 1) + ' of ' + rows.length + ' for outage signals in the past 24 hours.'], 'https://ioda.live/country/' + encodeURIComponent(r.code), 'IODA detail')).addTo(g);
     });
     layer('outages').count.textContent = n || '';
+  }
+  map.createPane('radar').style.zIndex = 215; map.getPane('radar').style.pointerEvents = 'none';
+  async function loadRadar() {
+    const g = layer('radar').group;
+    try {
+      const j = await getJson('https://api.rainviewer.com/public/weather-maps.json');
+      const f = j.radar.past[j.radar.past.length - 1]; const url = j.host + f.path + '/256/{z}/{x}/{y}/2/1_1.png';
+      if (S.radarUrl !== url) { S.radarUrl = url; g.clearLayers(); L.tileLayer(url, { pane: 'radar', opacity: 0.7, maxNativeZoom: 7, attribution: 'Radar: <a href="https://www.rainviewer.com">RainViewer</a>' }).addTo(g); }
+    } catch (e) {
+      if (!S.radarUrl) { S.radarUrl = 'iem'; g.clearLayers(); L.tileLayer('https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png', { pane: 'radar', opacity: 0.7, attribution: 'Radar: Iowa Environmental Mesonet (US only)' }).addTo(g); }
+    }
   }
   function loadFront() {
     getJson('data/frontline.json?t=' + Math.floor(Date.now() / 900000)).then((f) => {
@@ -353,6 +365,7 @@
   drawTempo(); drawReadings(); drawList(); drawStatus();
   loadLive(); setInterval(loadLive, 60000);
   loadQuakes(); setInterval(loadQuakes, 120000);
+  loadRadar(); setInterval(loadRadar, 300000);
   loadAircraft(); setInterval(loadAircraft, 45000);
   setInterval(drawStatus, 30000);
 })();
