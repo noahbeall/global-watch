@@ -202,23 +202,33 @@ async function frontline() {
   await writeFile('site/data/frontline.json', JSON.stringify({ updated: g.datetime || g.id || now, generated: now, features: keep }));
   return { count: keep.length, updated: g.datetime || null };
 }
-const ODDS_RE = /\b(Iran|Israel|Gaza|Hezbollah|Houthi|Hormuz|Russia|Ukraine|Putin|Zelensky|NATO|ceasefire|nuclear|Taiwan|China invade|North Korea|Kim Jong|airstrike|strike on|war\b|invade|invasion|troops|Khamenei|regime)/i;
+const ODDS_CATS = [
+  ['nuclear', 'Nuclear', /\b(nuclear|nuke|ICBM|atomic)\b/i],
+  ['mideast', 'Iran, Israel and the Gulf', /\b(Iran|Iranian|Israel|Israeli|Gaza|Hezbollah|Houthi|Hormuz|Khamenei|Netanyahu|Syria|Lebanon|Saudi|Yemen|Hamas)\b/i],
+  ['russia', 'Russia and Ukraine', /\b(Russia|Russian|Ukraine|Ukrainian|Putin|Zelensky|Zelenskyy|NATO|Crimea|Kremlin)\b/i],
+  ['asia', 'China, Taiwan and Korea', /\b(China|Chinese|Taiwan|Xi Jinping|North Korea|Kim Jong|South Korea|India|Pakistan|Japan)\b/i],
+  ['ai', 'AI and tech', /\b(AI|AGI|OpenAI|Anthropic|ChatGPT|Nvidia|DeepSeek|xAI|superintelligence)\b/i],
+  ['economy', 'Economy and energy', /\b(recession|Fed|interest rates?|rate cut|inflation|oil|crude|tariffs?|shutdown|unemployment|gas prices?|default)\b/i],
+  ['conflict', 'Other conflicts and crises', /\b(war|invade|invasion|coup|ceasefire|troops|Venezuela|Sudan|Cuba|Maduro|martial law|pandemic|cyberattack)\b/i],
+];
 async function odds() {
   const all = [];
-  for (const off of [0, 100, 200, 300, 400]) {
+  for (let off = 0; off < 1200; off += 100) {
     const page = await get('https://gamma-api.polymarket.com/markets?closed=false&active=true&limit=100&offset=' + off + '&order=volume24hr&ascending=false', 'json');
     if (!Array.isArray(page)) throw new Error('unexpected shape'); all.push(...page); if (page.length < 100) break;
   }
-  const out = [];
+  const by = {}; let withChange = 0;
   for (const m of all) {
-    if (!ODDS_RE.test(m.question || '')) continue;
+    const q = String(m.question || ''); const cat = ODDS_CATS.find((c) => c[2].test(q)); if (!cat) continue;
     let prices; let names; try { prices = JSON.parse(m.outcomePrices); names = JSON.parse(m.outcomes); } catch { continue; }
     const yi = names.findIndex((n) => /^yes$/i.test(n)); if (yi < 0 || !Number.isFinite(+prices[yi])) continue;
-    const slug = (m.events && m.events[0] && m.events[0].slug) || m.slug;
-    out.push({ q: String(m.question).slice(0, 160), yes: +(+prices[yi]).toFixed(3), vol: Math.round(+m.volume24hr || 0), end: m.endDate || null, url: 'https://polymarket.com/event/' + slug });
+    const slug = (m.events && m.events[0] && m.events[0].slug) || m.slug; const ch = Number.isFinite(+m.oneDayPriceChange) && m.oneDayPriceChange !== null ? +(+m.oneDayPriceChange * (yi === 0 ? 1 : -1)).toFixed(3) : null; if (ch !== null) withChange++;
+    (by[cat[0]] = by[cat[0]] || []).push({ cat: cat[0], q: q.slice(0, 160), yes: +(+prices[yi]).toFixed(3), d: ch, vol: Math.round(+m.volume24hr || 0), end: m.endDate || null, url: 'https://polymarket.com/event/' + slug });
   }
+  const out = []; for (const c of ODDS_CATS) out.push(...(by[c[0]] || []).sort((a, b) => b.vol - a.vol).slice(0, 7));
+  console.log('odds: scanned ' + all.length + ', kept ' + out.length + ', with 24h change ' + withChange + '; ' + ODDS_CATS.map((c) => c[0] + '=' + (by[c[0]] || []).length).join(' '));
   if (!out.length) throw new Error('no matching markets among ' + all.length);
-  return out.sort((a, b) => b.vol - a.vol).slice(0, 25);
+  return { cats: ODDS_CATS.map((c) => [c[0], c[1]]), items: out };
 }
 const HOME_STATES = ['OK', 'TX', 'KS', 'MO', 'AR', 'NM', 'CO'];
 const FIPS = { '01': 'AL', '02': 'AK', '04': 'AZ', '05': 'AR', '06': 'CA', '08': 'CO', '09': 'CT', 10: 'DE', 11: 'DC', 12: 'FL', 13: 'GA', 15: 'HI', 16: 'ID', 17: 'IL', 18: 'IN', 19: 'IA', 20: 'KS', 21: 'KY', 22: 'LA', 23: 'ME', 24: 'MD', 25: 'MA', 26: 'MI', 27: 'MN', 28: 'MS', 29: 'MO', 30: 'MT', 31: 'NE', 32: 'NV', 33: 'NH', 34: 'NJ', 35: 'NM', 36: 'NY', 37: 'NC', 38: 'ND', 39: 'OH', 40: 'OK', 41: 'OR', 42: 'PA', 44: 'RI', 45: 'SC', 46: 'SD', 47: 'TN', 48: 'TX', 49: 'UT', 50: 'VT', 51: 'VA', 53: 'WA', 54: 'WV', 55: 'WI', 56: 'WY', 72: 'PR' };
@@ -230,7 +240,7 @@ async function home() {
     return { event: p.event, area: String(p.areaDesc || '').slice(0, 140), states: [...new Set(ugc.map((u) => u.slice(0, 2)))], severity: p.severity, expires: Date.parse(p.expires || p.ends || '') || null, url: p['@id'] || '', poly };
   }).filter((x) => x.event);
   const counts = {}; items.forEach((x) => { counts[x.event] = (counts[x.event] || 0) + 1; });
-  const out = { total: items.length, counts: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8), states: HOME_STATES, mine: items.filter((x) => x.states.some((st) => HOME_STATES.includes(st))).slice(0, 40).map(({ poly, ...r }) => r), polys: items.filter((x) => x.poly).slice(0, 200).map((x) => ({ event: x.event, area: x.area, expires: x.expires, poly: x.poly })), outages: null };
+  const out = { total: items.length, counts: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 8), states: HOME_STATES, all: items.slice(0, 300).map(({ poly, url, ...r }) => r), polys: items.filter((x) => x.poly).slice(0, 200).map((x) => ({ event: x.event, area: x.area, expires: x.expires, poly: x.poly })), outages: null };
   try {
     const o = await get('https://ornl.opendatasoft.com/api/explore/v2.1/catalog/datasets/odin-real-time-outages-county/records?select=' + encodeURIComponent('sum(metersaffected) as n') + '&group_by=communitydescriptor&order_by=' + encodeURIComponent('n desc') + '&limit=100', 'json', 20000);
     const by = {};
@@ -262,8 +272,28 @@ await mkdir('site/data', { recursive: true });
 const [hl, q, hz, k, ac, rw, sw, mk, og, ht, fr, od, hm] = await Promise.all([
   feed('headlines', headlines), feed('quakes', quakes, (v) => v.length), feed('hazards', hazards, (v) => v.length), feed('kev', kev, (v) => v.week),
   feed('aircraft', aircraft, (v) => v.length), feed('ransomware', ransomware, (v) => v.items.length), feed('space', space), feed('markets', markets),
-  feed('outages', outages, (v) => v.length), feed('heat', heat, (v) => v.length), feed('front', frontline, (v) => v.count), feed('odds', odds, (v) => v.length), feed('home', home, (v) => v.total),
+  feed('outages', outages, (v) => v.length), feed('heat', heat, (v) => v.length), feed('front', frontline, (v) => v.count), feed('odds', odds, (v) => v.items.length), feed('home', home, (v) => v.total),
 ]);
+
+// ---------- top stories: group near-duplicate headlines, rank by how many outlets carry them ----------
+const STOP = new Set('the a an of to in on for and or with from by at as is are was were be has have had after over into amid says say said new its his her their this that will not but about more than out up us live updates news'.split(' '));
+const toks = (t) => new Set(t.toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)));
+function topStories(list) {
+  const recent = list.filter((h) => now - h.t < 18 * H); const sets = recent.map((h) => toks(h.title)); const used = recent.map(() => false); const out = [];
+  for (let i = 0; i < recent.length; i++) {
+    if (used[i]) continue; used[i] = true; const c = [recent[i]];
+    for (let j = i + 1; j < recent.length; j++) {
+      if (used[j]) continue; let inter = 0; for (const w of sets[i]) if (sets[j].has(w)) inter++;
+      if (inter >= 3 && inter / (sets[i].size + sets[j].size - inter) >= 0.34) { used[j] = true; c.push(recent[j]); }
+    }
+    const srcs = [...new Set(c.map((h) => h.source).filter(Boolean))]; if (srcs.length < 2) continue;
+    const rep = c.find((h) => typeof h.lat === 'number') || c[0];
+    out.push({ id: rep.id, title: rep.title, url: rep.url, domain: rep.domain, t: Math.max(...c.map((h) => h.t)), n: srcs.length, sources: srcs.slice(0, 4), place: rep.place || null, located: typeof rep.lat === 'number' });
+  }
+  return out.sort((a, b) => b.n - a.n || b.t - a.t).slice(0, 8);
+}
+const top = topStories(hl || []);
+console.log('top stories: ' + top.map((t) => t.n).join(','));
 
 // ---------- history (for trends) ----------
 const tempo = {}; (hl || []).forEach((h) => { if (now - h.t < 24 * H) tempo[h.domain] = (tempo[h.domain] || 0) + 1; });
@@ -290,7 +320,7 @@ if (topic) for (const f of fresh.slice(0, 6)) {
 const alerts = { sent, push: Boolean(topic), log: [...fresh.map(({ key, t, title, body }) => ({ key, t, title, body })), ...((prev.alerts && prev.alerts.log) || [])].filter((x) => now - x.t < 48 * H).slice(0, 30) };
 console.log('alerts: ' + fresh.length + ' new' + (topic ? ', pushed' : ', push not configured'));
 
-const live = { generated: now, status, headlines: hl, quakes: q, hazards: hz, kev: k, aircraft: ac, ransomware: rw, space: sw, markets: mk, outages: og, heat: ht, front: fr, odds: od, home: hm, history, alerts };
+const live = { generated: now, status, top, headlines: hl, quakes: q, hazards: hz, kev: k, aircraft: ac, ransomware: rw, space: sw, markets: mk, outages: og, heat: ht, front: fr, odds: od, home: hm, history, alerts };
 await writeFile('site/data/live.json', JSON.stringify(live));
 console.log(Object.entries(status).map(([n, s]) => n + ': ' + (s.ok ? 'ok' : 'FAILED ' + s.error) + (s.count != null ? ' (' + s.count + ')' : '') + (s.note ? ' ' + s.note : '')).join('\n'));
 if (!Object.values(status).some((s) => s.ok)) process.exit(1);

@@ -674,7 +674,21 @@
 "domain": "war",
 "what": "The war started on February 28 and is now in its ninth month. American strikes have paused for a few weeks while the two sides talk through go-betweens, but Iran just started attacking again: it flew drones at a US base in Bahrain twice in three days, and oil tankers keep getting hit near Iran's coast.",
 "why": "A huge amount of the world's oil normally leaves the Middle East through one narrow channel next to Iran, called the Strait of Hormuz. Very few ships are getting through. That is the main reason oil costs about 40% more than a year ago, which shows up in what you pay for gas and almost everything that gets shipped.",
-"watch": "Whether the US starts bombing again. The President has said he would not hesitate, and has also said the war could end fairly soon."
+"watch": "Whether the US starts bombing again. The President has said he would not hesitate, and has also said the war could end fairly soon.",
+"sources": [
+{
+"name": "CNBC / UPI",
+"url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
+},
+{
+"name": "OilPrice / RTE (Reuters)",
+"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
+},
+{
+"name": "Fox News / CBS News / Carnegie",
+"url": "https://www.foxnews.com/live-news/iran-war-news-trump-israel-hormuz-november-12"
+}
+]
 },
 {
 "title": "Russia and Ukraine are hitting each other harder",
@@ -682,7 +696,21 @@
 "domain": "war",
 "what": "This war is in its fifth year. This week Ukraine blew out part of the big bridge that connects Russia to Crimea, the piece of Ukraine that Russia took in 2014. Russia hit two major bridges in Ukraine's capital and knocked out power to around 700,000 homes just as winter sets in.",
 "why": "It is the biggest war in Europe since World War II, and Russia has the world's largest stockpile of nuclear weapons. Every big escalation raises the question of how far each side will go.",
-"watch": "American envoys are trying to get peace talks moving with Europe involved. So far there is no ceasefire."
+"watch": "American envoys are trying to get peace talks moving with Europe involved. So far there is no ceasefire.",
+"sources": [
+{
+"name": "Forbes / NPR",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+},
+{
+"name": "Forbes / Ukrinform",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+},
+{
+"name": "Forbes (DTEK)",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+}
+]
 },
 {
 "title": "Nuclear tensions are the highest in decades",
@@ -690,7 +718,17 @@
 "domain": "nuclear",
 "what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on, and is talking about quitting the treaty that bans it from building a bomb. North Korea has test-fired missiles four times in the past month. The last treaty limiting US and Russian nuclear weapons was due to run out in February.",
 "why": "Nobody is saying a nuclear war is about to start. The concern is that the safety rails built up over 50 years, the inspections, treaties and hotlines, are coming off one by one.",
-"watch": "Any sign Iran is enriching uranium again, and whether inspectors get back in."
+"watch": "Any sign Iran is enriching uranium again, and whether inspectors get back in.",
+"sources": [
+{
+"name": "Fox News / CBS News",
+"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
+},
+{
+"name": "Reuters via US News",
+"url": "https://www.usnews.com/news/world/articles/2026-11-03/north-korea-fires-unidentified-projectile-toward-sea-off-its-east-coast-seoul-says"
+}
+]
 },
 {
 "title": "A side war in Yemen is threatening Saudi oil",
@@ -698,7 +736,21 @@
 "domain": "war",
 "what": "A militia in Yemen called the Houthis, which Iran backs, is firing missiles and drones at Saudi Arabia and is pushing toward a major port city, Aden. The forces Saudi Arabia supports there are retreating.",
 "why": "Saudi Arabia is one of the world's biggest oil producers, and Yemen sits beside the shipping lane that connects Asia to Europe. Trouble here piles on top of the Iran problem.",
-"watch": "A Houthi hit on a Saudi oil facility would likely move gas prices quickly."
+"watch": "A Houthi hit on a Saudi oil facility would likely move gas prices quickly.",
+"sources": [
+{
+"name": "Washington Times",
+"url": "https://www.washingtontimes.com/news/2026/nov/16/houthi-forces-advance-yemen-saudi-backed-forces-retreat-western-coast/"
+},
+{
+"name": "AP via US News",
+"url": "https://www.usnews.com/news/world/articles/2026-11-17/saudi-backed-forces-in-yemen-beef-up-defenses-outside-aden-to-thwart-houthis-and-other-mideast-news"
+},
+{
+"name": "Al Jazeera",
+"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
+}
+]
 },
 {
 "title": "Hackers hit hundreds of major websites, and AI is now doing the hacking",
@@ -706,7 +758,17 @@
 "domain": "cyber",
 "what": "Attackers broke into one company whose software runs quietly in the background of other sites. Through it they planted malicious code on 178 big sites, including Zoom, CNN, HSBC and IKEA, built to steal card numbers and crypto. Separately, the FBI, Amazon and Google each reported AI programs carrying out break-ins start to finish with little human help.",
 "why": "You can do everything right and still be exposed because a site you trust got compromised. And attacks that once took skilled people days can now be automated.",
-"watch": "Practical steps help: turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks."
+"watch": "Practical steps help: turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks.",
+"sources": [
+{
+"name": "Anadolu (Report URI)",
+"url": "https://aa.com.tr/en/world/cyberattack-hits-178-major-global-brands-exposing-visitors-to-data-theft/4127456"
+},
+{
+"name": "AI Weekly Update",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+}
+]
 },
 {
 "title": "AI is moving faster than the rules for it",
@@ -714,7 +776,21 @@
 "domain": "ai",
 "what": "One of the leading AI companies said its systems have reached the point where they can meaningfully speed up AI research itself. The Federal Reserve's latest survey found AI is now the number one worry among financial experts. A group of nonprofits is asking a California court to freeze development of more powerful AI, and the head of the biggest AI chip maker resigned amid questions about chips reaching China's military.",
 "why": "Three separate worries are showing up at once: that the technology is getting ahead of anyone's ability to control it, that too much money is riding on it, and that it is becoming a weapon in the US-China rivalry.",
-"watch": "The court's decision on the freeze request, and new state laws that take effect January 1."
+"watch": "The court's decision on the freeze request, and new state laws that take effect January 1.",
+"sources": [
+{
+"name": "AI Weekly Update",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+},
+{
+"name": "AI Weekly Update (Fed FSR)",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+},
+{
+"name": "AI Weekly Update",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+}
+]
 },
 {
 "title": "China is flexing around Taiwan",
@@ -722,7 +798,17 @@
 "domain": "war",
 "what": "China sent more than 100 ships into the waters around Taiwan last week without announcing an exercise. Taiwan governs itself, but China claims it and has not ruled out taking it by force. The US and Chinese presidents are meeting in China this week.",
 "why": "Taiwan makes most of the world's most advanced computer chips. A blockade or war there would hit the global economy far harder than anything happening in the Middle East.",
-"watch": "What comes out of the Trump-Xi meeting, and Taiwan's local elections at the end of the month."
+"watch": "What comes out of the Trump-Xi meeting, and Taiwan's local elections at the end of the month.",
+"sources": [
+{
+"name": "The Telegraph via Yahoo",
+"url": "https://www.yahoo.com/news/world/articles/china-surrounds-taiwan-100-ships-160828700.html"
+},
+{
+"name": "AP via Taipei Times",
+"url": "https://www.taipeitimes.com/News/taiwan/archives/2026/11/17/2003867912"
+}
+]
 }
 ],
 "worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
