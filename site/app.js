@@ -13,11 +13,27 @@
   const days = (iso) => Math.floor((Date.now() - Date.parse(iso + 'T00:00:00Z')) / 864e5);
 
   // ---------- map ----------
-  const map = L.map('map', { worldCopyJump: true, preferCanvas: true, zoomControl: false, minZoom: 2, maxZoom: 12, zoomSnap: 0.5 }).setView(VIEWS.world[0], VIEWS.world[1]);
+  const map = L.map('map', { preferCanvas: true, zoomControl: false, minZoom: 2, maxZoom: 12, zoomSnap: 0.5, maxBounds: [[-85, -200], [85, 200]], maxBoundsViscosity: 0.9 }).setView(VIEWS.world[0], VIEWS.world[1]);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
-  const attr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
-  const tiles = { dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: attr, subdomains: 'abcd' }), light: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: attr, subdomains: 'abcd' }) };
-  tiles.dark.addTo(map);
+  // Built-in basemap drawn from bundled country outlines, so the map needs no tile service or API key.
+  map.createPane('base').style.zIndex = 210; map.createPane('labels').style.zIndex = 220; map.getPane('labels').style.pointerEvents = 'none';
+  const base = L.layerGroup().addTo(map); const labels = L.layerGroup().addTo(map); let countries = [];
+  const CITIES = [['Kyiv', 50.45, 30.52], ['Moscow', 55.75, 37.62], ['Kharkiv', 49.99, 36.23], ['Odesa', 46.48, 30.73], ['Sevastopol', 44.6, 33.5], ['Warsaw', 52.23, 21.01], ['Tehran', 35.69, 51.39], ['Baghdad', 33.31, 44.37], ['Riyadh', 24.71, 46.68], ['Dubai', 25.2, 55.27], ['Manama', 26.22, 50.58], ['Doha', 25.29, 51.53], ['Sanaa', 15.37, 44.19], ['Aden', 12.79, 45.02], ['Jerusalem', 31.78, 35.22], ['Gaza', 31.5, 34.47], ['Beirut', 33.89, 35.5], ['Damascus', 33.51, 36.29], ['Cairo', 30.04, 31.24], ['Ankara', 39.93, 32.86], ['Taipei', 25.03, 121.57], ['Beijing', 39.9, 116.4], ['Pyongyang', 39.03, 125.75], ['Seoul', 37.57, 126.98], ['Tokyo', 35.68, 139.69], ['Manila', 14.6, 120.98], ['Khartoum', 15.5, 32.56], ['Kabul', 34.53, 69.17], ['Islamabad', 33.69, 73.05], ['New Delhi', 28.61, 77.21], ['London', 51.51, -0.13], ['Paris', 48.86, 2.35], ['Berlin', 52.52, 13.4], ['Washington', 38.9, -77.04], ['Oklahoma City', 35.47, -97.52]];
+  function drawLabels() {
+    labels.clearLayers(); if (!map.hasLayer(base)) return;
+    const z = map.getZoom(); const n = z < 3 ? 0 : z < 4 ? 22 : z < 5 ? 60 : z < 6 ? 120 : 999; const bounds = map.getBounds().pad(0.2);
+    const put = (name, lat, lon, cls) => { if (!bounds.contains([lat, lon])) return; const d = document.createElement('span'); d.textContent = name; L.marker([lat, lon], { pane: 'labels', interactive: false, keyboard: false, icon: L.divIcon({ className: 'lab ' + cls, html: d, iconSize: [0, 0] }) }).addTo(labels); };
+    countries.slice(0, n).forEach((c) => put(c.name, c.c[0], c.c[1], 'country'));
+    if (z >= 5) CITIES.forEach((c) => put(c[0], c[1], c[2], 'city'));
+  }
+  map.on('zoomend moveend', drawLabels);
+  fetch('data/world.json').then((r) => r.json()).then((w) => {
+    countries = w;
+    L.geoJSON({ type: 'FeatureCollection', features: w.map((c) => ({ type: 'Feature', properties: {}, geometry: c.g })) }, { pane: 'base', interactive: false, style: { color: '#55555a', weight: 0.8, fillColor: '#262628', fillOpacity: 1 } }).addTo(base);
+    drawLabels();
+  }).catch(() => {});
+  const street = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 12 });
+  map.attributionControl.addAttribution('Outlines: Natural Earth');
   const cluster = L.markerClusterGroup({
     maxClusterRadius: 38, showCoverageOnHover: false, spiderfyOnMaxZoom: true,
     iconCreateFunction: (c) => {
@@ -46,9 +62,10 @@
   });
   $('theater').addEventListener('change', (e) => { const v = VIEWS[e.target.value]; if (v) map.flyTo(v[0], v[1], { duration: 1.1 }); });
   $('basemap').addEventListener('click', (e) => {
-    const light = e.currentTarget.getAttribute('aria-pressed') !== 'true';
-    e.currentTarget.setAttribute('aria-pressed', String(light));
-    map.removeLayer(light ? tiles.dark : tiles.light); (light ? tiles.light : tiles.dark).addTo(map);
+    const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+    e.currentTarget.setAttribute('aria-pressed', String(on));
+    if (on) { street.addTo(map); map.removeLayer(base); } else { map.removeLayer(street); base.addTo(map); }
+    drawLabels();
   });
 
   function pop(kind, color, title, lines, url, urlText) {
