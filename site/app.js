@@ -4,9 +4,9 @@
     diplo: ['#6ea8ff', 'Diplomacy'], energy: ['#5fd38d', 'Energy'],
   };
   const VIEWS = { world: [[25, 20], 2], ukraine: [[49.5, 36], 5], gulf: [[28.5, 50], 5], redsea: [[17.5, 44], 5], levant: [[32.6, 35.6], 7], eastasia: [[30, 124], 4], europe: [[52, 14], 4], usa: [[39, -97], 4] };
-  const S = { live: null, assessed: null, tab: 'headlines', hf: 'all', quakes: null, aircraft: null, marks: new Map(), adsbDirect: false };
+  const S = { live: null, assessed: null, tab: 'start', hf: 'all', quakes: null, aircraft: null, marks: new Map(), adsbDirect: false };
   const $ = (id) => document.getElementById(id);
-  { const want = new URLSearchParams(location.search).get('tab'); if (['overview', 'headlines', 'assessed', 'cyber', 'air', 'odds', 'home', 'readiness', 'sources'].includes(want)) S.tab = want; }
+  { const want = new URLSearchParams(location.search).get('tab'); if (['start', 'overview', 'headlines', 'assessed', 'cyber', 'air', 'odds', 'home', 'readiness', 'sources'].includes(want)) S.tab = want; }
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
   const link = (url, text) => { const ok = /^https?:\/\//.test(String(url)); const a = el(ok ? 'a' : 'span', '', text); if (ok) { a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; } return a; };
   const ago = (t) => { const m = Math.max(0, Math.round((Date.now() - t) / 60000)); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' hr ago' : Math.round(m / 1440) + ' d ago'; };
@@ -266,12 +266,28 @@
   function item(color, key) { const d = el('article', 'item' + (key ? ' can' : '')); d.style.setProperty('--c', color); if (key) d.addEventListener('click', (e) => { if (!e.target.closest('a')) focus(key); }); return d; }
   function drawList() {
     const box = $('list'); const chips = $('hfilter'); const v = S.live || {};
-    if (S.tab === 'overview' && !matchMedia('(max-width: 1100px)').matches) S.tab = 'headlines';
+    if (S.tab === 'overview' && !matchMedia('(max-width: 1100px)').matches) S.tab = 'start';
     const fixed = ['sources', 'readiness']; fixed.forEach((k) => { $(k).hidden = S.tab !== k; }); box.hidden = fixed.includes(S.tab) || S.tab === 'overview'; chips.replaceChildren(); document.body.dataset.tab = S.tab;
     document.querySelectorAll('.tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === S.tab)));
     if (fixed.includes(S.tab) || S.tab === 'overview') return;
     const out = [];
-    if (S.tab === 'headlines') {
+    if (S.tab === 'start') {
+      const b = S.assessed && S.assessed.brief;
+      if (!b) out.push(el('p', 'empty', S.assessed ? 'The plain-language briefing has not been written yet.' : 'Loading the briefing…'));
+      else {
+        out.push(el('p', 'kicker', 'The big picture, in plain English. Updated ' + new Date(b.updated + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) + '.'), el('p', 'bottom', b.bottom_line));
+        b.items.forEach((it) => {
+          const d = el('article', 'story'); d.style.setProperty('--c', (DOM[it.domain] || DOM.war)[0]);
+          d.append(el('h4', '', it.title));
+          [['What is happening', it.what], ['Why it matters', it.why], ['What to watch', it.watch]].forEach(([k, v]) => { if (!v) return; const p = el('p'); p.append(el('b', '', k + '. '), v); d.append(p); });
+          if (VIEWS[it.view] && it.view !== 'world') { const btn = el('button', 'showmap', 'Show on the map'); btn.type = 'button'; btn.addEventListener('click', () => { map.flyTo(VIEWS[it.view][0], VIEWS[it.view][1], { duration: 1.1 }); $('theater').value = it.view; document.querySelector('.stage').scrollIntoView({ block: 'nearest' }); }); d.append(btn); }
+          out.push(d);
+        });
+        if (b.worry) { out.push(el('h3', '', 'Should I be worried?'), el('p', 'bottom', b.worry)); }
+        if (b.words && b.words.length) { out.push(el('h3', '', 'Words you will see')); const dl = el('dl', 'words'); b.words.forEach(([w, m]) => dl.append(el('dt', '', w), el('dd', '', m))); out.push(dl); }
+        out.push(el('p', 'note', 'Written and re-checked daily by Claude from the sourced events in the Events tab. It is a summary, so open Events for the sources behind each point.'));
+      }
+    } else if (S.tab === 'headlines') {
       [['all', 'All', '#ececec'], ...['war', 'nuclear', 'cyber', 'ai'].map((k) => [k, DOM[k][1], DOM[k][0]])].forEach(([k, name, c]) => {
         const b = el('button', '', name); b.type = 'button'; b.style.setProperty('--c', c); b.setAttribute('aria-pressed', String(S.hf === k));
         b.addEventListener('click', () => { S.hf = k; drawList(); }); chips.append(b);
@@ -343,7 +359,7 @@
     box.replaceChildren(...out); box.scrollTop = 0;
   }
   document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => { S.tab = b.dataset.tab; drawList(); b.scrollIntoView({ inline: 'center', block: 'nearest' }); }));
-  { const cur = document.querySelector('.tabs button[data-tab="' + S.tab + '"]'); if (cur && S.tab !== 'headlines') setTimeout(() => cur.scrollIntoView({ inline: 'center', block: 'nearest' }), 0); }
+  { const cur = document.querySelector('.tabs button[data-tab="' + S.tab + '"]'); if (cur && S.tab !== 'start') setTimeout(() => cur.scrollIntoView({ inline: 'center', block: 'nearest' }), 0); }
 
   // ---------- status ----------
   const NAMES = { headlines: 'News headlines', aircraft: 'Military aircraft', quakes: 'Earthquakes', hazards: 'Natural hazards', kev: 'Exploited flaws', ransomware: 'Ransomware posts', space: 'Space weather', markets: 'Market quotes', front: 'Ukraine front line', outages: 'Internet outages', odds: 'Prediction markets', home: 'US weather and outages', heat: 'Heat detections' };
@@ -384,7 +400,7 @@
       drawAircraft(); drawReadings(); if (S.tab === 'air') drawList();
     } catch (e) { S.adsbDirect = false; }
   }
-  getJson('data/assessed.json?t=' + Math.floor(Date.now() / 600000)).then((a) => { S.assessed = a; drawAssessed(); drawLevels(); if (S.tab === 'assessed') drawList(); }).catch(() => { $('levels-sub').textContent = 'Ratings failed to load. Reload the page to try again.'; });
+  getJson('data/assessed.json?t=' + Math.floor(Date.now() / 600000)).then((a) => { S.assessed = a; drawAssessed(); drawLevels(); if (S.tab === 'assessed' || S.tab === 'start') drawList(); }).catch(() => { $('levels-sub').textContent = 'Ratings failed to load. Reload the page to try again.'; });
   (function clockChart() {
     const pts = [[1947, 420], [1949, 180], [1953, 120], [1960, 420], [1963, 720], [1968, 420], [1969, 600], [1972, 720], [1974, 540], [1980, 420], [1981, 240], [1984, 180], [1988, 360], [1990, 600], [1991, 1020], [1995, 840], [1998, 540], [2002, 420], [2007, 300], [2010, 360], [2012, 300], [2015, 180], [2017, 150], [2018, 120], [2020, 100], [2023, 90], [2025, 89], [2026, 85]];
     const svg = $('clock-chart'); const W = 340, H = 170, L = 42, R = 8, T = 10, B = 22; svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);

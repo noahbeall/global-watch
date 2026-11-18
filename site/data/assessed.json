@@ -663,5 +663,98 @@
 "source": "MLex",
 "url": "https://www.mlex.com/mlex/artificial-intelligence/articles/2551335"
 }
+],
+"brief": {
+"updated": "2026-11-17",
+"bottom_line": "Two big wars are both heating up at once, and they are starting to touch everyday things like gas prices and the websites you use. Nothing here means you need to panic. It does mean this is a good week to pay attention.",
+"items": [
+{
+"title": "The US and Israel are at war with Iran",
+"view": "gulf",
+"domain": "war",
+"what": "The war started on February 28 and is now in its ninth month. American strikes have paused for a few weeks while the two sides talk through go-betweens, but Iran just started attacking again: it flew drones at a US base in Bahrain twice in three days, and oil tankers keep getting hit near Iran's coast.",
+"why": "A huge amount of the world's oil normally leaves the Middle East through one narrow channel next to Iran, called the Strait of Hormuz. Very few ships are getting through. That is the main reason oil costs about 40% more than a year ago, which shows up in what you pay for gas and almost everything that gets shipped.",
+"watch": "Whether the US starts bombing again. The President has said he would not hesitate, and has also said the war could end fairly soon."
+},
+{
+"title": "Russia and Ukraine are hitting each other harder",
+"view": "ukraine",
+"domain": "war",
+"what": "This war is in its fifth year. This week Ukraine blew out part of the big bridge that connects Russia to Crimea, the piece of Ukraine that Russia took in 2014. Russia hit two major bridges in Ukraine's capital and knocked out power to around 700,000 homes just as winter sets in.",
+"why": "It is the biggest war in Europe since World War II, and Russia has the world's largest stockpile of nuclear weapons. Every big escalation raises the question of how far each side will go.",
+"watch": "American envoys are trying to get peace talks moving with Europe involved. So far there is no ceasefire."
+},
+{
+"title": "Nuclear tensions are the highest in decades",
+"view": "gulf",
+"domain": "nuclear",
+"what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on, and is talking about quitting the treaty that bans it from building a bomb. North Korea has test-fired missiles four times in the past month. The last treaty limiting US and Russian nuclear weapons was due to run out in February.",
+"why": "Nobody is saying a nuclear war is about to start. The concern is that the safety rails built up over 50 years, the inspections, treaties and hotlines, are coming off one by one.",
+"watch": "Any sign Iran is enriching uranium again, and whether inspectors get back in."
+},
+{
+"title": "A side war in Yemen is threatening Saudi oil",
+"view": "redsea",
+"domain": "war",
+"what": "A militia in Yemen called the Houthis, which Iran backs, is firing missiles and drones at Saudi Arabia and is pushing toward a major port city, Aden. The forces Saudi Arabia supports there are retreating.",
+"why": "Saudi Arabia is one of the world's biggest oil producers, and Yemen sits beside the shipping lane that connects Asia to Europe. Trouble here piles on top of the Iran problem.",
+"watch": "A Houthi hit on a Saudi oil facility would likely move gas prices quickly."
+},
+{
+"title": "Hackers hit hundreds of major websites, and AI is now doing the hacking",
+"view": "world",
+"domain": "cyber",
+"what": "Attackers broke into one company whose software runs quietly in the background of other sites. Through it they planted malicious code on 178 big sites, including Zoom, CNN, HSBC and IKEA, built to steal card numbers and crypto. Separately, the FBI, Amazon and Google each reported AI programs carrying out break-ins start to finish with little human help.",
+"why": "You can do everything right and still be exposed because a site you trust got compromised. And attacks that once took skilled people days can now be automated.",
+"watch": "Practical steps help: turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks."
+},
+{
+"title": "AI is moving faster than the rules for it",
+"view": "world",
+"domain": "ai",
+"what": "One of the leading AI companies said its systems have reached the point where they can meaningfully speed up AI research itself. The Federal Reserve's latest survey found AI is now the number one worry among financial experts. A group of nonprofits is asking a California court to freeze development of more powerful AI, and the head of the biggest AI chip maker resigned amid questions about chips reaching China's military.",
+"why": "Three separate worries are showing up at once: that the technology is getting ahead of anyone's ability to control it, that too much money is riding on it, and that it is becoming a weapon in the US-China rivalry.",
+"watch": "The court's decision on the freeze request, and new state laws that take effect January 1."
+},
+{
+"title": "China is flexing around Taiwan",
+"view": "eastasia",
+"domain": "war",
+"what": "China sent more than 100 ships into the waters around Taiwan last week without announcing an exercise. Taiwan governs itself, but China claims it and has not ruled out taking it by force. The US and Chinese presidents are meeting in China this week.",
+"why": "Taiwan makes most of the world's most advanced computer chips. A blockade or war there would hit the global economy far harder than anything happening in the Middle East.",
+"watch": "What comes out of the Trump-Xi meeting, and Taiwan's local elections at the end of the month."
+}
+],
+"worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
+"words": [
+[
+"Strait of Hormuz",
+"The narrow sea channel next to Iran that Gulf oil tankers must pass through."
+],
+[
+"IAEA",
+"The UN's nuclear inspectors. They check that countries are not secretly building bombs."
+],
+[
+"Houthis",
+"An armed group that controls much of Yemen and is backed by Iran."
+],
+[
+"IRGC",
+"Iran's Revolutionary Guard, the most powerful branch of its military."
+],
+[
+"Enrichment",
+"Processing uranium so it can fuel a reactor or, at high levels, a bomb."
+],
+[
+"Ransomware",
+"Malicious software that locks an organization's files until it pays."
+],
+[
+"Doomsday Clock",
+"A yearly symbolic rating by scientists of how close the world is to catastrophe."
 ]
+]
+}
 }
