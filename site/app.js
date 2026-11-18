@@ -15,16 +15,34 @@
   // ---------- map ----------
   const map = L.map('map', { preferCanvas: true, zoomControl: false, minZoom: 2, maxZoom: 12, zoomSnap: 0.5, maxBounds: [[-85, -200], [85, 200]], maxBoundsViscosity: 0.9 }).setView(VIEWS.world[0], VIEWS.world[1]);
   L.control.zoom({ position: 'bottomright' }).addTo(map);
+  const startView = VIEWS[new URLSearchParams(location.search).get('view')]; if (startView) { map.setView(startView[0], startView[1]); const sel = document.getElementById('theater'); sel.value = new URLSearchParams(location.search).get('view'); }
   // Built-in basemap drawn from bundled country outlines, so the map needs no tile service or API key.
   map.createPane('base').style.zIndex = 210; map.createPane('labels').style.zIndex = 220; map.getPane('labels').style.pointerEvents = 'none';
   const base = L.layerGroup().addTo(map); const labels = L.layerGroup().addTo(map); let countries = [];
-  const CITIES = [['Kyiv', 50.45, 30.52], ['Moscow', 55.75, 37.62], ['Kharkiv', 49.99, 36.23], ['Odesa', 46.48, 30.73], ['Sevastopol', 44.6, 33.5], ['Warsaw', 52.23, 21.01], ['Tehran', 35.69, 51.39], ['Baghdad', 33.31, 44.37], ['Riyadh', 24.71, 46.68], ['Dubai', 25.2, 55.27], ['Manama', 26.22, 50.58], ['Doha', 25.29, 51.53], ['Sanaa', 15.37, 44.19], ['Aden', 12.79, 45.02], ['Jerusalem', 31.78, 35.22], ['Gaza', 31.5, 34.47], ['Beirut', 33.89, 35.5], ['Damascus', 33.51, 36.29], ['Cairo', 30.04, 31.24], ['Ankara', 39.93, 32.86], ['Taipei', 25.03, 121.57], ['Beijing', 39.9, 116.4], ['Pyongyang', 39.03, 125.75], ['Seoul', 37.57, 126.98], ['Tokyo', 35.68, 139.69], ['Manila', 14.6, 120.98], ['Khartoum', 15.5, 32.56], ['Kabul', 34.53, 69.17], ['Islamabad', 33.69, 73.05], ['New Delhi', 28.61, 77.21], ['London', 51.51, -0.13], ['Paris', 48.86, 2.35], ['Berlin', 52.52, 13.4], ['Washington', 38.9, -77.04], ['Oklahoma City', 35.47, -97.52]];
+  let cities = []; let regions = []; let admin = null; let adminAsked = false; let citiesAsked = false;
+  function needDetail() {
+    const z = map.getZoom();
+    if (z >= 4 && !adminAsked) {
+      adminAsked = true;
+      fetch('data/admin1.json?v=1').then((r) => r.json()).then((d) => {
+        regions = d.filter((x) => x.n && typeof x.c[0] === 'number');
+        admin = L.geoJSON({ type: 'FeatureCollection', features: d.map((x) => ({ type: 'Feature', properties: {}, geometry: x.g })) }, { pane: 'base', interactive: false, style: { color: '#5c5c63', weight: 0.7, dashArray: '3 3', fill: false } });
+        drawLabels();
+      }).catch(() => { adminAsked = false; });
+    }
+    if (z >= 4 && !citiesAsked) { citiesAsked = true; fetch('data/cities.json?v=1').then((r) => r.json()).then((d) => { cities = d; drawLabels(); }).catch(() => { citiesAsked = false; }); }
+    if (admin) { const show = z >= 4 && map.hasLayer(base); if (show && !base.hasLayer(admin)) base.addLayer(admin); if (!show && base.hasLayer(admin)) base.removeLayer(admin); }
+  }
   function drawLabels() {
-    labels.clearLayers(); if (!map.hasLayer(base)) return;
-    const z = map.getZoom(); const n = z < 3 ? 0 : z < 4 ? 22 : z < 5 ? 60 : z < 6 ? 120 : 999; const bounds = map.getBounds().pad(0.2);
-    const put = (name, lat, lon, cls) => { if (!bounds.contains([lat, lon])) return; const d = document.createElement('span'); d.textContent = name; L.marker([lat, lon], { pane: 'labels', interactive: false, keyboard: false, icon: L.divIcon({ className: 'lab ' + cls, html: d, iconSize: [0, 0] }) }).addTo(labels); };
-    countries.slice(0, n).forEach((c) => put(c.name, c.c[0], c.c[1], 'country'));
-    if (z >= 5) CITIES.forEach((c) => put(c[0], c[1], c[2], 'city'));
+    needDetail(); labels.clearLayers(); if (!map.hasLayer(base)) return;
+    const z = map.getZoom(); const n = z < 3 ? 0 : z < 4 ? 22 : z < 5 ? 60 : z < 6 ? 120 : 999; const bounds = map.getBounds().pad(0.1);
+    const put = (name, lat, lon, cls) => { const d = document.createElement('span'); d.textContent = name; L.marker([lat, lon], { pane: 'labels', interactive: false, keyboard: false, icon: L.divIcon({ className: 'lab ' + cls, html: d, iconSize: [0, 0] }) }).addTo(labels); };
+    countries.slice(0, n).forEach((c) => { if (bounds.contains(c.c)) put(c.name, c.c[0], c.c[1], 'country'); });
+    if (z >= 4) { let k = 0; const cap = z < 5 ? 55 : 80; for (const r of regions) { if (k >= cap) break; if (bounds.contains(r.c)) { put(r.n, r.c[0], r.c[1], 'region'); k++; } } }
+    if (z >= 4) {
+      const maxRank = z < 5 ? 1 : z < 6 ? 3 : z < 7 ? 5 : z < 8 ? 7 : 10; let k = 0;
+      for (const c of cities) { if (c[3] > maxRank || k >= 90) break; if (bounds.contains([c[1], c[2]])) { put(c[0], c[1], c[2], c[4] ? 'city cap' : 'city'); k++; } }
+    }
   }
   map.on('zoomend moveend', drawLabels);
   fetch('data/world.json?v=4').then((r) => r.json()).then((w) => {

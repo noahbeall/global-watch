@@ -2,3 +2,5 @@ node_modules
 package*.json
 mock.mjs
 shot*.png
+z-*.png
+crop*.png

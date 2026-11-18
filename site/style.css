@@ -154,3 +154,7 @@ h3 { font: 600 16px/1.2 var(--head); margin: 16px 0 6px; color: var(--mut); }
 .odds { height: 6px; background: var(--raise); border-radius: 3px; overflow: hidden; margin: 6px 0; }
 .odds i { display: block; height: 100%; background: var(--c); }
 .meta .pct { color: var(--text); font: 600 14px/1 var(--head); }
+
+.lab.region span { font: 500 11px/1 var(--head); letter-spacing: .06em; text-transform: uppercase; color: #6f6f75; }
+.lab.city.cap span { color: #e8e6e1; font-weight: 600; }
+.lab.city.cap span::before { width: 5px; height: 5px; margin-top: -2.5px; left: -9px; border-radius: 0; background: var(--amber); }
