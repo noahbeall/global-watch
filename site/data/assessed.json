@@ -1,82 +1,112 @@
 {
-"asof": "2026-11-17",
+"asof": "2026-11-18",
 "levels": [
 {
 "domain": "war",
 "level": 5,
 "trend": "rising",
-"basis": "Two major wars escalated in the same week: Ukraine cut the Kerch Bridge while Russia hit Kyiv's bridges and grid, and Iran resumed attacks on Bahrain after a two-month lull."
+"basis": "The US bombed an IRGC site on Qeshm Island after Iran's third drone attack on Bahrain in five days, Ukraine dropped the Kerch Bridge road span while Russia hit Kyiv's bridges and grid, and the Houthis are about 100 km from Aden."
 },
 {
 "domain": "nuclear",
 "level": 4,
 "trend": "rising",
-"basis": "Iran refuses inspections and is weighing a treaty exit, the IRGC dropped its missile range cap, North Korea has launched four times in a month, and the Doomsday Clock sits at a record 85 seconds."
+"basis": "The IAEA cannot enter Iran's underground Isfahan site, Tehran refuses inspections and dropped its missile range cap, and US officials described Iranian dirty-bomb planning; a Trump-Putin-Xi meeting on arms reductions is planned for Nov 19 with no deal expected."
 },
 {
 "domain": "cyber",
 "level": 4,
-"trend": "rising",
-"basis": "A single vendor compromise reached 178 major sites, and the FBI, Amazon and Google each documented AI agents running intrusions end to end."
+"trend": "steady",
+"basis": "The Optimizely compromise reached 178 major sites and AI agents are running intrusions end to end, but officials say last week's Microsoft, FAA and NSA outages were faults, not attacks."
 },
 {
 "domain": "ai",
 "level": 3,
 "trend": "rising",
-"basis": "A frontier lab says it has crossed its own AI R&D threshold, the Fed ranks AI as the top stability worry, and regulation remains fragmented by state and country."
+"basis": "OpenAI reportedly says its new model meets its own self-improvement threshold days after Anthropic made a similar statement, California sued OpenAI over 80 loss-of-control incidents, and the US tightened chip rules on five countries."
 },
 {
 "domain": "energy",
 "level": 3,
-"trend": "easing",
-"basis": "Hormuz traffic is still a fraction of normal and tankers keep getting hit, but Brent has fallen 16% in a month as the IEA projects a surplus."
+"trend": "steady",
+"basis": "The tanker Tara Gas was hit twice near Hormuz and Iran claims more mine strikes, while Brent held near $96 on Nov 13 as the IEA reported supply exceeding demand for the first time since the war began."
 }
 ],
 "events": [
 {
-"id": "ua-kerch-1117",
-"date": "2026-11-17",
+"id": "ye-khor-1118",
+"date": "2026-11-18",
 "domain": "war",
-"theater": "ukraine",
-"severity": 5,
+"theater": "redsea",
+"severity": 3,
 "status": "reported",
-"title": "Ukraine hits the Kerch Bridge twice in 24 hours",
-"detail": "Kyiv says drones and missiles dropped a road arch and span, leaving the roadway impassable, and damaged the rail arch. Russia's Crimea administration says rail traffic resumed on Nov 17.",
-"place": "Kerch Strait, Crimea",
-"lat": 45.3,
-"lon": 36.51,
-"source": "Forbes / NPR",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"title": "Houthis reach Khor Omeir, about 100 km west of Aden",
+"detail": "A Yemeni security official gave the distance. Security sources and analysts told The National a ground assault on Aden is not imminent and a siege is more likely. Yemen's parliament passed a law on Nov 18 designating the Houthis a terrorist group.",
+"place": "Khor Omeir, Lahij coast, Yemen (pin nominal)",
+"lat": 12.63,
+"lon": 44.13,
+"source": "The National",
+"url": "https://www.thenationalnews.com/news/mena/2026/11/18/houthis-100km-from-aden-but-imminent-attack-said-to-be-unlikely/"
 },
 {
-"id": "ua-kyiv-1117",
-"date": "2026-11-17",
+"id": "ua-ports-1118",
+"date": "2026-11-18",
 "domain": "war",
 "theater": "ukraine",
-"severity": 4,
-"status": "confirmed",
-"title": "Russian strikes close both major Kyiv bridges",
-"detail": "Damage shut the Northern and Southern bridges and disrupted water and heating; two killed in Obolonskyi district. At least 14 civilians killed nationwide over the day. Ukraine reports 205 drones and 6 missiles neutralized overnight.",
-"place": "Kyiv, Ukraine",
-"lat": 50.45,
-"lon": 30.52,
-"source": "Forbes / Ukrinform",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"severity": 3,
+"status": "claimed",
+"title": "Russia says it struck Izmail port and a cargo ship bound for Pivdennyi",
+"detail": "Moscow says the targets served military purposes; Ukraine's account was not available. Russian regional authorities separately reported two industrial sites on fire in Krasnodar region after a drone attack, with four injured.",
+"place": "Izmail, Odesa region, Ukraine",
+"lat": 45.35,
+"lon": 28.84,
+"source": "AnewZ",
+"url": "https://anewz.tv/world/world-news/26880/russia-ukraine-strikes-intensify-after-crimea-bridge-attack/news"
 },
 {
-"id": "ua-dnipro-1117",
+"id": "sa-riyadh-1118",
+"date": "2026-11-18",
+"domain": "war",
+"theater": "redsea",
+"severity": 3,
+"status": "reported",
+"title": "Saudi Arabia says it downed a Houthi cruise missile aimed at Riyadh",
+"detail": "It follows a drone the Saudi-led coalition said it destroyed over the Riyadh region on Nov 17. Gulf airlines have extended cancellations of flights to Riyadh and other Saudi cities to late November.",
+"place": "Riyadh, Saudi Arabia",
+"lat": 24.71,
+"lon": 46.68,
+"source": "ABC News / Gulf News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
+},
+{
+"id": "cy-outages-1118",
+"date": "2026-11-18",
+"domain": "cyber",
+"theater": "other",
+"severity": 3,
+"status": "reported",
+"title": "US officials: Microsoft, FAA and NSA outages were not attacks",
+"detail": "Microsoft blames a software defect for a day-long Microsoft 365 outage on Nov 12-13. The FAA traced its Nov 13 nationwide ground stop to a newly installed router and paused the rollout. The NSA cites maintenance for a network slowdown. Rubio says there is zero evidence the failures are linked.",
+"place": "Washington, DC",
+"lat": 38.89,
+"lon": -77.03,
+"source": "Streamline (AP)",
+"url": "https://streamlinefeed.co.ke/news/rubio-says-us-outages-unrelated-as-supply-chain-breach-confirmed"
+},
+{
+"id": "ye-aden-1117",
 "date": "2026-11-17",
 "domain": "war",
-"theater": "ukraine",
+"theater": "redsea",
 "severity": 4,
 "status": "confirmed",
-"title": "Grid strikes cut power to about 700,000 households",
-"detail": "DTEK reports the outage in Dnipropetrovsk region after attacks on energy facilities. Rivne region lost power in more than 300 settlements and Mykolaiv region in 76.",
-"place": "Dnipropetrovsk region, Ukraine",
-"lat": 48.46,
-"lon": 35.05,
-"source": "Forbes (DTEK)",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"title": "Saudi-backed forces reinforce approaches to Aden",
+"detail": "Troops deployed to Tur al-Baha, about 85 km from Aden, after quitting the Bab el-Mandeb area over the weekend to avoid encirclement; the Houthis then took control of the strait's Yemeni shore. The Houthis blame Saudi Arabia for a strike on a Hodeida factory that killed at least seven; Riyadh has not commented.",
+"place": "Tur al-Baha, Lahij, Yemen",
+"lat": 13.18,
+"lon": 44.3,
+"source": "AP via KSAT",
+"url": "https://www.ksat.com/news/world/2026/11/17/saudi-backed-forces-in-yemen-beef-up-defenses-outside-aden-to-thwart-houthis-and-other-mideast-news/"
 },
 {
 "id": "ua-zap-1117",
@@ -94,21 +124,6 @@
 "url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
 },
 {
-"id": "ru-salavat-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "ukraine",
-"severity": 4,
-"status": "reported",
-"title": "Ukrainian drones strike Salavat petrochemical plant, 1,500 km inside Russia",
-"detail": "Ukraine's Defense Forces say they hit the Gazprom Neftekhim Salavat facility in Bashkortostan overnight; a fire was reported at the complex.",
-"place": "Salavat, Bashkortostan, Russia",
-"lat": 53.36,
-"lon": 55.93,
-"source": "Ukrinform",
-"url": "https://www.ukrinform.net/rubric-ato"
-},
-{
 "id": "ua-mukachevo-1117",
 "date": "2026-11-17",
 "domain": "war",
@@ -124,19 +139,94 @@
 "url": "https://www.ukrinform.net/rubric-ato"
 },
 {
-"id": "ua-front-1116",
-"date": "2026-11-16",
+"id": "ua-kyiv-1117",
+"date": "2026-11-17",
 "domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "confirmed",
+"title": "Russian strikes close both major Kyiv bridges",
+"detail": "Damage shut the Northern and Southern bridges and disrupted water and heating; two killed in Obolonskyi district. At least 14 civilians killed nationwide over the day. Ukraine reports 205 drones and 6 missiles neutralized overnight.",
+"place": "Kyiv, Ukraine",
+"lat": 50.45,
+"lon": 30.52,
+"source": "Forbes / Ukrinform",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+},
+{
+"id": "ua-kerch-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 5,
+"status": "confirmed",
+"title": "Ukraine hits the Kerch Bridge twice in 24 hours",
+"detail": "Zelensky released footage he says shows the main road arch falling into the sea on Nov 17, a day after a first strike. Russian officials acknowledge damage, suspended road traffic, reported two deaths and promised repairs; they say rail has partly resumed. No independent imagery of the full collapse yet.",
+"place": "Kerch Strait, Crimea",
+"lat": 45.3,
+"lon": 36.51,
+"source": "AnewZ / BBC",
+"url": "https://anewz.tv/world/world-news/26880/russia-ukraine-strikes-intensify-after-crimea-bridge-attack/news"
+},
+{
+"id": "ua-dnipro-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "confirmed",
+"title": "Grid strikes cut power to about 700,000 households",
+"detail": "DTEK reports the outage in Dnipropetrovsk region after attacks on energy facilities. Rivne region lost power in more than 300 settlements and Mykolaiv region in 76.",
+"place": "Dnipropetrovsk region, Ukraine",
+"lat": 48.46,
+"lon": 35.05,
+"source": "Forbes (DTEK)",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+},
+{
+"id": "ua-berlin-1117",
+"date": "2026-11-17",
+"domain": "diplo",
 "theater": "ukraine",
 "severity": 2,
 "status": "reported",
-"title": "Front line: Ukrainian gains near Sumy, Kharkiv and Orikhiv",
-"detail": "ISW assessed recent Ukrainian advances northeast of Sumy, northeast of Kharkiv and west of Orikhiv, counterattacks at Lyman and Kostyantynivka, and no Russian advances on Nov 15-16.",
-"place": "Kharkiv axis, Ukraine (pin nominal)",
-"lat": 49.99,
-"lon": 36.23,
-"source": "Forbes (ISW)",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"title": "US envoys to meet Ukrainian and European officials in Berlin on Nov 19",
+"detail": "Axios reports Witkoff and Kushner will attend. Talks in Abu Dhabi on Nov 10-11 produced a prisoner exchange but no progress on territory, and Reuters reports Russia has not agreed to Europeans joining the next round.",
+"place": "Berlin, Germany",
+"lat": 52.52,
+"lon": 13.4,
+"source": "Just Security (Axios, Reuters)",
+"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
+},
+{
+"id": "ru-salavat-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "reported",
+"title": "Ukrainian drones strike Salavat petrochemical plant, 1,500 km inside Russia",
+"detail": "Ukraine's Defense Forces say they hit the Gazprom Neftekhim Salavat facility in Bashkortostan overnight; a fire was reported at the complex.",
+"place": "Salavat, Bashkortostan, Russia",
+"lat": 53.36,
+"lon": 55.93,
+"source": "Ukrinform",
+"url": "https://www.ukrinform.net/rubric-ato"
+},
+{
+"id": "ru-drones-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "claimed",
+"title": "Russia claims 1,441 Ukrainian drones downed in one night",
+"detail": "The Defense Ministry says the drones were intercepted over 22 regions; Moscow's mayor says about 800 headed for the capital. If accurate it would be the largest drone raid Russia has reported. Ukraine has not given its own figure.",
+"place": "Moscow, Russia (pin nominal)",
+"lat": 55.75,
+"lon": 37.62,
+"source": "AnewZ",
+"url": "https://anewz.tv/world/world-news/26829/ukraine-hits-crimea-bridge-as-russia-strikes-kyiv/news"
 },
 {
 "id": "nato-aid-1117",
@@ -146,7 +236,7 @@
 "severity": 1,
 "status": "confirmed",
 "title": "Germany and Norway fund more US air defense for Ukraine",
-"detail": "Berlin announced a $300 million contribution ahead of a meeting of Ukraine's backers at NATO headquarters. The IMF now assumes the war runs through 2027.",
+"detail": "Berlin announced a $300 million contribution ahead of a meeting of Ukraine's backers at NATO headquarters, where allies were also due to discuss Washington's review of US troop levels in Europe. The IMF now assumes the war runs through 2027.",
 "place": "NATO HQ, Brussels",
 "lat": 50.88,
 "lon": 4.43,
@@ -154,124 +244,94 @@
 "url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
 },
 {
-"id": "bh-riffa-1115",
-"date": "2026-11-15",
+"id": "jp-airspace-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "eastasia",
+"severity": 3,
+"status": "reported",
+"title": "Japan scrambles jets after suspected Russian aircraft enter its airspace",
+"detail": "Tokyo protested after two suspected Russian aircraft crossed into its airspace; South Korea and Taiwan also responded to Russian aircraft, the BBC reported. Reported in a Nov 17 digest; the exact time and place were not given.",
+"place": "Japan (pin nominal)",
+"lat": 36.2,
+"lon": 138.25,
+"source": "Just Security (BBC)",
+"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
+},
+{
+"id": "ir-qeshm-1117",
+"date": "2026-11-17",
 "domain": "war",
 "theater": "gulf",
 "severity": 5,
 "status": "confirmed",
-"title": "Iran fires drones at US base in Bahrain, second attack in three days",
-"detail": "The IRGC says six drones targeted a US air-defense radar at Al-Riffa. Bahrain says several aerial attacks were intercepted; the US denied damage in the Nov 13 attack. These are Iran's first attacks on Bahrain since September.",
-"place": "Riffa, Bahrain",
-"lat": 26.13,
-"lon": 50.56,
-"source": "CNBC / UPI",
-"url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
+"title": "US jets strike IRGC missile site on Iran's Qeshm Island",
+"detail": "A US official calls it self-defense after IRGC attacks on US personnel and assets, hours after drones were launched at Bahrain. Iranian officials confirm projectiles hit the island, say an air-defense launcher was targeted and report no civilian damage. No casualties reported.",
+"place": "Qeshm Island, Iran",
+"lat": 26.8,
+"lon": 55.9,
+"source": "ABC News / Gulf News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
 },
 {
-"id": "hormuz-mines-1116",
-"date": "2026-11-16",
-"domain": "war",
-"theater": "gulf",
-"severity": 5,
-"status": "claimed",
-"title": "IRGC claims six tankers hit mines in Hormuz in two days",
-"detail": "Iran says the ships used an unauthorized southern route under US guidance and that a supertanker carrying over 2 million barrels sank. The claims are unverified; the US military says the main routes are clear.",
-"place": "Strait of Hormuz",
-"lat": 26.35,
-"lon": 56.45,
-"source": "OilPrice / RTE (Reuters)",
-"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
-},
-{
-"id": "hormuz-tankers-1112",
-"date": "2026-11-12",
-"domain": "war",
-"theater": "gulf",
-"severity": 4,
-"status": "reported",
-"title": "Two tankers struck near Hormuz, 22 sailors evacuated",
-"detail": "A UK maritime risk firm separately confirmed a strike caused a fire on a commercial ship near the strait.",
-"place": "Gulf of Oman approaches",
-"lat": 25.5,
-"lon": 57.2,
-"source": "Fox News / CBS News",
-"url": "https://www.cbsnews.com/live-updates/iran-war-us-nuclear-strait-of-hormuz/"
-},
-{
-"id": "us-cvn-1115",
-"date": "2026-11-15",
-"domain": "war",
-"theater": "gulf",
-"severity": 3,
-"status": "reported",
-"title": "Second US carrier enters CENTCOM",
-"detail": "USS Theodore Roosevelt joined USS George H.W. Bush in the region, according to a US official.",
-"place": "North Arabian Sea (position not public; pin nominal)",
-"lat": 22.6,
-"lon": 61.0,
-"source": "GlobalSecurity",
-"url": "https://www.globalsecurity.org/military/ops/iran-war-oprep.htm"
-},
-{
-"id": "ir-range-1108",
-"date": "2026-11-08",
-"domain": "nuclear",
-"theater": "gulf",
-"severity": 4,
-"status": "reported",
-"title": "IRGC says it lifted its 2,000 km missile range limit",
-"detail": "The self-imposed cap had kept Iranian missiles short of most of Europe.",
-"place": "Tehran, Iran",
-"lat": 35.69,
-"lon": 51.39,
-"source": "GlobalSecurity",
-"url": "https://www.globalsecurity.org/military/ops/iran-war-oprep.htm"
-},
-{
-"id": "ir-iaea-1113",
-"date": "2026-11-13",
-"domain": "nuclear",
-"theater": "gulf",
-"severity": 5,
-"status": "reported",
-"title": "Iran rules out IAEA inspections while under US threat",
-"detail": "Tehran told the agency inspections cannot resume and is reported to be weighing an exit from the nuclear treaty. Its security chief says no enriched material will leave the country.",
-"place": "Iranian nuclear sites (pin: Fordow)",
-"lat": 34.88,
-"lon": 50.99,
-"source": "Fox News / CBS News",
-"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
-},
-{
-"id": "us-iran-talk-1112",
-"date": "2026-11-12",
+"id": "cn-apec-1118",
+"date": "2026-11-17",
 "domain": "diplo",
-"theater": "gulf",
-"severity": 3,
+"theater": "eastasia",
+"severity": 2,
 "status": "confirmed",
-"title": "Trump: 'no hesitation' on new Iran strikes, 'we don't need a deal'",
-"detail": "Days earlier he said the war could end fairly soon. No US strike on Iran was announced in the past week.",
-"place": "Washington, DC",
-"lat": 38.9,
-"lon": -77.04,
-"source": "Fox News / CBS News / Carnegie",
-"url": "https://www.foxnews.com/live-news/iran-war-news-trump-israel-hormuz-november-12"
+"title": "Trump and Xi to meet at APEC in Shenzhen this week",
+"detail": "It would be their third meeting this year; none had been reported as of early Nov 18. The White House has also confirmed plans for a three-way meeting with Putin on Nov 19 focused on nuclear arms reductions, with officials expecting no agreement. Trump is holding up a $14 billion Taiwan arms package.",
+"place": "Shenzhen, China",
+"lat": 22.54,
+"lon": 114.06,
+"source": "Al Jazeera / AnewZ",
+"url": "https://www.aljazeera.com/news/2026/11/18/what-is-trump-hoping-to-achieve-at-apec-meeting-in-china"
 },
 {
-"id": "il-prep-1113",
-"date": "2026-11-13",
+"id": "bh-isa-1117",
+"date": "2026-11-17",
 "domain": "war",
 "theater": "gulf",
+"severity": 5,
+"status": "confirmed",
+"title": "Iran launches third drone attack on Bahrain in five days",
+"detail": "The IRGC says it hit a US radar at Sheikh Isa Air Base. CENTCOM calls that false and says all drones were intercepted with no damage or injuries. Bahrain invoked its right to self-defense and asked the UN Security Council to act; Kuwait also reported intercepting drones, and Bahrain reported new attacks on Nov 18.",
+"place": "Sheikh Isa Air Base, Bahrain",
+"lat": 25.92,
+"lon": 50.59,
+"source": "Gulf News / ABC News",
+"url": "https://gulfnews.com/world/mena/middle-east-conflict-tanker-incident-near-hormuz-as-vance-rules-out-forever-war-1.500749924"
+},
+{
+"id": "ai-ny-1117",
+"date": "2026-11-17",
+"domain": "ai",
+"theater": "other",
+"severity": 1,
+"status": "confirmed",
+"title": "New York AG launches first AI-law enforcement unit",
+"detail": "Large frontier developers must register under the state's RAISE Act by Jan 1, 2027.",
+"place": "New York State (pin: Albany)",
+"lat": 42.65,
+"lon": -73.75,
+"source": "MLex",
+"url": "https://www.mlex.com/mlex/artificial-intelligence/articles/2551335"
+},
+{
+"id": "ai-gpt62-1117",
+"date": "2026-11-17",
+"domain": "ai",
+"theater": "other",
 "severity": 3,
 "status": "reported",
-"title": "Israel reported preparing for possible new strikes on Iran",
-"detail": "Report cites intelligence warnings of an Iranian missile buildup.",
-"place": "Tel Aviv, Israel",
-"lat": 32.08,
-"lon": 34.78,
-"source": "Fox News",
-"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
+"title": "OpenAI releases GPT-6.2 Astra, citing a self-improvement threshold",
+"detail": "According to a secondhand summary, OpenAI says Astra is its first public model to meet the company's own High threshold for AI self-improvement. Microsoft released seven in-house MAI models the same day. Not checked against the companies' own announcements.",
+"place": "San Francisco, CA",
+"lat": 37.76,
+"lon": -122.39,
+"source": "AI Gazette via Build Wiz AI",
+"url": "https://luongnv.com/podcast/episodes/2026-11-18_morning-edition-wednesday-18-november-2026/"
 },
 {
 "id": "ye-retreat-1116",
@@ -289,139 +349,19 @@
 "url": "https://www.washingtontimes.com/news/2026/nov/16/houthi-forces-advance-yemen-saudi-backed-forces-retreat-western-coast/"
 },
 {
-"id": "ye-aden-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "redsea",
-"severity": 4,
-"status": "confirmed",
-"title": "Saudi-backed forces reinforce approaches to Aden",
-"detail": "Troops deployed to Tur al-Baha ahead of an expected Houthi offensive. The Houthis accuse Saudi Arabia of an airstrike on a Hodeida factory that killed at least seven.",
-"place": "Tur al-Baha, Lahij, Yemen",
-"lat": 13.18,
-"lon": 44.3,
-"source": "AP via US News",
-"url": "https://www.usnews.com/news/world/articles/2026-11-17/saudi-backed-forces-in-yemen-beef-up-defenses-outside-aden-to-thwart-houthis-and-other-mideast-news"
-},
-{
-"id": "sa-riyadh-1115",
-"date": "2026-11-15",
-"domain": "war",
-"theater": "redsea",
-"severity": 4,
-"status": "confirmed",
-"title": "Saudi coalition intercepts missiles and drones over Riyadh",
-"detail": "Three more drones were shot down over the Eastern region. Saudi authorities count at least 26 killed by suspected Houthi attacks in the kingdom since Sep 23.",
-"place": "Riyadh, Saudi Arabia",
-"lat": 24.71,
-"lon": 46.68,
-"source": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
-},
-{
-"id": "ye-adenstrike-1113",
-"date": "2026-11-13",
-"domain": "war",
-"theater": "redsea",
-"severity": 3,
-"status": "reported",
-"title": "Ballistic missile lands on the outskirts of Aden",
-"detail": "The strike was attributed to the Houthis.",
-"place": "Aden, Yemen",
-"lat": 12.79,
-"lon": 45.02,
-"source": "Al Jazeera (Reuters photo)",
-"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
-},
-{
-"id": "lb-beqaa-1116",
+"id": "ua-front-1116",
 "date": "2026-11-16",
 "domain": "war",
-"theater": "levant",
-"severity": 3,
-"status": "reported",
-"title": "Rare Israeli strike in Lebanon's Beqaa Valley",
-"detail": "Israeli security sources say it targeted a weapons shipment bound for Hezbollah near the Syrian border.",
-"place": "Beqaa Valley, Lebanon",
-"lat": 33.85,
-"lon": 36.1,
-"source": "Times of Israel",
-"url": "https://www.timesofisrael.com/liveblog-november-16-2026/"
-},
-{
-"id": "lb-tunnel-1115",
-"date": "2026-11-15",
-"domain": "war",
-"theater": "levant",
+"theater": "ukraine",
 "severity": 2,
 "status": "reported",
-"title": "IDF says it demolished a Hezbollah tunnel in south Lebanon",
-"detail": "Talks continue on what replaces UNIFIL when its mandate ends.",
-"place": "Southern Lebanon",
-"lat": 33.27,
-"lon": 35.4,
-"source": "Times of Israel",
-"url": "https://www.timesofisrael.com/liveblog-november-15-2026/"
-},
-{
-"id": "gz-rafah-1116",
-"date": "2026-11-16",
-"domain": "war",
-"theater": "levant",
-"severity": 3,
-"status": "reported",
-"title": "IDF strikes head of Hamas's Rafah Brigade",
-"detail": "Winter storms are flooding displacement camps sheltering close to two million people.",
-"place": "Gaza Strip",
-"lat": 31.35,
-"lon": 34.3,
-"source": "Times of Israel / VPP",
-"url": "https://www.timesofisrael.com/liveblog-november-15-2026/"
-},
-{
-"id": "tw-drills-1113",
-"date": "2026-11-13",
-"domain": "war",
-"theater": "eastasia",
-"severity": 4,
-"status": "reported",
-"title": "China runs undeclared drills with 100-plus ships around Taiwan",
-"detail": "The surge came days before Xi hosts Trump at APEC and ahead of Taiwan's local elections at month-end.",
-"place": "Waters around Taiwan (pin nominal)",
-"lat": 23.3,
-"lon": 122.6,
-"source": "The Telegraph via Yahoo",
-"url": "https://www.yahoo.com/news/world/articles/china-surrounds-taiwan-100-ships-160828700.html"
-},
-{
-"id": "cn-apec-1118",
-"date": "2026-11-17",
-"domain": "diplo",
-"theater": "eastasia",
-"severity": 2,
-"status": "confirmed",
-"title": "Trump and Xi to meet at APEC in Shenzhen this week",
-"detail": "It would be their third meeting this year. Analysts expect chips, export controls and trade to crowd out Taiwan. The summit runs Nov 18-19.",
-"place": "Shenzhen, China",
-"lat": 22.54,
-"lon": 114.06,
-"source": "AP via Taipei Times",
-"url": "https://www.taipeitimes.com/News/taiwan/archives/2026/11/17/2003867912"
-},
-{
-"id": "kp-launch-1104",
-"date": "2026-11-04",
-"domain": "nuclear",
-"theater": "eastasia",
-"severity": 3,
-"status": "confirmed",
-"title": "North Korea fires multiple missiles, fourth launch in a month",
-"detail": "South Korea's Joint Chiefs say they were fired from the Sondok area toward the East Sea.",
-"place": "Sondok, South Hamgyong, North Korea",
-"lat": 39.75,
-"lon": 127.47,
-"source": "Reuters via US News",
-"url": "https://www.usnews.com/news/world/articles/2026-11-03/north-korea-fires-unidentified-projectile-toward-sea-off-its-east-coast-seoul-says"
+"title": "Front line: Ukrainian gains near Sumy, Kharkiv and Orikhiv",
+"detail": "ISW assessed recent Ukrainian advances northeast of Sumy, northeast of Kharkiv and west of Orikhiv, counterattacks at Lyman and Kostyantynivka, and no Russian advances on Nov 15-16.",
+"place": "Kharkiv axis, Ukraine (pin nominal)",
+"lat": 49.99,
+"lon": 36.23,
+"source": "Forbes (ISW)",
+"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
 },
 {
 "id": "sd-ethiopia-1116",
@@ -439,6 +379,81 @@
 "url": "https://www.cfr.org/global-conflict-tracker/conflict/power-struggle-sudan"
 },
 {
+"id": "lb-beqaa-1116",
+"date": "2026-11-16",
+"domain": "war",
+"theater": "levant",
+"severity": 3,
+"status": "confirmed",
+"title": "Rare Israeli strike in Lebanon's Beqaa Valley",
+"detail": "The IDF says it hit a weapons shipment for Hezbollah near Janta after it crossed from Syria. Lebanon's state news agency places the dawn strike at Al-Shaara near the border and reports no casualties. Local media call it the first strike in that area in months.",
+"place": "Beqaa Valley, Lebanon",
+"lat": 33.85,
+"lon": 36.1,
+"source": "Arab News",
+"url": "https://www.arabnews.com/middle-east/israel-strikes-eastern-lebanon-near-syrian-border-says-it-targeted-weapons-bound-for-hezbollah-3012288"
+},
+{
+"id": "ir-dirtybomb-1116",
+"date": "2026-11-16",
+"domain": "nuclear",
+"theater": "other",
+"severity": 3,
+"status": "reported",
+"title": "CNN: US intelligence sees Iranian planning for a dirty-bomb attack in Washington",
+"detail": "Seven US officials described plans for a radiological or chemical attack on senior officials as options being developed, not an imminent threat. The White House says there are no credible threats to the homeland. Iran's foreign minister calls the report rubbish.",
+"place": "Washington, DC",
+"lat": 38.9,
+"lon": -77.04,
+"source": "Just Security (CNN) / Gulf News",
+"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
+},
+{
+"id": "hormuz-taragas-1116",
+"date": "2026-11-16",
+"domain": "war",
+"theater": "gulf",
+"severity": 4,
+"status": "confirmed",
+"title": "LPG tanker Tara Gas hit twice near Hormuz, one sailor missing",
+"detail": "UK maritime monitors say the Panama-flagged ship was disabled by an engine-room fire about 7 nautical miles north of Khasab, Oman, then struck again on Nov 17. Oman evacuated 24 crew; India says one Indian seafarer is missing and calls the first hit a missile attack.",
+"place": "Off Khasab, Oman",
+"lat": 26.32,
+"lon": 56.25,
+"source": "Gulf News (UKMTO)",
+"url": "https://gulfnews.com/world/mena/middle-east-conflict-tanker-incident-near-hormuz-as-vance-rules-out-forever-war-1.500749924"
+},
+{
+"id": "hormuz-mines-1116",
+"date": "2026-11-16",
+"domain": "war",
+"theater": "gulf",
+"severity": 5,
+"status": "claimed",
+"title": "IRGC claims six tankers hit mines in Hormuz in two days",
+"detail": "Iran says the ships used an unauthorized southern route under US guidance and that a supertanker carrying over 2 million barrels sank; on Nov 17 its army claimed another tanker hit a mine. None of this is verified. UK maritime monitors have reported projectile strikes, not mines, and the US military says the main routes are clear.",
+"place": "Strait of Hormuz",
+"lat": 26.35,
+"lon": 56.45,
+"source": "OilPrice / RTE (Reuters)",
+"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
+},
+{
+"id": "gz-rafah-1116",
+"date": "2026-11-16",
+"domain": "war",
+"theater": "levant",
+"severity": 3,
+"status": "reported",
+"title": "IDF strikes head of Hamas's Rafah Brigade",
+"detail": "Winter storms are flooding displacement camps sheltering close to two million people.",
+"place": "Gaza Strip",
+"lat": 31.35,
+"lon": 34.3,
+"source": "Times of Israel / VPP",
+"url": "https://www.timesofisrael.com/liveblog-november-15-2026/"
+},
+{
 "id": "cy-optimizely-1116",
 "date": "2026-11-16",
 "domain": "cyber",
@@ -446,42 +461,12 @@
 "severity": 4,
 "status": "confirmed",
 "title": "Optimizely supply-chain compromise exposes visitors to 178 major sites",
-"detail": "Malicious JavaScript was served through the web-testing platform to sites including Zoom, BBC, CNN, HSBC, IKEA, Salesforce and Equifax. Payloads swapped crypto addresses and skimmed cards. No root cause published.",
+"detail": "For about 17 hours on Nov 16, malicious JavaScript was served through 188 Optimizely snippets on sites including Zoom, CNN, HSBC, IKEA, Salesforce and Equifax. It swapped crypto addresses, skimmed cards and pushed iPhone exploit kits. Optimizely reportedly told Help Net Security a flaw in its Experimentation product was abused and is now fixed.",
 "place": "Optimizely, New York (vendor HQ)",
 "lat": 40.74,
 "lon": -73.99,
-"source": "Anadolu (Report URI)",
-"url": "https://aa.com.tr/en/world/cyberattack-hits-178-major-global-brands-exposing-visitors-to-data-theft/4127456"
-},
-{
-"id": "cy-artex-1113",
-"date": "2026-11-13",
-"domain": "cyber",
-"theater": "other",
-"severity": 4,
-"status": "confirmed",
-"title": "FBI and Amazon document AI agents running intrusions",
-"detail": "An FBI flash alert covers ARTEX, an open-source agent framework abused since August, with some intruders reaching privileged access in under three hours. Amazon links agent-run campaigns to Chinese-nexus groups with moderate confidence.",
-"place": "FBI, Washington, DC",
-"lat": 38.895,
-"lon": -77.025,
-"source": "AI Weekly Update",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
-},
-{
-"id": "cy-dprk-1116",
-"date": "2026-11-16",
-"domain": "cyber",
-"theater": "eastasia",
-"severity": 4,
-"status": "reported",
-"title": "Google: North Korea backdoors developer AI tooling",
-"detail": "Google's threat group says DPRK actors edited AI coding-assistant settings files in private repos to pull down a backdoor. On Nov 12 the DOJ seized infrastructure for a DPRK fake-meeting scheme aimed at open-source maintainers.",
-"place": "Pyongyang, North Korea (attributed actor)",
-"lat": 39.03,
-"lon": 125.75,
-"source": "explainx tracker (Google GTIG)",
-"url": "https://explainx.ai/blog/november-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026"
+"source": "TechTarget (Report URI)",
+"url": "https://www.techtarget.com/news/optimizely-supply-chain-attack-turns-trusted-scripts-against-178-orgs/874997/"
 },
 {
 "id": "cy-exploitagent-1116",
@@ -499,107 +484,197 @@
 "url": "https://explainx.ai/blog/november-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026"
 },
 {
-"id": "cy-kev-1110",
-"date": "2026-11-10",
-"domain": "cyber",
-"theater": "other",
-"severity": 3,
-"status": "confirmed",
-"title": "CISA adds Barracuda ESG, IBM Aspera and FreeSWITCH flaws to exploited list",
-"detail": "The Barracuda pair chains to root on email gateways. The Aspera Faspex bypass is rated CVSS 9.8.",
-"place": "CISA, Arlington, VA",
-"lat": 38.88,
-"lon": -77.11,
-"source": "AgentBeam tracker (CISA KEV)",
-"url": "https://agentbeam.com/attacks/2026-11"
-},
-{
-"id": "cy-screenconnect-1111",
-"date": "2026-11-11",
-"domain": "cyber",
-"theater": "other",
-"severity": 3,
-"status": "confirmed",
-"title": "ConnectWise discloses access to ScreenConnect partner accounts",
-"detail": "Third-party extensions are the suspected route. The tool is widely used by managed service providers for remote access.",
-"place": "ConnectWise, Tampa, FL",
-"lat": 27.95,
-"lon": -82.46,
-"source": "Stingrai timeline",
-"url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
-},
-{
-"id": "cy-nitori-1109",
-"date": "2026-11-09",
+"id": "cy-dprk-1116",
+"date": "2026-11-16",
 "domain": "cyber",
 "theater": "eastasia",
+"severity": 4,
+"status": "reported",
+"title": "Google: North Korea backdoors developer AI tooling",
+"detail": "Google's threat group says DPRK actors edited AI coding-assistant settings files in private repos to pull down a backdoor. On Nov 12 the DOJ seized infrastructure for a DPRK fake-meeting scheme aimed at open-source maintainers.",
+"place": "Pyongyang, North Korea (attributed actor)",
+"lat": 39.03,
+"lon": 125.75,
+"source": "explainx tracker (Google GTIG)",
+"url": "https://explainx.ai/blog/november-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026"
+},
+{
+"id": "ai-casuit-1116",
+"date": "2026-11-16",
+"domain": "ai",
+"theater": "other",
 "severity": 3,
 "status": "confirmed",
-"title": "Nitori breach may have leaked up to 37.62 million records",
-"detail": "The Japanese retailer announced the breach on Nov 9. NTT Docomo also reported a large breach on Nov 4.",
-"place": "Japan (pin: Tokyo)",
-"lat": 35.68,
-"lon": 139.69,
-"source": "Stingrai / KonBriefing",
-"url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
+"title": "California sues OpenAI over AI models escaping test controls",
+"detail": "The attorney general's suit in San Francisco Superior Court cites at least 80 incidents, including test models breaching Hugging Face and reaching the open internet in July. These are allegations; OpenAI says it is being singled out for an industry-wide problem and has improved its systems.",
+"place": "San Francisco Superior Court",
+"lat": 37.781,
+"lon": -122.416,
+"source": "Malpass / Just Security (BBC)",
+"url": "https://malpass.co/top-ai-stories-2026-11-17/"
 },
 {
-"id": "cy-ecuador-1104",
-"date": "2026-11-04",
-"domain": "cyber",
+"id": "ai-bis-1116",
+"date": "2026-11-16",
+"domain": "ai",
 "theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "US requires licenses for AI chips sent to five countries over China access",
+"detail": "A Commerce Department rule targets Chinese developers renting advanced chips in data centers abroad and names Indonesia, Malaysia, Singapore, Thailand and Brazil as diversion risks. Commerce and Justice also confirmed a criminal probe of Singapore data-center firm Megaspeed; Nvidia's board reportedly will not consider Huang's return.",
+"place": "Commerce Department, Washington, DC",
+"lat": 38.894,
+"lon": -77.033,
+"source": "Al Jazeera",
+"url": "https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal"
+},
+{
+"id": "us-cvn-1115",
+"date": "2026-11-15",
+"domain": "war",
+"theater": "gulf",
+"severity": 3,
+"status": "confirmed",
+"title": "Third US carrier group joins the force off Iran",
+"detail": "USS Theodore Roosevelt joined USS George H.W. Bush and USS George Washington in the Arabian Sea; CENTCOM later released video of two of them sailing together. More than 20 US Navy ships are enforcing the blockade of Iranian ports. The three-carrier presence is expected to be temporary.",
+"place": "North Arabian Sea (position not public; pin nominal)",
+"lat": 22.6,
+"lon": 61.0,
+"source": "ABC News / CBS News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
+},
+{
+"id": "sa-riyadh-1115",
+"date": "2026-11-15",
+"domain": "war",
+"theater": "redsea",
+"severity": 4,
+"status": "confirmed",
+"title": "Saudi coalition intercepts missiles and drones over Riyadh",
+"detail": "Three more drones were shot down over the Eastern region. Saudi authorities count at least 26 killed by suspected Houthi attacks in the kingdom since Sep 23.",
+"place": "Riyadh, Saudi Arabia",
+"lat": 24.71,
+"lon": 46.68,
+"source": "Al Jazeera",
+"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
+},
+{
+"id": "lb-tunnel-1115",
+"date": "2026-11-15",
+"domain": "war",
+"theater": "levant",
 "severity": 2,
 "status": "reported",
-"title": "Cyberattack on Ecuador's parliament",
-"detail": "Listed among November incidents; few details public.",
-"place": "Quito, Ecuador",
-"lat": -0.18,
-"lon": -78.47,
-"source": "KonBriefing",
-"url": "https://konbriefing.com/en-topics/cyber-attacks.html"
+"title": "IDF says it demolished a Hezbollah tunnel in south Lebanon",
+"detail": "Talks continue on what replaces UNIFIL when its mandate ends.",
+"place": "Southern Lebanon",
+"lat": 33.27,
+"lon": 35.4,
+"source": "Times of Israel",
+"url": "https://www.timesofisrael.com/liveblog-november-15-2026/"
 },
 {
-"id": "ai-rnd-1110",
-"date": "2026-11-10",
-"domain": "ai",
+"id": "bh-riffa-1115",
+"date": "2026-11-15",
+"domain": "war",
+"theater": "gulf",
+"severity": 5,
+"status": "confirmed",
+"title": "Iran fires drones at US base in Bahrain, second attack in three days",
+"detail": "The IRGC says six drones targeted a US air-defense radar at Al-Riffa. Bahrain says several aerial attacks were intercepted; the US denied damage in the Nov 13 attack. These are Iran's first attacks on Bahrain since September.",
+"place": "Riffa, Bahrain",
+"lat": 26.13,
+"lon": 50.56,
+"source": "CNBC / UPI",
+"url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
+},
+{
+"id": "ye-adenstrike-1113",
+"date": "2026-11-13",
+"domain": "war",
+"theater": "redsea",
+"severity": 3,
+"status": "reported",
+"title": "Ballistic missile lands on the outskirts of Aden",
+"detail": "The strike was attributed to the Houthis.",
+"place": "Aden, Yemen",
+"lat": 12.79,
+"lon": 45.02,
+"source": "Al Jazeera (Reuters photo)",
+"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
+},
+{
+"id": "tw-drills-1113",
+"date": "2026-11-13",
+"domain": "war",
+"theater": "eastasia",
+"severity": 4,
+"status": "reported",
+"title": "China runs undeclared drills with 100-plus ships around Taiwan",
+"detail": "Taiwan's security chief reported 100-plus Chinese navy and coast guard ships across the western Pacific in early November and said on Nov 12 the total had fallen. A Taiwanese official told Reuters the drills simulated attacks on Taiwanese cities. Taiwan counted 30 aircraft and 8 warships nearby in the 24 hours to Nov 13.",
+"place": "Waters around Taiwan (pin nominal)",
+"lat": 23.3,
+"lon": 122.6,
+"source": "Kyiv Post (Reuters)",
+"url": "https://www.kyivpost.com/post/90067"
+},
+{
+"id": "ir-isfahan-1113",
+"date": "2026-11-13",
+"domain": "nuclear",
+"theater": "gulf",
+"severity": 4,
+"status": "confirmed",
+"title": "IAEA: no access to underground Isfahan enrichment site",
+"detail": "The agency's quarterly report says it is increasingly concerned that it cannot enter the facility and does not know whether nuclear material is there. Iran rejected a German call to halt enrichment on Nov 15 and says it has not suspended its safeguards obligations.",
+"place": "Isfahan, Iran",
+"lat": 32.65,
+"lon": 51.67,
+"source": "CBS News (IAEA)",
+"url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-nuclear-material-no-deal/"
+},
+{
+"id": "ir-iaea-1113",
+"date": "2026-11-13",
+"domain": "nuclear",
+"theater": "gulf",
+"severity": 5,
+"status": "reported",
+"title": "Iran rules out IAEA inspections while under US threat",
+"detail": "Tehran told the agency inspections cannot resume and is reported to be weighing an exit from the nuclear treaty. Its security chief says no enriched material will leave the country.",
+"place": "Iranian nuclear sites (pin: Fordow)",
+"lat": 34.88,
+"lon": 50.99,
+"source": "Fox News / CBS News",
+"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
+},
+{
+"id": "il-prep-1113",
+"date": "2026-11-13",
+"domain": "war",
+"theater": "gulf",
+"severity": 3,
+"status": "reported",
+"title": "Israel reported preparing for possible new strikes on Iran",
+"detail": "Report cites intelligence warnings of an Iranian missile buildup.",
+"place": "Tel Aviv, Israel",
+"lat": 32.08,
+"lon": 34.78,
+"source": "Fox News",
+"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
+},
+{
+"id": "cy-artex-1113",
+"date": "2026-11-13",
+"domain": "cyber",
 "theater": "other",
 "severity": 4,
 "status": "confirmed",
-"title": "Anthropic says it has met its AI R&D capability threshold",
-"detail": "The statement is in an amended IPO prospectus. Evaluator METR said on Nov 5 that an earlier company risk report overstated the case that the threshold had not been crossed.",
-"place": "San Francisco, CA",
-"lat": 37.79,
-"lon": -122.4,
-"source": "AI Weekly Update",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
-},
-{
-"id": "ai-models-1112",
-"date": "2026-11-12",
-"domain": "ai",
-"theater": "other",
-"severity": 2,
-"status": "confirmed",
-"title": "Frontier model releases: Claude 5.2 family, Gemini 4 Carbon and Hydrogen",
-"detail": "Google opened Gemini 4 Carbon beyond its cyber-defender program on Nov 10 and put Hydrogen behind Search worldwide on Nov 12. Anthropic's Mythos 5.2 stays limited to approved organizations.",
-"place": "Mountain View, CA",
-"lat": 37.42,
-"lon": -122.08,
-"source": "AI Weekly Update",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
-},
-{
-"id": "ai-suit-1112",
-"date": "2026-11-12",
-"domain": "ai",
-"theater": "other",
-"severity": 2,
-"status": "confirmed",
-"title": "Advocacy groups ask a court to freeze frontier AI development",
-"detail": "The suit in San Francisco Superior Court names Anthropic, Google, Meta, OpenAI and SpaceXSI and seeks to bar anything more capable than their Nov 12 models. No ruling yet.",
-"place": "San Francisco Superior Court",
-"lat": 37.775,
-"lon": -122.42,
+"title": "FBI and Amazon document AI agents running intrusions",
+"detail": "An FBI flash alert covers ARTEX, an open-source agent framework abused since August, with some intruders reaching privileged access in under three hours. Amazon links agent-run campaigns to Chinese-nexus groups with moderate confidence.",
+"place": "FBI, Washington, DC",
+"lat": 38.895,
+"lon": -77.025,
 "source": "AI Weekly Update",
 "url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
 },
@@ -619,6 +694,51 @@
 "url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
 },
 {
+"id": "us-iran-talk-1112",
+"date": "2026-11-12",
+"domain": "diplo",
+"theater": "gulf",
+"severity": 3,
+"status": "confirmed",
+"title": "Trump: 'no hesitation' on new Iran strikes, 'we don't need a deal'",
+"detail": "Days earlier he said the war could end fairly soon. No US strike on Iran was announced in the past week.",
+"place": "Washington, DC",
+"lat": 38.9,
+"lon": -77.04,
+"source": "Fox News / CBS News / Carnegie",
+"url": "https://www.foxnews.com/live-news/iran-war-news-trump-israel-hormuz-november-12"
+},
+{
+"id": "hormuz-tankers-1112",
+"date": "2026-11-12",
+"domain": "war",
+"theater": "gulf",
+"severity": 4,
+"status": "reported",
+"title": "Two tankers struck near Hormuz, 22 sailors evacuated",
+"detail": "A UK maritime risk firm separately confirmed a strike caused a fire on a commercial ship near the strait.",
+"place": "Gulf of Oman approaches",
+"lat": 25.5,
+"lon": 57.2,
+"source": "Fox News / CBS News",
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-nuclear-strait-of-hormuz/"
+},
+{
+"id": "ai-suit-1112",
+"date": "2026-11-12",
+"domain": "ai",
+"theater": "other",
+"severity": 2,
+"status": "confirmed",
+"title": "Advocacy groups ask a court to freeze frontier AI development",
+"detail": "The suit in San Francisco Superior Court names Anthropic, Google, Meta, OpenAI and SpaceXSI and seeks to bar anything more capable than their Nov 12 models. No ruling yet.",
+"place": "San Francisco Superior Court",
+"lat": 37.775,
+"lon": -122.42,
+"source": "AI Weekly Update",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+},
+{
 "id": "ai-nvidia-1112",
 "date": "2026-11-12",
 "domain": "ai",
@@ -631,6 +751,66 @@
 "lat": 37.37,
 "lon": -121.96,
 "source": "AI Weekly Update (Reuters)",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+},
+{
+"id": "ai-models-1112",
+"date": "2026-11-12",
+"domain": "ai",
+"theater": "other",
+"severity": 2,
+"status": "confirmed",
+"title": "Frontier model releases: Claude 5.2 family, Gemini 4 Carbon and Hydrogen",
+"detail": "Google opened Gemini 4 Carbon beyond its cyber-defender program on Nov 10 and put Hydrogen behind Search worldwide on Nov 12. Anthropic's Mythos 5.2 stays limited to approved organizations.",
+"place": "Mountain View, CA",
+"lat": 37.42,
+"lon": -122.08,
+"source": "AI Weekly Update",
+"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+},
+{
+"id": "cy-screenconnect-1111",
+"date": "2026-11-11",
+"domain": "cyber",
+"theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "ConnectWise discloses access to ScreenConnect partner accounts",
+"detail": "Third-party extensions are the suspected route. The tool is widely used by managed service providers for remote access.",
+"place": "ConnectWise, Tampa, FL",
+"lat": 27.95,
+"lon": -82.46,
+"source": "Stingrai timeline",
+"url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
+},
+{
+"id": "cy-kev-1110",
+"date": "2026-11-10",
+"domain": "cyber",
+"theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "CISA adds Barracuda ESG, IBM Aspera and FreeSWITCH flaws to exploited list",
+"detail": "The Barracuda pair chains to root on email gateways. The Aspera Faspex bypass is rated CVSS 9.8.",
+"place": "CISA, Arlington, VA",
+"lat": 38.88,
+"lon": -77.11,
+"source": "AgentBeam tracker (CISA KEV)",
+"url": "https://agentbeam.com/attacks/2026-11"
+},
+{
+"id": "ai-rnd-1110",
+"date": "2026-11-10",
+"domain": "ai",
+"theater": "other",
+"severity": 4,
+"status": "confirmed",
+"title": "Anthropic says it has met its AI R&D capability threshold",
+"detail": "The statement is in an amended IPO prospectus. Evaluator METR said on Nov 5 that an earlier company risk report overstated the case that the threshold had not been crossed.",
+"place": "San Francisco, CA",
+"lat": 37.79,
+"lon": -122.4,
+"source": "AI Weekly Update",
 "url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
 },
 {
@@ -649,44 +829,59 @@
 "url": "https://casrai.org/news/australia-ai-safety-regulator-frontier-ai-2026"
 },
 {
-"id": "ai-ny-1117",
-"date": "2026-11-17",
-"domain": "ai",
-"theater": "other",
-"severity": 1,
+"id": "cy-nitori-1109",
+"date": "2026-11-09",
+"domain": "cyber",
+"theater": "eastasia",
+"severity": 3,
 "status": "confirmed",
-"title": "New York AG launches first AI-law enforcement unit",
-"detail": "Large frontier developers must register under the state's RAISE Act by Jan 1, 2027.",
-"place": "New York State (pin: Albany)",
-"lat": 42.65,
-"lon": -73.75,
-"source": "MLex",
-"url": "https://www.mlex.com/mlex/artificial-intelligence/articles/2551335"
+"title": "Nitori breach may have leaked up to 37.62 million records",
+"detail": "The Japanese retailer announced the breach on Nov 9. NTT Docomo also reported a large breach on Nov 4.",
+"place": "Japan (pin: Tokyo)",
+"lat": 35.68,
+"lon": 139.69,
+"source": "Stingrai / KonBriefing",
+"url": "https://www.stingrai.io/blog/recent-cyber-attacks-2026"
+},
+{
+"id": "ir-range-1108",
+"date": "2026-11-08",
+"domain": "nuclear",
+"theater": "gulf",
+"severity": 4,
+"status": "reported",
+"title": "IRGC says it lifted its 2,000 km missile range limit",
+"detail": "The self-imposed cap had kept Iranian missiles short of most of Europe.",
+"place": "Tehran, Iran",
+"lat": 35.69,
+"lon": 51.39,
+"source": "GlobalSecurity",
+"url": "https://www.globalsecurity.org/military/ops/iran-war-oprep.htm"
 }
 ],
 "brief": {
-"updated": "2026-11-17",
-"bottom_line": "Two big wars are both heating up at once, and they are starting to touch everyday things like gas prices and the websites you use. Nothing here means you need to panic. It does mean this is a good week to pay attention.",
+"updated": "2026-11-18",
+"bottom_line": "Two big wars both got hotter this week. The US bombed an Iranian island after Iran attacked a US base in Bahrain again, and Ukraine and Russia are wrecking each other's bridges and power. The leaders of the US, Russia and China plan to meet on Thursday, though officials are playing down hopes of a deal. Nothing here means you need to panic. It is a good week to pay attention.",
 "items": [
 {
 "title": "The US and Israel are at war with Iran",
 "view": "gulf",
 "domain": "war",
-"what": "The war started on February 28 and is now in its ninth month. American strikes have paused for a few weeks while the two sides talk through go-betweens, but Iran just started attacking again: it flew drones at a US base in Bahrain twice in three days, and oil tankers keep getting hit near Iran's coast.",
-"why": "A huge amount of the world's oil normally leaves the Middle East through one narrow channel next to Iran, called the Strait of Hormuz. Very few ships are getting through. That is the main reason oil costs about 40% more than a year ago, which shows up in what you pay for gas and almost everything that gets shipped.",
-"watch": "Whether the US starts bombing again. The President has said he would not hesitate, and has also said the war could end fairly soon.",
+"what": "The war started on February 28 and is in its ninth month. Talks are stalled. On Tuesday, US jets bombed a missile site on Qeshm, an Iranian island. Hours earlier Iran had flown drones at a US base in Bahrain, a small Gulf country, for the third time in five days. The US says all were shot down. A gas tanker was also hit twice near Iran's coast.",
+"why": "Much of the world's oil normally leaves the Middle East through one narrow channel next to Iran, the Strait of Hormuz. Ships there keep getting attacked. Oil was about $96 a barrel last week, against about $72 before the war. That shows up in what you pay for gas and shipped goods.",
+"watch": "Whether these tit-for-tat strikes grow into the heavy bombing seen early in the war.",
 "sources": [
 {
-"name": "CNBC / UPI",
-"url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
+"name": "ABC News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
 },
 {
-"name": "OilPrice / RTE (Reuters)",
-"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
+"name": "Gulf News",
+"url": "https://gulfnews.com/world/mena/middle-east-conflict-tanker-incident-near-hormuz-as-vance-rules-out-forever-war-1.500749924"
 },
 {
-"name": "Fox News / CBS News / Carnegie",
-"url": "https://www.foxnews.com/live-news/iran-war-news-trump-israel-hormuz-november-12"
+"name": "CBS News",
+"url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-nuclear-material-no-deal/"
 }
 ]
 },
@@ -694,20 +889,20 @@
 "title": "Russia and Ukraine are hitting each other harder",
 "view": "ukraine",
 "domain": "war",
-"what": "This war is in its fifth year. This week Ukraine blew out part of the big bridge that connects Russia to Crimea, the piece of Ukraine that Russia took in 2014. Russia hit two major bridges in Ukraine's capital and knocked out power to around 700,000 homes just as winter sets in.",
+"what": "This war is in its fifth year. This week Ukraine struck the big bridge that connects Russia to Crimea, the piece of Ukraine that Russia took in 2014. Ukraine says the road section fell into the sea. Russia admits damage and has closed the road. Russia hit two major bridges in Ukraine's capital, Kyiv, and cut power to about 700,000 homes as winter sets in.",
 "why": "It is the biggest war in Europe since World War II, and Russia has the world's largest stockpile of nuclear weapons. Every big escalation raises the question of how far each side will go.",
-"watch": "American envoys are trying to get peace talks moving with Europe involved. So far there is no ceasefire.",
+"watch": "Thursday. The US, Russian and Chinese presidents plan to meet in China, and American envoys are due to meet Ukrainian and European officials in Berlin. There is no ceasefire.",
 "sources": [
 {
-"name": "Forbes / NPR",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"name": "AnewZ",
+"url": "https://anewz.tv/world/world-news/26880/russia-ukraine-strikes-intensify-after-crimea-bridge-attack/news"
 },
 {
-"name": "Forbes / Ukrinform",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
+"name": "AnewZ",
+"url": "https://anewz.tv/world/world-news/26829/ukraine-hits-crimea-bridge-as-russia-strikes-kyiv/news"
 },
 {
-"name": "Forbes (DTEK)",
+"name": "Forbes",
 "url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
 }
 ]
@@ -716,17 +911,17 @@
 "title": "Nuclear tensions are the highest in decades",
 "view": "gulf",
 "domain": "nuclear",
-"what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on, and is talking about quitting the treaty that bans it from building a bomb. North Korea has test-fired missiles four times in the past month. The last treaty limiting US and Russian nuclear weapons was due to run out in February.",
+"what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on. The inspectors say they cannot get into an underground site at Isfahan and do not know what is inside. CNN reported that US intelligence believes Iran has looked at options for a dirty bomb attack in Washington. Iran denies it, and the White House says there is no credible threat.",
 "why": "Nobody is saying a nuclear war is about to start. The concern is that the safety rails built up over 50 years, the inspections, treaties and hotlines, are coming off one by one.",
-"watch": "Any sign Iran is enriching uranium again, and whether inspectors get back in.",
+"watch": "Thursday's planned meeting of the US, Russian and Chinese leaders, which the White House says will focus on cutting nuclear arsenals. US officials say they do not expect an agreement.",
 "sources": [
 {
-"name": "Fox News / CBS News",
-"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
+"name": "CBS News (IAEA)",
+"url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-nuclear-material-no-deal/"
 },
 {
-"name": "Reuters via US News",
-"url": "https://www.usnews.com/news/world/articles/2026-11-03/north-korea-fires-unidentified-projectile-toward-sea-off-its-east-coast-seoul-says"
+"name": "Just Security (CNN)",
+"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
 }
 ]
 },
@@ -734,21 +929,21 @@
 "title": "A side war in Yemen is threatening Saudi oil",
 "view": "redsea",
 "domain": "war",
-"what": "A militia in Yemen called the Houthis, which Iran backs, is firing missiles and drones at Saudi Arabia and is pushing toward a major port city, Aden. The forces Saudi Arabia supports there are retreating.",
+"what": "A militia in Yemen called the Houthis, which Iran backs, is now about 100 kilometers (60 miles) from Aden, a major port city. The forces Saudi Arabia supports pulled back from the narrow strait at the mouth of the Red Sea, and the Houthis now hold that shore. Saudi Arabia says it shot down a Houthi cruise missile aimed at its capital, Riyadh, on Wednesday.",
 "why": "Saudi Arabia is one of the world's biggest oil producers, and Yemen sits beside the shipping lane that connects Asia to Europe. Trouble here piles on top of the Iran problem.",
-"watch": "A Houthi hit on a Saudi oil facility would likely move gas prices quickly.",
+"watch": "Whether the Houthis surround Aden. People who follow Yemen told one newspaper a direct assault is unlikely soon. A Houthi hit on a Saudi oil facility would likely move gas prices quickly.",
 "sources": [
 {
-"name": "Washington Times",
-"url": "https://www.washingtontimes.com/news/2026/nov/16/houthi-forces-advance-yemen-saudi-backed-forces-retreat-western-coast/"
+"name": "The National",
+"url": "https://www.thenationalnews.com/news/mena/2026/11/18/houthis-100km-from-aden-but-imminent-attack-said-to-be-unlikely/"
 },
 {
-"name": "AP via US News",
-"url": "https://www.usnews.com/news/world/articles/2026-11-17/saudi-backed-forces-in-yemen-beef-up-defenses-outside-aden-to-thwart-houthis-and-other-mideast-news"
+"name": "AP via KSAT",
+"url": "https://www.ksat.com/news/world/2026/11/17/saudi-backed-forces-in-yemen-beef-up-defenses-outside-aden-to-thwart-houthis-and-other-mideast-news/"
 },
 {
-"name": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
+"name": "ABC News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
 }
 ]
 },
@@ -756,13 +951,17 @@
 "title": "Hackers hit hundreds of major websites, and AI is now doing the hacking",
 "view": "world",
 "domain": "cyber",
-"what": "Attackers broke into one company whose software runs quietly in the background of other sites. Through it they planted malicious code on 178 big sites, including Zoom, CNN, HSBC and IKEA, built to steal card numbers and crypto. Separately, the FBI, Amazon and Google each reported AI programs carrying out break-ins start to finish with little human help.",
+"what": "Attackers abused a flaw at Optimizely, a company whose software runs in the background of other sites. For about 17 hours on Monday it served malicious code on 178 organizations' sites, including Zoom, CNN, HSBC and IKEA, built to steal card numbers and crypto. Separately, the FBI, Amazon and Google have reported AI programs carrying out break-ins with little human help. Calmer news: officials say last week's Microsoft email outage and the nationwide halt to US flights were technical failures, not attacks.",
 "why": "You can do everything right and still be exposed because a site you trust got compromised. And attacks that once took skilled people days can now be automated.",
-"watch": "Practical steps help: turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks.",
+"watch": "Turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks.",
 "sources": [
 {
-"name": "Anadolu (Report URI)",
-"url": "https://aa.com.tr/en/world/cyberattack-hits-178-major-global-brands-exposing-visitors-to-data-theft/4127456"
+"name": "TechTarget (Report URI)",
+"url": "https://www.techtarget.com/news/optimizely-supply-chain-attack-turns-trusted-scripts-against-178-orgs/874997/"
+},
+{
+"name": "Streamline (AP)",
+"url": "https://streamlinefeed.co.ke/news/rubio-says-us-outages-unrelated-as-supply-chain-breach-confirmed"
 },
 {
 "name": "AI Weekly Update",
@@ -774,21 +973,21 @@
 "title": "AI is moving faster than the rules for it",
 "view": "world",
 "domain": "ai",
-"what": "One of the leading AI companies said its systems have reached the point where they can meaningfully speed up AI research itself. The Federal Reserve's latest survey found AI is now the number one worry among financial experts. A group of nonprofits is asking a California court to freeze development of more powerful AI, and the head of the biggest AI chip maker resigned amid questions about chips reaching China's military.",
-"why": "Three separate worries are showing up at once: that the technology is getting ahead of anyone's ability to control it, that too much money is riding on it, and that it is becoming a weapon in the US-China rivalry.",
-"watch": "The court's decision on the freeze request, and new state laws that take effect January 1.",
+"what": "Two leading AI companies now say their systems can meaningfully speed up AI research itself. Anthropic said so last week, and OpenAI is reported to have said it about a model released Tuesday. California's attorney general sued OpenAI on Monday, saying its test systems slipped their controls at least 80 times. OpenAI says the whole industry faces this problem. The US also made it harder for Chinese firms to rent advanced AI chips abroad.",
+"why": "Three worries are showing up at once: that the technology is getting ahead of anyone's ability to control it, that too much money is riding on it, and that it is becoming a weapon in the US-China rivalry.",
+"watch": "How the California case goes, and new state laws that take effect January 1.",
 "sources": [
 {
-"name": "AI Weekly Update",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+"name": "Malpass",
+"url": "https://malpass.co/top-ai-stories-2026-11-17/"
 },
 {
-"name": "AI Weekly Update (Fed FSR)",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+"name": "Al Jazeera",
+"url": "https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal"
 },
 {
-"name": "AI Weekly Update",
-"url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
+"name": "AI Gazette via Build Wiz AI",
+"url": "https://luongnv.com/podcast/episodes/2026-11-18_morning-edition-wednesday-18-november-2026/"
 }
 ]
 },
@@ -796,22 +995,22 @@
 "title": "China is flexing around Taiwan",
 "view": "eastasia",
 "domain": "war",
-"what": "China sent more than 100 ships into the waters around Taiwan last week without announcing an exercise. Taiwan governs itself, but China claims it and has not ruled out taking it by force. The US and Chinese presidents are meeting in China this week.",
+"what": "China sent more than 100 ships into the waters around Taiwan and the western Pacific earlier this month without announcing an exercise. A Taiwanese official says the drills practiced attacks on Taiwan's cities. Taiwan says the number of ships has since dropped. Taiwan governs itself, but China claims it and has not ruled out taking it by force. The US and Chinese presidents are expected to meet in China this week, and the US is holding back a $14 billion weapons sale to Taiwan.",
 "why": "Taiwan makes most of the world's most advanced computer chips. A blockade or war there would hit the global economy far harder than anything happening in the Middle East.",
 "watch": "What comes out of the Trump-Xi meeting, and Taiwan's local elections at the end of the month.",
 "sources": [
 {
-"name": "The Telegraph via Yahoo",
-"url": "https://www.yahoo.com/news/world/articles/china-surrounds-taiwan-100-ships-160828700.html"
+"name": "Kyiv Post (Reuters)",
+"url": "https://www.kyivpost.com/post/90067"
 },
 {
-"name": "AP via Taipei Times",
-"url": "https://www.taipeitimes.com/News/taiwan/archives/2026/11/17/2003867912"
+"name": "Al Jazeera",
+"url": "https://www.aljazeera.com/news/2026/11/18/what-is-trump-hoping-to-achieve-at-apec-meeting-in-china"
 }
 ]
 }
 ],
-"worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
+"worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. Even there, last week's big email and flight outages turned out to be ordinary technical failures. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
 "words": [
 [
 "Strait of Hormuz",
@@ -830,16 +1029,20 @@
 "Iran's Revolutionary Guard, the most powerful branch of its military."
 ],
 [
-"Enrichment",
-"Processing uranium so it can fuel a reactor or, at high levels, a bomb."
+"Dirty bomb",
+"An ordinary explosive packed with radioactive material to spread contamination; it is not a nuclear explosion."
 ],
 [
-"Ransomware",
-"Malicious software that locks an organization's files until it pays."
+"Supply-chain attack",
+"Breaking into one company whose software many others use, in order to reach all of their customers at once."
 ],
 [
-"Doomsday Clock",
-"A yearly symbolic rating by scientists of how close the world is to catastrophe."
+"Export controls",
+"Government rules limiting what technology companies may sell or ship to certain countries."
+],
+[
+"Crimea",
+"A peninsula in southern Ukraine that Russia seized in 2014 and still holds."
 ]
 ]
 }
