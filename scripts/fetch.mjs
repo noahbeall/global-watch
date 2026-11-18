@@ -3,7 +3,7 @@
 import { writeFile, mkdir } from 'node:fs/promises';
 
 const SITE = process.env.SITE_URL || '';
-const UA = 'global-watch/1.0 (+https://github.com/noahbeall/global-watch)';
+const UA = 'Mozilla/5.0 (compatible; global-watch/1.0; +https://github.com/noahbeall/global-watch)';
 const now = Date.now();
 const H = 3600e3;
 
@@ -154,10 +154,15 @@ async function space() {
   return { kp, at };
 }
 async function markets() {
-  const csv = await get('https://stooq.com/q/l/?s=cb.f,cl.f,ng.f,gc.f,^vix&f=sd2t2c&h&e=csv');
-  const names = { 'CB.F': 'brent', 'CL.F': 'wti', 'NG.F': 'natgas', 'GC.F': 'gold', '^VIX': 'vix' };
+  const syms = { brent: 'BZ=F', wti: 'CL=F', natgas: 'NG=F', gold: 'GC=F', vix: '^VIX' };
   const out = {};
-  for (const line of csv.trim().split(/\r?\n/).slice(1)) { const [s, d, , c] = line.split(','); if (names[s] && Number.isFinite(+c)) out[names[s]] = { value: +c, date: d }; }
+  await Promise.all(Object.entries(syms).map(async ([k, sym]) => {
+    try {
+      const g = await get('https://query1.finance.yahoo.com/v8/finance/chart/' + encodeURIComponent(sym) + '?interval=1d&range=1d', 'json');
+      const m = g.chart.result[0].meta;
+      if (Number.isFinite(m.regularMarketPrice)) out[k] = { value: m.regularMarketPrice, date: new Date(m.regularMarketTime * 1000).toISOString().slice(0, 10) };
+    } catch (e) { console.error('quote failed:', sym, e.message); }
+  }));
   if (!Object.keys(out).length) throw new Error('no quotes returned');
   return out;
 }
