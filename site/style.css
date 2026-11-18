@@ -132,3 +132,8 @@ h3 { font: 600 16px/1.2 var(--head); margin: 16px 0 6px; color: var(--mut); }
 .lab.country span { font: 600 13px/1 var(--head); letter-spacing: .04em; color: #77777c; }
 .lab.city span { color: #b9b9be; transform: translate(6px, -50%); }
 .lab.city span::before { content: ''; position: absolute; left: -7px; top: 50%; width: 3px; height: 3px; margin-top: -1.5px; border-radius: 50%; background: #b9b9be; }
+
+.plane svg { display: block; fill: #a9c4de; stroke: #101010; stroke-width: 1; paint-order: stroke; opacity: .85; }
+.plane.notable svg { fill: #ffffff; stroke-width: 1.4; opacity: 1; filter: drop-shadow(0 0 3px rgba(207, 230, 255, .8)); }
+.plane.ground svg { opacity: .4; }
+.plane:hover svg { fill: #fff; opacity: 1; }

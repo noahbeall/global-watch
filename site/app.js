@@ -121,8 +121,10 @@
   function drawAircraft() {
     const a = S.aircraft || (S.live && S.live.aircraft) || []; const g = layer('aircraft').group; g.clearLayers();
     a.forEach((p) => {
-      const m = L.circleMarker([p.lat, p.lon], p.notable ? { radius: 5, color: '#fff', weight: 1.5, fillColor: '#cfe6ff', fillOpacity: 1 } : { radius: 2.5, stroke: false, fillColor: '#cfe6ff', fillOpacity: 0.65 }).addTo(g);
-      m.bindPopup(() => pop('Military aircraft', '#cfe6ff', (p.call || p.reg || p.hex) + (p.type ? ' (' + p.type + ')' : ''), [typeof p.alt === 'number' ? num(p.alt) + ' ft' + (p.gs ? ', ' + Math.round(p.gs) + ' kt' : '') : 'On the ground', p.reg ? 'Registration ' + p.reg : ''], 'https://globe.adsbexchange.com/?icao=' + encodeURIComponent(p.hex), 'Track on ADS-B Exchange'));
+      const hasTrack = typeof p.track === 'number'; const size = p.notable ? 22 : 15; const ground = typeof p.alt !== 'number';
+      const shape = hasTrack ? '<path d="M12 1.5l2 7.5 8.5 4.5v2.2L14 13.4l-.5 5.8 2.7 2v1.3L12 21.3l-4.2 1.2v-1.3l2.7-2-.5-5.8-8.5 2.3v-2.2L10 9z"/>' : '<circle cx="12" cy="12" r="5"/>';
+      const m = L.marker([p.lat, p.lon], { keyboard: false, icon: L.divIcon({ className: 'plane' + (p.notable ? ' notable' : '') + (ground ? ' ground' : ''), iconSize: [size, size], html: '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" style="transform:rotate(' + (hasTrack ? Math.round(p.track) : 0) + 'deg)">' + shape + '</svg>' }) }).addTo(g);
+      m.bindPopup(() => pop('Military aircraft', '#cfe6ff', (p.call || p.reg || p.hex) + (p.type ? ' (' + p.type + ')' : ''), [typeof p.alt === 'number' ? num(p.alt) + ' ft' + (p.gs ? ', ' + Math.round(p.gs) + ' kt' : '') + (typeof p.track === 'number' ? ', heading ' + String(Math.round(p.track)).padStart(3, '0') + '°' : '') : 'On the ground', p.reg ? 'Registration ' + p.reg : ''], 'https://globe.adsbexchange.com/?icao=' + encodeURIComponent(p.hex), 'Track on ADS-B Exchange'));
       S.marks.set('p:' + p.hex, m);
     });
     layer('aircraft').count.textContent = a.length || '';
