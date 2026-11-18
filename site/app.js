@@ -4,7 +4,7 @@
     diplo: ['#6ea8ff', 'Diplomacy'], energy: ['#5fd38d', 'Energy'],
   };
   const VIEWS = { world: [[25, 20], 2], ukraine: [[49.5, 36], 5], gulf: [[28.5, 50], 5], redsea: [[17.5, 44], 5], levant: [[32.6, 35.6], 7], eastasia: [[30, 124], 4], europe: [[52, 14], 4], usa: [[39, -97], 4] };
-  const S = { live: null, assessed: null, tab: 'headlines', hf: 'all', quakes: null, aircraft: null, marks: new Map(), adsbDirect: true };
+  const S = { live: null, assessed: null, tab: 'headlines', hf: 'all', quakes: null, aircraft: null, marks: new Map(), adsbDirect: false };
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
   const link = (url, text) => { const ok = /^https?:\/\//.test(String(url)); const a = el(ok ? 'a' : 'span', '', text); if (ok) { a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; } return a; };
@@ -27,7 +27,7 @@
     if (z >= 5) CITIES.forEach((c) => put(c[0], c[1], c[2], 'city'));
   }
   map.on('zoomend moveend', drawLabels);
-  fetch('data/world.json').then((r) => r.json()).then((w) => {
+  fetch('data/world.json?v=4').then((r) => r.json()).then((w) => {
     countries = w;
     L.geoJSON({ type: 'FeatureCollection', features: w.map((c) => ({ type: 'Feature', properties: {}, geometry: c.g })) }, { pane: 'base', interactive: false, style: { color: '#55555a', weight: 0.8, fillColor: '#262628', fillOpacity: 1 } }).addTo(base);
     drawLabels();
@@ -272,7 +272,7 @@
       drawAircraft(); drawReadings(); if (S.tab === 'air') drawList();
     } catch (e) { S.adsbDirect = false; }
   }
-  getJson('data/assessed.json').then((a) => { S.assessed = a; drawAssessed(); drawLevels(); if (S.tab === 'assessed') drawList(); }).catch(() => { $('levels-sub').textContent = 'Ratings failed to load. Reload the page to try again.'; });
+  getJson('data/assessed.json?t=' + Math.floor(Date.now() / 600000)).then((a) => { S.assessed = a; drawAssessed(); drawLevels(); if (S.tab === 'assessed') drawList(); }).catch(() => { $('levels-sub').textContent = 'Ratings failed to load. Reload the page to try again.'; });
   tick(); setInterval(tick, 1000);
   drawTempo(); drawReadings(); drawList(); drawStatus();
   loadLive(); setInterval(loadLive, 60000);
