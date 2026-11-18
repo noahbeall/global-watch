@@ -1,6 +1,6 @@
 :root {
-  --ink: #0d1b2e; --deep: #091425; --panel: #13263f; --raise: #1a3252; --line: #27456b;
-  --text: #e9eff6; --mut: #9db0c7;
+  --ink: #141414; --deep: #0c0c0c; --panel: #1b1b1c; --raise: #2a2a2c; --line: #38383b;
+  --text: #ececec; --mut: #a3a3a6;
   --war: #ff6b5e; --nuclear: #f6b93b; --cyber: #35d0e0; --ai: #a78bfa; --diplo: #6ea8ff; --hazard: #5fd38d; --air: #cfe6ff; --quake: #ffa94d;
   --ui: 'Barlow', system-ui, sans-serif; --head: 'Barlow Condensed', 'Barlow', system-ui, sans-serif;
 }
@@ -58,19 +58,19 @@ h3 { font: 600 16px/1.2 var(--head); margin: 16px 0 6px; color: var(--mut); }
 .readings dd.hot { color: var(--war); } .readings dd.na { color: var(--mut); font-weight: 500; }
 
 .stage { position: relative; min-height: 0; }
-#map { position: absolute; inset: 0; background: #0a1626; }
+#map { position: absolute; inset: 0; background: #101010; }
 .layers { position: absolute; z-index: 1000; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
-.layers button { display: flex; align-items: center; gap: 8px; padding: 5px 11px 5px 9px; border-radius: 999px; border: 1px solid var(--line); background: rgba(13, 27, 46, .88); backdrop-filter: blur(4px); cursor: pointer; font-size: 14px; color: var(--mut); }
+.layers button { display: flex; align-items: center; gap: 8px; padding: 5px 11px 5px 9px; border-radius: 999px; border: 1px solid var(--line); background: rgba(20, 20, 20, .88); backdrop-filter: blur(4px); cursor: pointer; font-size: 14px; color: var(--mut); }
 .layers button i { width: 10px; height: 10px; border-radius: 50%; background: transparent; border: 2px solid var(--c); }
 .layers button[aria-pressed='true'] { color: var(--text); border-color: var(--c); }
 .layers button[aria-pressed='true'] i { background: var(--c); }
 .layers button span { color: var(--mut); font-variant-numeric: tabular-nums; }
-.jump { position: absolute; z-index: 1000; top: 12px; right: 12px; display: flex; gap: 8px; align-items: center; padding: 6px 8px 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(13, 27, 46, .88); backdrop-filter: blur(4px); font-size: 14px; }
+.jump { position: absolute; z-index: 1000; top: 12px; right: 12px; display: flex; gap: 8px; align-items: center; padding: 6px 8px 6px 12px; border-radius: 8px; border: 1px solid var(--line); background: rgba(20, 20, 20, .88); backdrop-filter: blur(4px); font-size: 14px; }
 .jump label { color: var(--mut); }
 .jump select, .jump button { background: var(--raise); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; cursor: pointer; }
 .jump button[aria-pressed='true'] { border-color: var(--cyber); }
 
-.leaflet-container { font: inherit; background: #0a1626; }
+.leaflet-container { font: inherit; background: #101010; }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); border: 1px solid var(--line); box-shadow: 0 10px 28px rgba(0, 0, 0, .5); }
 .leaflet-popup-content-wrapper { border-radius: 8px; }
 .leaflet-popup-content { margin: 12px 14px; font-size: 14px; line-height: 1.4; min-width: 200px; }
@@ -81,9 +81,9 @@ h3 { font: 600 16px/1.2 var(--head); margin: 16px 0 6px; color: var(--mut); }
 .pop p { margin: 0 0 6px; color: var(--mut); }
 .pop a { color: var(--cyber); }
 .leaflet-control-zoom a { background: var(--panel) !important; color: var(--text) !important; border-color: var(--line) !important; }
-.leaflet-control-attribution { background: rgba(9, 20, 37, .75) !important; color: var(--mut) !important; }
+.leaflet-control-attribution { background: rgba(12, 12, 12, .75) !important; color: var(--mut) !important; }
 .leaflet-control-attribution a { color: var(--mut) !important; }
-.cl { display: grid; place-items: center; border-radius: 50%; color: #0d1b2e; font: 600 13px/1 var(--ui); border: 2px solid rgba(13, 27, 46, .7); }
+.cl { display: grid; place-items: center; border-radius: 50%; color: #141414; font: 600 13px/1 var(--ui); border: 2px solid rgba(20, 20, 20, .7); }
 @media (prefers-reduced-motion: no-preference) {
   .pulse { border-radius: 50%; border: 2px solid var(--war); animation: pulse 2.4s ease-out infinite; }
   @keyframes pulse { from { transform: scale(.5); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }

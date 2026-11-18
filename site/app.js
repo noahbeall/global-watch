@@ -82,7 +82,7 @@
     const hs = (v.headlines || []).filter((h) => typeof h.lat === 'number');
     hs.forEach((h, i) => {
       const c = (DOM[h.domain] || DOM.war)[0]; const j = (i % 7) * 0.9;
-      const m = L.circleMarker([h.lat + 0.12 * Math.sin(j), h.lon + 0.16 * Math.cos(j)], { radius: 6, color: '#0d1b2e', weight: 1, fillColor: c, fillOpacity: 0.9, dom: h.domain });
+      const m = L.circleMarker([h.lat + 0.12 * Math.sin(j), h.lon + 0.16 * Math.cos(j)], { radius: 6, color: '#141414', weight: 1, fillColor: c, fillOpacity: 0.9, dom: h.domain });
       m.bindPopup(() => pop((DOM[h.domain] || DOM.war)[1] + ' headline, ' + ago(h.t), c, h.title, ['Placed at ' + h.place + ' from the headline text'], h.url, h.source || 'Read story'));
       cluster.addLayer(m); S.marks.set('h:' + h.id, m);
     });
@@ -166,7 +166,7 @@
     if (S.tab === 'sources') return;
     const out = [];
     if (S.tab === 'headlines') {
-      [['all', 'All', '#e9eff6'], ...['war', 'nuclear', 'cyber', 'ai'].map((k) => [k, DOM[k][1], DOM[k][0]])].forEach(([k, name, c]) => {
+      [['all', 'All', '#ececec'], ...['war', 'nuclear', 'cyber', 'ai'].map((k) => [k, DOM[k][1], DOM[k][0]])].forEach(([k, name, c]) => {
         const b = el('button', '', name); b.type = 'button'; b.style.setProperty('--c', c); b.setAttribute('aria-pressed', String(S.hf === k));
         b.addEventListener('click', () => { S.hf = k; drawList(); }); chips.append(b);
       });
