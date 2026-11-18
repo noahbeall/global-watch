@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Watch</title>
+<meta name="description" content="Live open-source monitor of conflict, nuclear, cyber, AI and natural-hazard activity worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="vendor/MarkerCluster.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Global Watch</h1>
+  <details class="status" id="status">
+    <summary><span class="dot" id="status-dot"></span><span id="status-text">Connecting to feeds…</span></summary>
+    <ul id="status-list"></ul>
+  </details>
+  <time class="utc" id="utc"></time>
+</header>
+
+<main class="deck">
+  <aside class="rail" aria-label="Threat picture">
+    <section>
+      <h2>Threat levels</h2>
+      <p class="sub" id="levels-sub">Analyst ratings from 1 to 5</p>
+      <div id="levels"></div>
+    </section>
+    <section>
+      <h2>Headline tempo</h2>
+      <p class="sub">Stories in the last 24 hours, by domain</p>
+      <div id="tempo"></div>
+    </section>
+    <section>
+      <h2>Readings</h2>
+      <dl class="readings" id="readings"></dl>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Map">
+    <div id="map"></div>
+    <div class="layers" id="layers" role="group" aria-label="Map layers"></div>
+    <div class="jump">
+      <label for="theater">Go to</label>
+      <select id="theater">
+        <option value="world">World</option>
+        <option value="ukraine">Ukraine and Russia</option>
+        <option value="gulf">Iran and the Gulf</option>
+        <option value="redsea">Yemen and the Red Sea</option>
+        <option value="levant">Israel, Gaza, Lebanon</option>
+        <option value="eastasia">Taiwan and Korea</option>
+        <option value="europe">Europe</option>
+        <option value="usa">United States</option>
+      </select>
+      <button type="button" id="basemap" aria-pressed="false">Light map</button>
+    </div>
+  </section>
+
+  <aside class="feed" aria-label="Feeds">
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="headlines" aria-selected="true">Headlines</button>
+      <button role="tab" data-tab="assessed" aria-selected="false">Key events</button>
+      <button role="tab" data-tab="cyber" aria-selected="false">Cyber</button>
+      <button role="tab" data-tab="air" aria-selected="false">Aircraft</button>
+      <button role="tab" data-tab="sources" aria-selected="false">Sources</button>
+    </div>
+    <div class="chips" id="hfilter" role="group" aria-label="Filter headlines"></div>
+    <div class="list" id="list" role="tabpanel"></div>
+    <div class="list" id="sources" role="tabpanel" hidden>
+      <p class="note">These are the primary sources behind this page and others worth opening directly.</p>
+      <h3>On this map</h3>
+      <ul>
+        <li><a href="https://news.google.com" target="_blank" rel="noopener">Google News</a>, <a href="https://www.bbc.com/news/world" target="_blank" rel="noopener">BBC</a> and <a href="https://www.aljazeera.com" target="_blank" rel="noopener">Al Jazeera</a> feeds for headlines, placed by the location named in the headline</li>
+        <li><a href="https://adsb.lol" target="_blank" rel="noopener">adsb.lol</a> for military aircraft that broadcast their position</li>
+        <li><a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank" rel="noopener">USGS</a> for earthquakes of magnitude 4.5 and above</li>
+        <li><a href="https://eonet.gsfc.nasa.gov" target="_blank" rel="noopener">NASA EONET</a> for wildfires, storms and volcanoes</li>
+        <li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">CISA KEV</a> for software flaws under active attack</li>
+        <li><a href="https://www.ransomware.live" target="_blank" rel="noopener">Ransomware.live</a> for victims posted on leak sites</li>
+        <li><a href="https://www.swpc.noaa.gov" target="_blank" rel="noopener">NOAA Space Weather</a> for the geomagnetic Kp index</li>
+        <li><a href="https://stooq.com" target="_blank" rel="noopener">Stooq</a> for oil, gas, gold and volatility quotes</li>
+      </ul>
+      <h3>Conflict</h3>
+      <ul>
+        <li><a href="https://liveuamap.com" target="_blank" rel="noopener">Liveuamap</a> geolocated incident reports</li>
+        <li><a href="https://www.understandingwar.org" target="_blank" rel="noopener">ISW</a> daily campaign assessments</li>
+        <li><a href="https://deepstatemap.live" target="_blank" rel="noopener">DeepStateMap</a> the Ukrainian front line</li>
+        <li><a href="https://firms.modaps.eosdis.nasa.gov/map/" target="_blank" rel="noopener">NASA FIRMS</a> satellite heat detections of strikes and fires</li>
+        <li><a href="https://acleddata.com" target="_blank" rel="noopener">ACLED</a> coded conflict events</li>
+      </ul>
+      <h3>Air, sea and signals</h3>
+      <ul>
+        <li><a href="https://globe.adsbexchange.com" target="_blank" rel="noopener">ADS-B Exchange</a> unfiltered aircraft tracking</li>
+        <li><a href="https://gpsjam.org" target="_blank" rel="noopener">GPSJam</a> daily GPS interference map</li>
+        <li><a href="https://portwatch.imf.org" target="_blank" rel="noopener">IMF PortWatch</a> chokepoint transit counts</li>
+        <li><a href="https://www.ukmto.org" target="_blank" rel="noopener">UKMTO</a> shipping attack warnings</li>
+        <li><a href="https://msi.nga.mil" target="_blank" rel="noopener">NGA maritime warnings</a> sea closures before missile tests</li>
+      </ul>
+      <h3>Nuclear</h3>
+      <ul>
+        <li><a href="https://www.iaea.org/newscenter" target="_blank" rel="noopener">IAEA</a> inspection and plant safety updates</li>
+        <li><a href="https://thebulletin.org/doomsday-clock/" target="_blank" rel="noopener">Bulletin of the Atomic Scientists</a> the Doomsday Clock</li>
+        <li><a href="https://www.armscontrol.org" target="_blank" rel="noopener">Arms Control Association</a> treaties and missile tests</li>
+        <li><a href="https://www.38north.org" target="_blank" rel="noopener">38 North</a> North Korean site imagery</li>
+      </ul>
+      <h3>Cyber and internet</h3>
+      <ul>
+        <li><a href="https://radar.cloudflare.com" target="_blank" rel="noopener">Cloudflare Radar</a> outages and attack traffic</li>
+        <li><a href="https://ioda.live" target="_blank" rel="noopener">IODA</a> internet shutdowns by country</li>
+        <li><a href="https://netblocks.org" target="_blank" rel="noopener">NetBlocks</a> confirmed blackouts</li>
+        <li><a href="https://viz.greynoise.io" target="_blank" rel="noopener">GreyNoise</a> mass-scanning surges</li>
+      </ul>
+      <h3>AI, grid and early warning</h3>
+      <ul>
+        <li><a href="https://incidentdatabase.ai" target="_blank" rel="noopener">AI Incident Database</a> documented harms</li>
+        <li><a href="https://metr.org" target="_blank" rel="noopener">METR</a> capability evaluations</li>
+        <li><a href="https://www.oe.netl.doe.gov/OE417_annual_summary.aspx" target="_blank" rel="noopener">DOE OE-417</a> US grid disturbance reports</li>
+        <li><a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html" target="_blank" rel="noopener">State Department advisories</a> embassy drawdowns</li>
+        <li><a href="https://polymarket.com" target="_blank" rel="noopener">Polymarket</a> crowd odds on escalation</li>
+      </ul>
+      <p class="note">Headlines are unverified and placed automatically, so a pin shows where a story is about, not an exact location. Aircraft that switch off their transponders do not appear.</p>
+    </div>
+  </aside>
+</main>
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/leaflet.markercluster.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
