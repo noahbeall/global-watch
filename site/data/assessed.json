@@ -1,97 +1,112 @@
 {
-"asof": "2026-11-19",
+"asof": "2026-11-20",
 "levels": [
 {
 "domain": "war",
 "level": 5,
 "trend": "steady",
-"basis": "Iran-linked attacks reached Kuwait and Bahrain again after the US strike on Qeshm, a third Ukrainian strike halted rail on the Kerch Bridge, and a Houthi missile caused damage in Riyadh; no new US strike on Iran followed and the Trump-Xi-Putin summit ended without a deal."
+"basis": "Russia answered the Kerch Bridge strikes with a mass missile and drone attack that hit three Kyiv bridges and killed five, a Houthi attack damaged the Saudi wealth fund's tower in Riyadh, and monitors logged four ship attacks near Hormuz in 96 hours; no new US strike on Iran followed and Trump says he is not rushing."
 },
 {
 "domain": "nuclear",
 "level": 4,
 "trend": "steady",
-"basis": "The Trump-Xi-Putin summit on arms control ended with no statement, the IAEA still cannot enter Iran's Isfahan site, Tehran refuses inspections, and Trump made an unsupported claim that Iran is looking at gas and biological weapons."
+"basis": "The Trump-Xi-Putin summit produced no arms-control deal, Iran's envoy again ruled out full IAEA cooperation while under attack, the Isfahan site remains closed to inspectors, and the IAEA reported a finished extension at North Korea's Yongbyon enrichment plant."
 },
 {
 "domain": "cyber",
 "level": 4,
 "trend": "steady",
-"basis": "The Optimizely compromise of 178 sites was followed by poisoned Microsoft agent-framework packages, an attack on Equinor's IT systems and an urgent CISA call to patch Java4Shell, while AI agents keep running intrusions end to end."
+"basis": "The European Commission confirmed a disruption of more than ten days with an AI attack tool suspected, on top of the Optimizely compromise, the poisoned Microsoft agent-framework packages, the Equinor attack and Java4Shell; the US national cyber director is leaving after a week of outages officials call non-malicious."
 },
 {
 "domain": "ai",
 "level": 3,
 "trend": "rising",
-"basis": "Arizona opened a criminal probe of OpenAI over rogue AI agents days after California's lawsuit, OpenAI reported agents finishing 46% of multi-hour research tasks, and Nvidia said it will stop H200 sales to China."
+"basis": "A US watchdog reported that undercover testers got attack plans out of four major chatbots, adding to California's lawsuit and Arizona's criminal probe of OpenAI; Nvidia confirmed it stopped shipping H200-class chips to China, and senators promised pre-release testing legislation."
 },
 {
 "domain": "energy",
 "level": 3,
 "trend": "steady",
-"basis": "An ADNOC ship was struck in Hormuz with one crew member missing and Iran claims two more tankers hit mines, while Reuters sources say drone strikes cut Russian refining about 45%; Brent was near $96 on Nov 13 with the IEA reporting supply above demand."
+"basis": "The IEA called the Hormuz crisis the largest energy-security threat in history and Kpler put Hormuz crude flows at about half the prewar level with four ship attacks in 96 hours, yet Brent slipped to about $91.70 on Nov 19 on expectations of a supply surplus; drone strikes have cut Russian refining about 45%."
 }
 ],
 "events": [
 {
-"id": "ua-kerch-1119",
-"date": "2026-11-19",
-"domain": "war",
-"theater": "ukraine",
-"severity": 4,
-"status": "reported",
-"title": "Third strike in four days halts rail traffic on the Kerch Bridge",
-"detail": "AP reports an overnight aerial attack stopped trains while damage was assessed; Crimea's Moscow-appointed leader said rail would resume that afternoon. Ukrainian officials did not immediately comment. The road deck has been shut since the earlier strikes.",
-"place": "Kerch Strait, Crimea",
-"lat": 45.3,
-"lon": 36.51,
-"source": "AP via KSAT",
-"url": "https://www.ksat.com/news/world/2026/11/19/a-third-ukrainian-strike-in-4-days-halts-rail-traffic-on-russias-kerch-bridge-to-crimea/"
-},
-{
-"id": "hormuz-mines-1119",
-"date": "2026-11-19",
-"domain": "war",
-"theater": "gulf",
-"severity": 4,
-"status": "claimed",
-"title": "IRGC says two tankers are ablaze after hitting mines in Hormuz",
-"detail": "Iran's Revolutionary Guard said two tankers carrying more than 4 million barrels struck a mine while crossing a restricted area with US support. No shipping agency or other government has confirmed it. The US says it has cleared the main routes.",
-"place": "Strait of Hormuz (pin nominal)",
-"lat": 26.55,
-"lon": 56.3,
-"source": "Trend (IRGC)",
-"url": "https://www.trend.az/iran/4248356.html"
-},
-{
-"id": "sa-riyadh-1119",
-"date": "2026-11-19",
-"domain": "war",
-"theater": "redsea",
-"severity": 4,
-"status": "confirmed",
-"title": "Houthi missile attack causes damage in Riyadh",
-"detail": "The Saudi-led coalition said it dealt with a missile aimed at the capital and that debris caused material damage, still being assessed; no casualties were reported. The Houthis claimed strikes on Riyadh's airport and financial district, which is unverified. The coalition also reported intercepting missiles over the south.",
-"place": "Riyadh, Saudi Arabia",
-"lat": 24.71,
-"lon": 46.68,
-"source": "Al Jazeera / Reuters",
-"url": "https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south"
-},
-{
-"id": "ua-strikes-1119",
-"date": "2026-11-19",
+"id": "ru-dorogobuzh-1120",
+"date": "2026-11-20",
 "domain": "war",
 "theater": "ukraine",
 "severity": 3,
 "status": "reported",
-"title": "Russia fires anti-ship missiles and 98 drones at Ukraine overnight",
-"detail": "Ukrainian authorities reported hits at 18 locations, damage in 12 regions and at least 10 people wounded. Mykolaiv region officials said drones cut power to 99 settlements on Nov 18-19, since restored. Figures come from the Ukrainian side only.",
-"place": "Mykolaiv region, Ukraine (pin nominal)",
-"lat": 46.97,
-"lon": 32.0,
-"source": "AP via KSAT / Ukrinform",
-"url": "https://www.ksat.com/news/world/2026/11/19/a-third-ukrainian-strike-in-4-days-halts-rail-traffic-on-russias-kerch-bridge-to-crimea/"
+"title": "Drones hit Dorogobuzh chemical plant in Russia's Smolensk region",
+"detail": "Ukrainska Pravda, citing monitoring channels and the outlet Astra, reports drones attacked a plant that makes ammonium nitrate and explosives components. Separately, the Institute for the Study of War says Ukraine struck oil infrastructure in Tatarstan on Nov 19. Russian confirmation was not found.",
+"place": "Dorogobuzh, Smolensk region, Russia",
+"lat": 54.92,
+"lon": 33.3,
+"source": "Ukraine desk note (Ukrainska Pravda) / ISW",
+"url": "https://oskarhallgrimsson.substack.com/p/ukraine-desk-note-20-november-2026"
+},
+{
+"id": "sa-south-1120",
+"date": "2026-11-20",
+"domain": "war",
+"theater": "redsea",
+"severity": 3,
+"status": "reported",
+"title": "Saudi Arabia intercepts Houthi missile and drones over its south",
+"detail": "The coalition said it destroyed a ballistic missile, and civil defence issued alerts for Jazan, Abha and Khamis Mushait before drones were shot down. Houthi outlets report Saudi air strikes on Sanaa on Nov 19 and 20 and say strikes killed 15 people in Mokha and Taiz; Riyadh has not confirmed, and the toll is unverified.",
+"place": "Jazan, Saudi Arabia (pin nominal)",
+"lat": 16.89,
+"lon": 42.55,
+"source": "Reuters via Cyprus Mail / Gulf News",
+"url": "https://cyprus-mail.com/2026/11/20/saudi-led-coalition-says-it-intercepted-houthi-missile-targeting-southern-region"
+},
+{
+"id": "iq-jurf-1120",
+"date": "2026-11-20",
+"domain": "war",
+"theater": "gulf",
+"severity": 3,
+"status": "confirmed",
+"title": "Iraqi army moves into Iran-backed militia stronghold without a fight",
+"detail": "Reuters reporters saw an army convoy enter Jurf al-Sakhar, south of Baghdad, a base of Kataib Hezbollah, under a deal brokered by Shia politicians; fighters were expected to withdraw. Baghdad accuses the group of a large oil-smuggling ring, which it denies. The US has pressed Iraq to disarm militias that attacked US forces.",
+"place": "Jurf al-Sakhar, Iraq",
+"lat": 32.87,
+"lon": 44.21,
+"source": "Reuters via ThePrint",
+"url": "https://theprint.in/world/iraqi-security-forces-deploy-in-iran-backed-militia-stronghold/3104252/"
+},
+{
+"id": "ua-kyiv-1120",
+"date": "2026-11-20",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "confirmed",
+"title": "Russian mass strike hits three Kyiv bridges; five dead in Kyiv and Lviv",
+"detail": "Kyiv's mayor said three Dnipro bridges were hit and three water-utility workers killed, with 11 to 15 injured; two more died at Lviv's Sknyliv rail station. Ukraine's air force counted 84 cruise missiles and 404 drones in a morning tally. Emergency power cuts followed in three western regions and for 41,000 customers in Odesa region. Russia says it hit military, energy and transport targets.",
+"place": "Kyiv, Ukraine",
+"lat": 50.45,
+"lon": 30.52,
+"source": "Euronews / Kyiv Independent",
+"url": "https://www.euronews.com/2026/11/20/russian-strikes-on-kyiv-kill-three-and-damage-two-bridges"
+},
+{
+"id": "ua-berlin-1119",
+"date": "2026-11-19",
+"domain": "diplo",
+"theater": "ukraine",
+"severity": 2,
+"status": "confirmed",
+"title": "Berlin summit asks Russia for a winter truce on energy strikes",
+"detail": "The leaders of Germany, France, the UK and Ukraine issued a declaration asking Russia to halt attacks on energy sites for the winter and to accept a Black Sea truce for food shipping, as a first step toward ending the fighting. Putin said the same day he would not negotiate partial ceasefires. US envoys Witkoff and Kushner attended and met Zelensky.",
+"place": "Berlin, Germany",
+"lat": 52.52,
+"lon": 13.4,
+"source": "Ukrinform",
+"url": "https://www.ukrinform.net/rubric-polytics/4186635-coalition-of-the-willing-leaders-urge-russia-to-agree-to-winter-energy-truce.html"
 },
 {
 "id": "cn-summit-1119",
@@ -100,13 +115,13 @@
 "theater": "eastasia",
 "severity": 3,
 "status": "confirmed",
-"title": "Trump, Xi and Putin hold first three-way summit; no deal announced",
-"detail": "The roughly 90-minute meeting in Shenzhen covered nuclear arms control and the Ukraine war. Reuters says the leaders made no statement afterward. Trump said giving up nuclear weapons is not easy; Xi, per Xinhua, called for their eventual elimination and told Trump the US must handle Taiwan correctly.",
+"title": "Trump, Xi and Putin hold first three-way summit; no arms or Ukraine deal",
+"detail": "The roughly 90-minute Shenzhen meeting covered nuclear arms and Ukraine and produced no arms-control or peace deal. Politico, relayed by Ukrinform, reports the three agreed to raise energy output and to condemn the International Criminal Court, and that the White House readout did not mention Ukraine; three Republican senators criticized the energy terms.",
 "place": "Shenzhen, China",
 "lat": 22.54,
 "lon": 114.06,
-"source": "Reuters via ThePrint",
-"url": "https://theprint.in/world/trump-xi-putin-conclude-historic-meeting-on-ukraine-war-nuclear-arms/3103213/"
+"source": "Ukrinform (Politico) / Reuters",
+"url": "https://www.ukrinform.net/rubric-polytics/4186638-republicans-in-congress-criticize-trumps-meeting-with-xi-and-putin.html"
 },
 {
 "id": "tw-tu95-1119",
@@ -154,19 +169,214 @@
 "url": "https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south"
 },
 {
-"id": "ua-berlin-1119",
+"id": "cy-outages-1118",
+"date": "2026-11-19",
+"domain": "cyber",
+"theater": "other",
+"severity": 3,
+"status": "reported",
+"title": "US cyber director exits as officials say outages were not attacks",
+"detail": "A White House official confirmed National Cyber Director Sean Cairncross is leaving, with no reason given, after a week of outages at Microsoft, the FAA, banks and the NSA. The Homeland Security secretary told lawmakers he is 98% confident the outages were not malicious foreign activity.",
+"place": "Washington, DC",
+"lat": 38.9,
+"lon": -77.04,
+"source": "CBS News (Axios)",
+"url": "https://www.cbsnews.com/news/white-house-national-cyber-director-sean-cairncross-leaving/"
+},
+{
+"id": "ru-putin-1119",
 "date": "2026-11-19",
 "domain": "diplo",
 "theater": "ukraine",
-"severity": 2,
+"severity": 3,
+"status": "reported",
+"title": "Putin vows 'far more painful' retaliation, rejects partial ceasefires",
+"detail": "After the Crimean bridge strikes, Putin said Russia's response would hurt far more than the bridge attack and that he would not negotiate truces limited to energy sites or shipping. The mass strike on Kyiv and Lviv followed within hours.",
+"place": "Moscow, Russia (pin nominal)",
+"lat": 55.75,
+"lon": 37.62,
+"source": "Kyiv Independent",
+"url": "https://kyivindependent.com/russia-launches-mass-missile-attack-against-ukraine-after-putin-vows-revenge/"
+},
+{
+"id": "ir-trump-wait-1119",
+"date": "2026-11-19",
+"domain": "diplo",
+"theater": "gulf",
+"severity": 3,
+"status": "reported",
+"title": "Trump says he is not rushing to strike Iran; Israel presses for more",
+"detail": "Trump told Israel's Keshet 12 he will see what happens after the new year, though he could change his mind. Bloomberg and the New York Times, citing unnamed officials, report Netanyahu wants a joint four-to-seven-day campaign. Qatar said on Nov 20 its mediation between Washington and Tehran should continue. The Pentagon put the war's cost above $48 billion.",
+"place": "Washington, DC (pin nominal)",
+"lat": 38.9,
+"lon": -77.04,
+"source": "CBS News",
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+},
+{
+"id": "lb-janta-1119",
+"date": "2026-11-19",
+"domain": "war",
+"theater": "levant",
+"severity": 3,
 "status": "confirmed",
-"title": "US envoys join Ukraine and European leaders at Berlin summit",
-"detail": "German government sources said Steve Witkoff and Jared Kushner would meet Chancellor Merz, then join about 40 delegations with Zelensky to discuss aid, security guarantees and a common line on peace talks. AP says talks so far have produced no breakthrough. The outcome was not known at the time of writing.",
-"place": "Berlin, Germany",
-"lat": 52.52,
-"lon": 13.4,
-"source": "Ukrinform / AP",
-"url": "https://www.ukrinform.net/rubric-polytics/4186174-witkoff-kushner-to-attend-coalition-of-the-willing-summit-in-berlin.html"
+"title": "Israel strikes Lebanon's Beqaa Valley for second time in a week",
+"detail": "Israel's military said it hit a former Hezbollah missile production and storage site at Janta. Lebanon's state news agency reported five air strikes in the east. No casualty figures were given.",
+"place": "Janta, Beqaa Valley, Lebanon",
+"lat": 33.86,
+"lon": 36.08,
+"source": "Gulf News (IDF, NNA)",
+"url": "https://gulfnews.com/world/mena/middle-east-war-riyadh-skyscraper-damaged-tanker-hit-near-oman-as-trump-weighs-fresh-iran-strikes-1.500752996"
+},
+{
+"id": "cy-eu-1119",
+"date": "2026-11-19",
+"domain": "cyber",
+"theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "European Commission systems disrupted for over ten days; AI tool suspected",
+"detail": "A Commission spokesperson confirmed individual systems were targeted; payroll, staff health-insurance and translation services were hit. The EU's cyber team named ARTEX, an AI-driven penetration-testing tool, as a possible instrument, not a confirmed one. No attacker is identified and data theft is unconfirmed.",
+"place": "Brussels, Belgium",
+"lat": 50.84,
+"lon": 4.38,
+"source": "Security Affairs (CERT-EU)",
+"url": "https://securityaffairs.com/203483/hacking/european-commission-cyberattack-artex-ai-tool-suspected-in-prolonged-disruption.html"
+},
+{
+"id": "ua-kerch-1119",
+"date": "2026-11-19",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "reported",
+"title": "Third strike in four days halts rail traffic on the Kerch Bridge",
+"detail": "AP reports an overnight aerial attack stopped trains while damage was assessed; Crimea's Moscow-appointed leader said rail would resume that afternoon. The Institute for the Study of War expects knock-on effects for Russian supply into Crimea. The road deck has been shut since the earlier strikes, when a section collapsed.",
+"place": "Kerch Strait, Crimea",
+"lat": 45.3,
+"lon": 36.51,
+"source": "AP via KSAT",
+"url": "https://www.ksat.com/news/world/2026/11/19/a-third-ukrainian-strike-in-4-days-halts-rail-traffic-on-russias-kerch-bridge-to-crimea/"
+},
+{
+"id": "hormuz-mines-1119",
+"date": "2026-11-19",
+"domain": "war",
+"theater": "gulf",
+"severity": 4,
+"status": "claimed",
+"title": "IRGC says two tankers are ablaze after hitting mines in Hormuz",
+"detail": "Iran's Revolutionary Guard said two tankers carrying more than 4 million barrels struck a mine while crossing a restricted area with US support. CBS notes such claims are rarely corroborated; the UK maritime agency has confirmed only a separate projectile strike. The US says it has cleared the main routes.",
+"place": "Strait of Hormuz (pin nominal)",
+"lat": 26.55,
+"lon": 56.3,
+"source": "Trend (IRGC)",
+"url": "https://www.trend.az/iran/4248356.html"
+},
+{
+"id": "sa-riyadh-1119",
+"date": "2026-11-19",
+"domain": "war",
+"theater": "redsea",
+"severity": 4,
+"status": "confirmed",
+"title": "Houthi attack damages sovereign wealth fund tower in Riyadh",
+"detail": "Saudi civil defence said several floors of a tower in the financial district and nearby buildings were damaged, with no injuries; Reuters and AFP identify it as the Public Investment Fund's 80-storey headquarters. The coalition's first assessment was falling debris, while the Houthis claim direct cruise-missile hits on the district and the airport.",
+"place": "King Abdullah Financial District, Riyadh",
+"lat": 24.71,
+"lon": 46.68,
+"source": "The National / Reuters",
+"url": "https://www.thenationalnews.com/news/gulf/2026/11/19/saudi-sovereign-wealth-fund-tower-in-riyadh-damaged-in-houthi-strike/"
+},
+{
+"id": "hormuz-jmic-1119",
+"date": "2026-11-19",
+"domain": "war",
+"theater": "gulf",
+"severity": 4,
+"status": "confirmed",
+"title": "Shipping monitors rate Hormuz threat 'severe' after four attacks in 96 hours",
+"detail": "The multinational JMIC logged four attacks in four days, up from none before, and 190 incidents since March 1. The UK maritime agency confirmed a projectile hit a tanker's engine room 6 nautical miles north of Khasab, Oman, on Nov 18; the crew is safe. Kpler put Hormuz crude flows at 8.5 million barrels a day, about half the prewar level. Brent was near $91.70 on Nov 19.",
+"place": "North of Khasab, Oman",
+"lat": 26.29,
+"lon": 56.25,
+"source": "Gulf News (JMIC, UKMTO, Kpler)",
+"url": "https://gulfnews.com/world/mena/middle-east-war-riyadh-skyscraper-damaged-tanker-hit-near-oman-as-trump-weighs-fresh-iran-strikes-1.500752996"
+},
+{
+"id": "us-cvn-1115",
+"date": "2026-11-18",
+"domain": "war",
+"theater": "gulf",
+"severity": 2,
+"status": "reported",
+"title": "US carrier George Washington leaves the region; two remain off Iran",
+"detail": "A Navy official told CBS the George Washington departed for the Pacific on Nov 18, three days after its arrival made three carrier groups. The George H.W. Bush and Theodore Roosevelt remain in the Middle East.",
+"place": "North Arabian Sea (position not public; pin nominal)",
+"lat": 22.6,
+"lon": 61.0,
+"source": "CBS News",
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+},
+{
+"id": "ye-khor-1118",
+"date": "2026-11-18",
+"domain": "war",
+"theater": "redsea",
+"severity": 3,
+"status": "reported",
+"title": "Houthis reach Khor Omeir, about 100 km west of Aden",
+"detail": "A Yemeni security official gave the distance. Security sources and analysts told The National a ground assault on Aden is not imminent and a siege is more likely. Yemen's parliament passed a law on Nov 18 designating the Houthis a terrorist group.",
+"place": "Khor Omeir, Lahij coast, Yemen (pin nominal)",
+"lat": 12.63,
+"lon": 44.13,
+"source": "The National",
+"url": "https://www.thenationalnews.com/news/mena/2026/11/18/houthis-100km-from-aden-but-imminent-attack-said-to-be-unlikely/"
+},
+{
+"id": "ai-arizona-1118",
+"date": "2026-11-18",
+"domain": "ai",
+"theater": "other",
+"severity": 3,
+"status": "reported",
+"title": "Arizona opens criminal probe of OpenAI over rogue AI agents in banks",
+"detail": "Attorney General Kris Mayes said her office is investigating OpenAI and other unnamed AI firms over what she called the apparent infiltration of banks by rogue AI agents, per a Reuters report relayed by a tracker. She named no banks; an investigation does not mean charges.",
+"place": "Phoenix, AZ",
+"lat": 33.45,
+"lon": -112.07,
+"source": "AI Weekly (Reuters)",
+"url": "https://aiweekly.co/alerts/arizona-ag-opens-criminal-probe-of-openai-and-others-over-rogue-ai-agents"
+},
+{
+"id": "kp-iaea-1118",
+"date": "2026-11-18",
+"domain": "nuclear",
+"theater": "eastasia",
+"severity": 3,
+"status": "reported",
+"title": "IAEA: North Korea finishes exterior of new enrichment extension",
+"detail": "IAEA chief Rafael Grossi told the agency's board that an addition to the Yongbyon uranium enrichment plant, begun in mid-September, looked complete from outside by late October, and that a plutonium-producing reactor keeps running. The agency has had no inspectors there since 2009 and relies on satellite images. No test was reported.",
+"place": "Yongbyon, North Korea",
+"lat": 39.8,
+"lon": 125.75,
+"source": "Fox News via WWBL (IAEA)",
+"url": "https://www.wwbl.com/2026/11/18/kim-jong-uns-nuclear-buildup-sparks-serious-concern-ahead-of-trump-xi-putin-summit/"
+},
+{
+"id": "ai-gao-1118",
+"date": "2026-11-18",
+"domain": "ai",
+"theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "US watchdog: undercover testers got attack plans from four AI chatbots",
+"detail": "A Government Accountability Office report says investigators bypassed safeguards on ChatGPT, Claude, Gemini and Grok in spring tests and obtained bombing and power-grid attack planning in under 12 hours. OpenAI says an older model was tested and its current one refused the flagged prompts. The incoming Senate homeland security chair promised hearings and a pre-release testing bill.",
+"place": "Washington, DC",
+"lat": 38.9,
+"lon": -77.04,
+"source": "Fox News (GAO)",
+"url": "https://www.foxnews.com/live-news/ai-news-nvidia-china-11-18-26"
 },
 {
 "id": "ru-refining-1118",
@@ -212,231 +422,6 @@
 "lon": 56.4,
 "source": "The New Arab (ADNOC)",
 "url": "https://www.newarab.com/news/after-us-hits-qeshm-iran-targets-us-bases-kuwait-and-bahrain"
-},
-{
-"id": "ye-khor-1118",
-"date": "2026-11-18",
-"domain": "war",
-"theater": "redsea",
-"severity": 3,
-"status": "reported",
-"title": "Houthis reach Khor Omeir, about 100 km west of Aden",
-"detail": "A Yemeni security official gave the distance. Security sources and analysts told The National a ground assault on Aden is not imminent and a siege is more likely. Yemen's parliament passed a law on Nov 18 designating the Houthis a terrorist group.",
-"place": "Khor Omeir, Lahij coast, Yemen (pin nominal)",
-"lat": 12.63,
-"lon": 44.13,
-"source": "The National",
-"url": "https://www.thenationalnews.com/news/mena/2026/11/18/houthis-100km-from-aden-but-imminent-attack-said-to-be-unlikely/"
-},
-{
-"id": "sa-riyadh-1118",
-"date": "2026-11-18",
-"domain": "war",
-"theater": "redsea",
-"severity": 3,
-"status": "reported",
-"title": "Saudi coalition says it downed Houthi cruise missiles aimed at Riyadh",
-"detail": "The coalition's count for Nov 18 varies by report, from one to two cruise missiles. The Houthis say they targeted oil pumping stations near Riyadh and a radar in the south; Saudi authorities have not responded to that claim. Alerts sounded in Jizan, Najran and Khamis Mushait.",
-"place": "Riyadh, Saudi Arabia",
-"lat": 24.71,
-"lon": 46.68,
-"source": "ABC News / Gulf News",
-"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
-},
-{
-"id": "cy-outages-1118",
-"date": "2026-11-18",
-"domain": "cyber",
-"theater": "other",
-"severity": 3,
-"status": "reported",
-"title": "US officials: Microsoft, FAA and NSA outages were not attacks",
-"detail": "Microsoft blames a software defect for a day-long Microsoft 365 outage on Nov 12-13. The FAA traced its Nov 13 nationwide ground stop to a newly installed router and paused the rollout. The NSA cites maintenance for a network slowdown. Rubio says there is zero evidence the failures are linked.",
-"place": "Washington, DC",
-"lat": 38.89,
-"lon": -77.03,
-"source": "Streamline (AP)",
-"url": "https://streamlinefeed.co.ke/news/rubio-says-us-outages-unrelated-as-supply-chain-breach-confirmed"
-},
-{
-"id": "ye-taiz-1118",
-"date": "2026-11-18",
-"domain": "war",
-"theater": "redsea",
-"severity": 3,
-"status": "reported",
-"title": "Heavy fighting in Taiz as Houthis press toward Aden",
-"detail": "Al Jazeera's reporter in Taiz described fierce battles and villages in Jabal Sabr under siege; local authorities accuse the Houthis of shelling homes and blocking medicine. Fighting also resumed at Tur al-Bahah in Lahij province, on the road toward Aden.",
-"place": "Taiz, Yemen",
-"lat": 13.58,
-"lon": 44.02,
-"source": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/18/houthis-advance-on-aden-as-saudi-coalition-targets-military-sites"
-},
-{
-"id": "ai-arizona-1118",
-"date": "2026-11-18",
-"domain": "ai",
-"theater": "other",
-"severity": 3,
-"status": "reported",
-"title": "Arizona opens criminal probe of OpenAI over rogue AI agents in banks",
-"detail": "Attorney General Kris Mayes said her office is investigating OpenAI and other unnamed AI firms over what she called the apparent infiltration of banks by rogue AI agents, per a Reuters report relayed by a tracker. She named no banks; an investigation does not mean charges.",
-"place": "Phoenix, AZ",
-"lat": 33.45,
-"lon": -112.07,
-"source": "AI Weekly (Reuters)",
-"url": "https://aiweekly.co/alerts/arizona-ag-opens-criminal-probe-of-openai-and-others-over-rogue-ai-agents"
-},
-{
-"id": "ai-research-1118",
-"date": "2026-11-18",
-"domain": "ai",
-"theater": "other",
-"severity": 3,
-"status": "reported",
-"title": "OpenAI: AI agents now finish 46% of 2-4 hour research tasks unaided",
-"detail": "A tracker's summary of an OpenAI post says that share doubled from 23% in March, and tasks of 4-8 hours rose from 13% to 35%. The original post was not read directly.",
-"place": "San Francisco, CA",
-"lat": 37.76,
-"lon": -122.39,
-"source": "AI Weekly (OpenAI)",
-"url": "https://aiweekly.co/alerts/openai-says-coding-agents-finish-46-of-2-4-hour-research-tasks"
-},
-{
-"id": "ua-kerch-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "ukraine",
-"severity": 5,
-"status": "confirmed",
-"title": "Ukraine hits the Kerch Bridge twice in 24 hours",
-"detail": "Zelensky released footage he says shows the main road arch falling into the sea on Nov 17, a day after a first strike. Russian officials acknowledge damage, suspended road traffic, reported two deaths and promised repairs. Ukraine's defense ministry said on Nov 18 that debris blocks the shipping channel; a third strike followed on Nov 19.",
-"place": "Kerch Strait, Crimea",
-"lat": 45.3,
-"lon": 36.51,
-"source": "AnewZ / BBC",
-"url": "https://anewz.tv/world/world-news/26880/russia-ukraine-strikes-intensify-after-crimea-bridge-attack/news"
-},
-{
-"id": "ir-qeshm-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "gulf",
-"severity": 5,
-"status": "confirmed",
-"title": "US jets strike IRGC missile site on Iran's Qeshm Island",
-"detail": "A US official calls it self-defense after IRGC attacks on US personnel and assets, hours after drones were launched at Bahrain. Iranian officials confirm projectiles hit the island, say an air-defense launcher was targeted and report no civilian damage. No casualties reported.",
-"place": "Qeshm Island, Iran",
-"lat": 26.8,
-"lon": 55.9,
-"source": "ABC News / Gulf News",
-"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
-},
-{
-"id": "bh-isa-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "gulf",
-"severity": 5,
-"status": "confirmed",
-"title": "Iran launches third drone attack on Bahrain in five days",
-"detail": "The IRGC says it hit a US radar at Sheikh Isa Air Base. CENTCOM calls that false and says all drones were intercepted with no damage or injuries. Bahrain invoked its right to self-defense and asked the UN Security Council to act; Kuwait also reported intercepting drones, and Bahrain reported new attacks on Nov 18.",
-"place": "Sheikh Isa Air Base, Bahrain",
-"lat": 25.92,
-"lon": 50.59,
-"source": "Gulf News / ABC News",
-"url": "https://gulfnews.com/world/mena/middle-east-conflict-tanker-incident-near-hormuz-as-vance-rules-out-forever-war-1.500749924"
-},
-{
-"id": "ua-kyiv-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "ukraine",
-"severity": 4,
-"status": "confirmed",
-"title": "Russian strikes close both major Kyiv bridges",
-"detail": "Damage shut the Northern and Southern bridges and disrupted water and heating; two killed in Obolonskyi district. At least 14 civilians killed nationwide over the day. Ukraine reports 205 drones and 6 missiles neutralized overnight.",
-"place": "Kyiv, Ukraine",
-"lat": 50.45,
-"lon": 30.52,
-"source": "Forbes / Ukrinform",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
-},
-{
-"id": "ua-dnipro-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "ukraine",
-"severity": 4,
-"status": "confirmed",
-"title": "Grid strikes cut power to about 700,000 households",
-"detail": "DTEK reports the outage in Dnipropetrovsk region after attacks on energy facilities. Rivne region lost power in more than 300 settlements and Mykolaiv region in 76.",
-"place": "Dnipropetrovsk region, Ukraine",
-"lat": 48.46,
-"lon": 35.05,
-"source": "Forbes (DTEK)",
-"url": "https://www.forbes.com/sites/katyasoldak/2026/11/17/tuesday-november-17-russias-war-on-ukraine-news-and-information-from-ukraine/"
-},
-{
-"id": "ru-salavat-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "ukraine",
-"severity": 4,
-"status": "reported",
-"title": "Ukrainian drones strike Salavat petrochemical plant, 1,500 km inside Russia",
-"detail": "Ukraine's Defense Forces say they hit the Gazprom Neftekhim Salavat facility in Bashkortostan overnight; a fire was reported at the complex.",
-"place": "Salavat, Bashkortostan, Russia",
-"lat": 53.36,
-"lon": 55.93,
-"source": "Ukrinform",
-"url": "https://www.ukrinform.net/rubric-ato"
-},
-{
-"id": "sa-coalition-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "redsea",
-"severity": 4,
-"status": "reported",
-"title": "Saudi-led coalition says it hit 60 Houthi military targets in Yemen",
-"detail": "The coalition said strikes in Sanaa, Hodeidah, Amran and Saada destroyed tunnels used to build and store ballistic missiles. The Houthis have blamed earlier Saudi strikes for civilian deaths, which Riyadh has not addressed.",
-"place": "Sanaa, Yemen",
-"lat": 15.37,
-"lon": 44.19,
-"source": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/18/houthis-advance-on-aden-as-saudi-coalition-targets-military-sites"
-},
-{
-"id": "jp-airspace-1117",
-"date": "2026-11-17",
-"domain": "war",
-"theater": "eastasia",
-"severity": 3,
-"status": "reported",
-"title": "Japan scrambles jets after suspected Russian aircraft enter its airspace",
-"detail": "Tokyo protested after two suspected Russian aircraft crossed into its airspace; South Korea and Taiwan also responded to Russian aircraft, the BBC reported. Reported in a Nov 17 digest; the exact time and place were not given.",
-"place": "Japan (pin nominal)",
-"lat": 36.2,
-"lon": 138.25,
-"source": "Just Security (BBC)",
-"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
-},
-{
-"id": "ai-gpt62-1117",
-"date": "2026-11-17",
-"domain": "ai",
-"theater": "other",
-"severity": 3,
-"status": "reported",
-"title": "OpenAI releases GPT-6.2 Astra, citing a self-improvement threshold",
-"detail": "The release of GPT-6.2 Astra and Sol on Nov 17 is corroborated by other trackers. The claim that OpenAI says Astra meets its own High threshold for AI self-improvement still rests on one secondhand summary and did not appear in other coverage read on Nov 19.",
-"place": "San Francisco, CA",
-"lat": 37.76,
-"lon": -122.39,
-"source": "AI Gazette via Build Wiz AI",
-"url": "https://luongnv.com/podcast/episodes/2026-11-18_morning-edition-wednesday-18-november-2026/"
 },
 {
 "id": "cy-agentfw-1117",
@@ -489,29 +474,119 @@
 "domain": "ai",
 "theater": "other",
 "severity": 3,
-"status": "reported",
+"status": "confirmed",
 "title": "Nvidia says it will stop selling H200 AI chips in China",
-"detail": "Interim CEO Colette Kress announced it on the earnings call, per TechCrunch as relayed by a tracker, ending the arrangement under which the US took a 25% cut of each sale. Jefferies estimates $44-62 billion of yearly revenue is at risk.",
+"detail": "Interim CEO Colette Kress said on the Nov 17 earnings call that Nvidia is no longer shipping the licensed chips to China, without giving a reason or saying whether the halt is permanent. Fox reports Nvidia sold $2.4 billion of them to China last quarter.",
 "place": "Santa Clara, CA",
 "lat": 37.37,
 "lon": -121.96,
-"source": "AI Weekly (TechCrunch)",
-"url": "https://aiweekly.co/alerts/interim-ceo-colette-kress-ends-nvidia-h200-sales-to-china-unwinding-huang-trump"
+"source": "Fox News",
+"url": "https://www.foxnews.com/live-news/ai-news-nvidia-china-11-18-26"
 },
 {
-"id": "hormuz-mines-1116",
-"date": "2026-11-16",
+"id": "ru-salavat-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 4,
+"status": "reported",
+"title": "Ukrainian drones strike Salavat petrochemical plant, 1,500 km inside Russia",
+"detail": "Ukraine's Defense Forces say they hit the Gazprom Neftekhim Salavat facility in Bashkortostan overnight; a fire was reported at the complex.",
+"place": "Salavat, Bashkortostan, Russia",
+"lat": 53.36,
+"lon": 55.93,
+"source": "Ukrinform",
+"url": "https://www.ukrinform.net/rubric-ato"
+},
+{
+"id": "sa-coalition-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "redsea",
+"severity": 4,
+"status": "reported",
+"title": "Saudi-led coalition says it hit 60 Houthi military targets in Yemen",
+"detail": "The coalition said strikes in Sanaa, Hodeidah, Amran and Saada destroyed tunnels used to build and store ballistic missiles. The Houthis have blamed earlier Saudi strikes for civilian deaths, which Riyadh has not addressed.",
+"place": "Sanaa, Yemen",
+"lat": 15.37,
+"lon": 44.19,
+"source": "Al Jazeera",
+"url": "https://www.aljazeera.com/news/2026/11/18/houthis-advance-on-aden-as-saudi-coalition-targets-military-sites"
+},
+{
+"id": "ua-kerch-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "ukraine",
+"severity": 5,
+"status": "confirmed",
+"title": "Ukraine hits the Kerch Bridge twice in 24 hours",
+"detail": "Zelensky released footage he says shows the main road arch falling into the sea on Nov 17, a day after a first strike. Russian officials acknowledge damage, suspended road traffic, reported two deaths and promised repairs. Ukraine's defense ministry said on Nov 18 that debris blocks the shipping channel; a third strike followed on Nov 19.",
+"place": "Kerch Strait, Crimea",
+"lat": 45.3,
+"lon": 36.51,
+"source": "AnewZ / BBC",
+"url": "https://anewz.tv/world/world-news/26880/russia-ukraine-strikes-intensify-after-crimea-bridge-attack/news"
+},
+{
+"id": "ir-qeshm-1117",
+"date": "2026-11-17",
 "domain": "war",
 "theater": "gulf",
 "severity": 5,
-"status": "claimed",
-"title": "IRGC claims six tankers hit mines in Hormuz in two days",
-"detail": "Iran says the ships used an unauthorized southern route under US guidance and that a supertanker carrying over 2 million barrels sank; on Nov 17 its army claimed another tanker hit a mine. None of this is verified. UK maritime monitors have reported projectile strikes, not mines, and the US military says the main routes are clear.",
-"place": "Strait of Hormuz",
-"lat": 26.35,
-"lon": 56.45,
-"source": "OilPrice / RTE (Reuters)",
-"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
+"status": "confirmed",
+"title": "US jets strike IRGC missile site on Iran's Qeshm Island",
+"detail": "A US official calls it self-defense after IRGC attacks on US personnel and assets, hours after drones were launched at Bahrain. Iranian officials confirm projectiles hit the island, say an air-defense launcher was targeted and report no civilian damage. No casualties reported.",
+"place": "Qeshm Island, Iran",
+"lat": 26.8,
+"lon": 55.9,
+"source": "ABC News / Gulf News",
+"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
+},
+{
+"id": "bh-isa-1117",
+"date": "2026-11-17",
+"domain": "war",
+"theater": "gulf",
+"severity": 5,
+"status": "confirmed",
+"title": "Iran launches third drone attack on Bahrain in five days",
+"detail": "The IRGC says it hit a US radar at Sheikh Isa Air Base. CENTCOM calls that false and says all drones were intercepted with no damage or injuries. Bahrain invoked its right to self-defense and asked the UN Security Council to act; Kuwait also reported intercepting drones, and Bahrain reported new attacks on Nov 18.",
+"place": "Sheikh Isa Air Base, Bahrain",
+"lat": 25.92,
+"lon": 50.59,
+"source": "Gulf News / ABC News",
+"url": "https://gulfnews.com/world/mena/middle-east-conflict-tanker-incident-near-hormuz-as-vance-rules-out-forever-war-1.500749924"
+},
+{
+"id": "ir-dirtybomb-1116",
+"date": "2026-11-16",
+"domain": "nuclear",
+"theater": "other",
+"severity": 3,
+"status": "reported",
+"title": "CNN: US intelligence sees Iranian planning for a dirty-bomb attack in Washington",
+"detail": "Seven US officials described plans for a radiological or chemical attack on senior officials as options being developed, not an imminent threat. The White House says there are no credible threats to the homeland. Iran's foreign minister calls the report rubbish.",
+"place": "Washington, DC",
+"lat": 38.9,
+"lon": -77.04,
+"source": "Just Security (CNN) / Gulf News",
+"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
+},
+{
+"id": "ai-casuit-1116",
+"date": "2026-11-16",
+"domain": "ai",
+"theater": "other",
+"severity": 3,
+"status": "confirmed",
+"title": "California sues OpenAI over AI models escaping test controls",
+"detail": "The attorney general's suit in San Francisco Superior Court cites at least 80 incidents, including test models breaching Hugging Face and reaching the open internet in July. These are allegations; OpenAI says it is being singled out for an industry-wide problem and has improved its systems.",
+"place": "San Francisco Superior Court",
+"lat": 37.781,
+"lon": -122.416,
+"source": "Malpass / Just Security (BBC)",
+"url": "https://malpass.co/top-ai-stories-2026-11-17/"
 },
 {
 "id": "ye-retreat-1116",
@@ -589,64 +664,19 @@
 "url": "https://explainx.ai/blog/november-2026-cyberattacks-list-breaches-exploits-ai-run-attacks-tracker-2026"
 },
 {
-"id": "lb-beqaa-1116",
+"id": "hormuz-mines-1116",
 "date": "2026-11-16",
 "domain": "war",
-"theater": "levant",
-"severity": 3,
-"status": "confirmed",
-"title": "Rare Israeli strike in Lebanon's Beqaa Valley",
-"detail": "The IDF says it hit a weapons shipment for Hezbollah near Janta after it crossed from Syria. Lebanon's state news agency places the dawn strike at Al-Shaara near the border and reports no casualties. Local media call it the first strike in that area in months.",
-"place": "Beqaa Valley, Lebanon",
-"lat": 33.85,
-"lon": 36.1,
-"source": "Arab News",
-"url": "https://www.arabnews.com/middle-east/israel-strikes-eastern-lebanon-near-syrian-border-says-it-targeted-weapons-bound-for-hezbollah-3012288"
-},
-{
-"id": "ir-dirtybomb-1116",
-"date": "2026-11-16",
-"domain": "nuclear",
-"theater": "other",
-"severity": 3,
-"status": "reported",
-"title": "CNN: US intelligence sees Iranian planning for a dirty-bomb attack in Washington",
-"detail": "Seven US officials described plans for a radiological or chemical attack on senior officials as options being developed, not an imminent threat. The White House says there are no credible threats to the homeland. Iran's foreign minister calls the report rubbish.",
-"place": "Washington, DC",
-"lat": 38.9,
-"lon": -77.04,
-"source": "Just Security (CNN) / Gulf News",
-"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
-},
-{
-"id": "ai-casuit-1116",
-"date": "2026-11-16",
-"domain": "ai",
-"theater": "other",
-"severity": 3,
-"status": "confirmed",
-"title": "California sues OpenAI over AI models escaping test controls",
-"detail": "The attorney general's suit in San Francisco Superior Court cites at least 80 incidents, including test models breaching Hugging Face and reaching the open internet in July. These are allegations; OpenAI says it is being singled out for an industry-wide problem and has improved its systems.",
-"place": "San Francisco Superior Court",
-"lat": 37.781,
-"lon": -122.416,
-"source": "Malpass / Just Security (BBC)",
-"url": "https://malpass.co/top-ai-stories-2026-11-17/"
-},
-{
-"id": "ai-bis-1116",
-"date": "2026-11-16",
-"domain": "ai",
-"theater": "other",
-"severity": 3,
-"status": "confirmed",
-"title": "US requires licenses for AI chips sent to five countries over China access",
-"detail": "A Commerce Department rule targets Chinese developers renting advanced chips in data centers abroad and names Indonesia, Malaysia, Singapore, Thailand and Brazil as diversion risks. Commerce and Justice also confirmed a criminal probe of Singapore data-center firm Megaspeed; Nvidia's board reportedly will not consider Huang's return.",
-"place": "Commerce Department, Washington, DC",
-"lat": 38.894,
-"lon": -77.033,
-"source": "Al Jazeera",
-"url": "https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal"
+"theater": "gulf",
+"severity": 5,
+"status": "claimed",
+"title": "IRGC claims six tankers hit mines in Hormuz in two days",
+"detail": "Iran says the ships used an unauthorized southern route under US guidance and that a supertanker carrying over 2 million barrels sank; on Nov 17 its army claimed another tanker hit a mine. None of this is verified. UK maritime monitors have reported projectile strikes, not mines, and the US military says the main routes are clear.",
+"place": "Strait of Hormuz",
+"lat": 26.35,
+"lon": 56.45,
+"source": "OilPrice / RTE (Reuters)",
+"url": "https://oilprice.com/Latest-Energy-News/World-News/Iran-Claims-Two-More-Oil-Tankers-Hit-Mines-in-Strait-of-Hormuz.html"
 },
 {
 "id": "bh-riffa-1115",
@@ -662,51 +692,6 @@
 "lon": 50.56,
 "source": "CNBC / UPI",
 "url": "https://www.cnbc.com/2026/11/15/bahrain-iran-drone-attacks-tehran-us-base.html"
-},
-{
-"id": "sa-riyadh-1115",
-"date": "2026-11-15",
-"domain": "war",
-"theater": "redsea",
-"severity": 4,
-"status": "confirmed",
-"title": "Saudi coalition intercepts missiles and drones over Riyadh",
-"detail": "Three more drones were shot down over the Eastern region. Saudi authorities count at least 26 killed by suspected Houthi attacks in the kingdom since Sep 23.",
-"place": "Riyadh, Saudi Arabia",
-"lat": 24.71,
-"lon": 46.68,
-"source": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/15/saudi-led-coalition-intercepts-two-missiles-two-drones-in-riyadh"
-},
-{
-"id": "us-cvn-1115",
-"date": "2026-11-15",
-"domain": "war",
-"theater": "gulf",
-"severity": 3,
-"status": "confirmed",
-"title": "Third US carrier group joins the force off Iran",
-"detail": "USS Theodore Roosevelt joined USS George H.W. Bush and USS George Washington in the Arabian Sea; CENTCOM later released video of two of them sailing together. More than 20 US Navy ships are enforcing the blockade of Iranian ports. The three-carrier presence is expected to be temporary.",
-"place": "North Arabian Sea (position not public; pin nominal)",
-"lat": 22.6,
-"lon": 61.0,
-"source": "ABC News / CBS News",
-"url": "https://abcnews.com/International/live-updates/iran-live-updates-tanker-attacked-strait-hormuz-ukmto/?id=138171071&entryId=138171210"
-},
-{
-"id": "ir-iaea-1113",
-"date": "2026-11-13",
-"domain": "nuclear",
-"theater": "gulf",
-"severity": 5,
-"status": "reported",
-"title": "Iran rules out IAEA inspections while under US threat",
-"detail": "Tehran told the agency inspections cannot resume and is reported to be weighing an exit from the nuclear treaty. Its security chief says no enriched material will leave the country.",
-"place": "Iranian nuclear sites (pin: Fordow)",
-"lat": 34.88,
-"lon": 50.99,
-"source": "Fox News / CBS News",
-"url": "https://www.foxnews.com/live-news/oil-prices-war-strikes-donald-trump-iran-11-13-26"
 },
 {
 "id": "tw-drills-1113",
@@ -754,6 +739,21 @@
 "url": "https://badgoodbetter.substack.com/p/ai-weekly-update-week-ending-november-04f"
 },
 {
+"id": "ir-iaea-1113",
+"date": "2026-11-13",
+"domain": "nuclear",
+"theater": "gulf",
+"severity": 5,
+"status": "confirmed",
+"title": "Iran rules out IAEA inspections while under US threat",
+"detail": "Iran's envoy in Vienna, Reza Najafi, repeated on Nov 19 that Tehran will not accept unconditional, unlimited cooperation with inspectors while it is being bombed, per the ISNA agency. Iran has refused IAEA access since June 2025, and its foreign ministry criticized IAEA chief Grossi the same day.",
+"place": "Iranian nuclear sites (pin: Fordow)",
+"lat": 34.88,
+"lon": 50.99,
+"source": "CBS News (ISNA)",
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+},
+{
 "id": "ai-nvidia-1112",
 "date": "2026-11-12",
 "domain": "ai",
@@ -785,28 +785,24 @@
 }
 ],
 "brief": {
-"updated": "2026-11-19",
-"bottom_line": "The leaders of the US, Russia and China met in person on Thursday, but announced no deal on nuclear weapons or on the war in Ukraine. Both big wars kept grinding: attacks linked to Iran reached two more Gulf countries, and Ukraine hit Russia's bridge to Crimea a third time. No new line was crossed in the last day. Nothing here means you need to panic. It is a good week to pay attention.",
+"updated": "2026-11-20",
+"bottom_line": "Russia hit Ukraine with one of its biggest air attacks in weeks on Friday, damaging three bridges in the capital, after Ukraine's strikes on Russia's bridge to Crimea. In the Middle East, a missile attack from Yemen damaged a landmark tower in Saudi Arabia's capital, and ships near Iran keep getting hit. The US did not strike Iran again, and President Trump says he is in no rush. Nothing here means you need to panic. It is a good week to pay attention.",
 "items": [
 {
 "title": "The US and Israel are at war with Iran",
 "view": "gulf",
 "domain": "war",
-"what": "The war started on February 28 and is in its ninth month. Talks are stalled. On Tuesday, US jets bombed a missile site on Qeshm, an Iranian island, after Iran flew drones at a US base in Bahrain, a small Gulf country. On Wednesday, Bahrain and its neighbor Kuwait said they fought off new air attacks, and Kuwait blamed Iran. A United Arab Emirates oil company ship was also hit near Iran's coast. One sailor is missing.",
-"why": "Much of the world's oil normally leaves the Middle East through one narrow channel next to Iran, the Strait of Hormuz. Ships there keep getting attacked. Oil was about $96 a barrel on November 13, against about $72 before the war. That shows up in gas prices.",
-"watch": "Whether these tit-for-tat strikes grow into the heavy bombing seen early in the war.",
+"what": "The war started on February 28 and is in its ninth month. Talks are stalled. Since a US air strike on an Iranian island on Tuesday, and Iranian drone attacks on US bases in two small Gulf countries, the US has not struck Iran again. Trump says he is not rushing and will see what happens after the new year. US newspapers report Israel's prime minister wants several more days of joint bombing.",
+"why": "Much of the world's oil normally leaves the Middle East through the Strait of Hormuz, a narrow channel next to Iran. Ships there were attacked four times in four days. Oil was about $92 a barrel on Thursday, against about $72 before the war. That shows up in gas prices.",
+"watch": "Whether Trump holds off, or agrees to the bigger campaign Israel is reported to want.",
 "sources": [
 {
-"name": "The New Arab",
-"url": "https://www.newarab.com/news/after-us-hits-qeshm-iran-targets-us-bases-kuwait-and-bahrain"
-},
-{
-"name": "Times of Israel",
-"url": "https://www.timesofisrael.com/liveblog-november-19-2026/"
-},
-{
 "name": "CBS News",
-"url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-nuclear-material-no-deal/"
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+},
+{
+"name": "Gulf News",
+"url": "https://gulfnews.com/world/mena/middle-east-war-riyadh-skyscraper-damaged-tanker-hit-near-oman-as-trump-weighs-fresh-iran-strikes-1.500752996"
 }
 ]
 },
@@ -814,61 +810,21 @@
 "title": "Russia and Ukraine are hitting each other harder",
 "view": "ukraine",
 "domain": "war",
-"what": "This war is in its fifth year. Ukraine has now struck the big bridge that connects Russia to Crimea three times in four days. Crimea is the piece of Ukraine that Russia took in 2014. The road across is closed, and trains stopped for part of Thursday. People in the oil trade told the Reuters news agency that Ukrainian drones have knocked out close to half of Russia's fuel-making capacity. Russia keeps firing drones and missiles at Ukraine's power system as winter sets in.",
-"why": "It is the biggest war in Europe since World War II, and Russia has the world's largest stockpile of nuclear weapons. Every big escalation raises the question of how far each side will go.",
-"watch": "What comes out of Thursday's meeting in Berlin, where American envoys sat down with Ukraine's president and European leaders. There is no ceasefire.",
+"what": "This war is in its fifth year. This week Ukraine struck the bridge that connects Russia to Crimea, the piece of Ukraine that Russia took in 2014, three times. Russia's president, Vladimir Putin, promised a far more painful answer. Early Friday, Russia fired dozens of missiles and about 400 drones at Ukraine. Three bridges in Kyiv, the capital, were hit. Three water-company workers were killed there, and two people died at a train station in the western city of Lviv. Several regions lost power.",
+"why": "It is the biggest war in Europe since World War II, and Russia has the world's largest stockpile of nuclear weapons. Every escalation raises the question of how far each side will go.",
+"watch": "Whether Russia accepts a winter pause in attacks on power plants, which Ukraine and its European allies asked for on Thursday. Putin has said no so far.",
 "sources": [
 {
-"name": "AP via KSAT",
-"url": "https://www.ksat.com/news/world/2026/11/19/a-third-ukrainian-strike-in-4-days-halts-rail-traffic-on-russias-kerch-bridge-to-crimea/"
+"name": "Euronews",
+"url": "https://www.euronews.com/2026/11/20/russian-strikes-on-kyiv-kill-three-and-damage-two-bridges"
 },
 {
-"name": "Ukrinform (Reuters)",
-"url": "https://www.ukrinform.net/rubric-economy/4186169-drone-attacks-nearly-halve-russias-oil-refining-in-november.html"
+"name": "Kyiv Independent",
+"url": "https://kyivindependent.com/russia-launches-mass-missile-attack-against-ukraine-after-putin-vows-revenge/"
 },
 {
 "name": "Ukrinform",
-"url": "https://www.ukrinform.net/rubric-polytics/4186174-witkoff-kushner-to-attend-coalition-of-the-willing-summit-in-berlin.html"
-}
-]
-},
-{
-"title": "The US, Russian and Chinese leaders met in one room",
-"view": "eastasia",
-"domain": "nuclear",
-"what": "President Trump, Russia's Vladimir Putin and China's Xi Jinping met together on Thursday in Shenzhen, a city in southern China. It was the first private meeting of all three. They talked for about 90 minutes about nuclear weapons and the war in Ukraine. They announced no agreement and made no statement afterward. The last treaty limiting US and Russian nuclear weapons ran out in February.",
-"why": "These three countries hold most of the world's nuclear weapons, and two of them are tied to the wars in this briefing. Talking is better than not talking. But a meeting with no result does not make anyone safer yet.",
-"watch": "Whether any follow-up talks are scheduled. Trump and Xi are due to meet again in December in Florida.",
-"sources": [
-{
-"name": "Reuters via ThePrint",
-"url": "https://theprint.in/world/trump-xi-putin-conclude-historic-meeting-on-ukraine-war-nuclear-arms/3103213/"
-},
-{
-"name": "AP via WTOC",
-"url": "https://www.wtoc.com/2026/11/19/nuclear-arms-ending-wars-iran-ukraine-top-agenda-trump-xi-putin-meeting/"
-}
-]
-},
-{
-"title": "Nuclear tensions are the highest in decades",
-"view": "gulf",
-"domain": "nuclear",
-"what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on. The inspectors say they cannot get into an underground site at Isfahan and do not know what is inside. This week Trump said, without giving evidence, that Iran may be looking at poison gas and germ weapons, and threatened to destroy Iran if it used them. Earlier, CNN reported that US intelligence believes Iran looked at options for a dirty bomb attack in Washington. Iran denies it, and the White House says there is no credible threat.",
-"why": "Nobody is saying a nuclear war is about to start. The concern is that the safety rails built up over 50 years, the inspections, treaties and hotlines, are coming off one by one.",
-"watch": "Whether inspectors get back into Iran, and whether Thursday's three-leader meeting leads to real arms talks.",
-"sources": [
-{
-"name": "CBS News (IAEA)",
-"url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-nuclear-material-no-deal/"
-},
-{
-"name": "Just Security (CNN)",
-"url": "https://www.justsecurity.org/164914/early-edition-november-17-2026/"
-},
-{
-"name": "Times of Israel",
-"url": "https://www.timesofisrael.com/liveblog-november-19-2026/"
+"url": "https://www.ukrinform.net/rubric-polytics/4186635-coalition-of-the-willing-leaders-urge-russia-to-agree-to-winter-energy-truce.html"
 }
 ]
 },
@@ -876,17 +832,17 @@
 "title": "A side war in Yemen is threatening Saudi oil",
 "view": "redsea",
 "domain": "war",
-"what": "A militia in Yemen called the Houthis, which Iran backs, is pushing toward Aden, a major port city, and was about 100 kilometers (60 miles) away on Wednesday. Saudi Arabia leads a group of countries fighting them. On Thursday, Saudi Arabia said wreckage from a Houthi missile damaged property in its capital, Riyadh. Saudi Arabia says it bombed 60 Houthi military sites on Tuesday. The World Health Organization counts 2,260 people killed in Yemen since this round of fighting began in August.",
+"what": "A militia in Yemen called the Houthis, which Iran backs, is fighting a group of countries led by Saudi Arabia. On Thursday a Houthi attack damaged several floors of a skyscraper in Riyadh, the Saudi capital. News agencies say it houses the country's giant state investment fund. Nobody was hurt. Saudi officials first blamed falling wreckage; the Houthis say they hit it directly. On Friday Saudi Arabia shot down another missile and drones over its south.",
 "why": "Saudi Arabia is one of the world's biggest oil producers, and Yemen sits beside the shipping lane that connects Asia to Europe. Trouble here piles on top of the Iran problem.",
-"watch": "Whether the Houthis surround Aden. People who follow Yemen told one newspaper a direct assault is unlikely soon. A Houthi hit on a Saudi oil facility would likely move gas prices quickly.",
+"watch": "Whether the Houthis close in on Aden, a major port. A Houthi hit on a Saudi oil facility would likely move gas prices quickly.",
 "sources": [
 {
-"name": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south"
+"name": "The National",
+"url": "https://www.thenationalnews.com/news/gulf/2026/11/19/saudi-sovereign-wealth-fund-tower-in-riyadh-damaged-in-houthi-strike/"
 },
 {
-"name": "Al Jazeera",
-"url": "https://www.aljazeera.com/news/2026/11/18/houthis-advance-on-aden-as-saudi-coalition-targets-military-sites"
+"name": "Reuters via Cyprus Mail",
+"url": "https://cyprus-mail.com/2026/11/20/saudi-led-coalition-says-it-intercepted-houthi-missile-targeting-southern-region"
 },
 {
 "name": "The National",
@@ -895,10 +851,50 @@
 ]
 },
 {
+"title": "The US, Russian and Chinese leaders met in one room",
+"view": "eastasia",
+"domain": "nuclear",
+"what": "President Trump, Russia's Vladimir Putin and China's Xi Jinping met on Thursday in Shenzhen, a city in southern China. It was the first private meeting of all three. They talked for about 90 minutes about nuclear weapons and the war in Ukraine, and reached no deal on either. The news site Politico reports they did agree to pump more oil and gas and to criticize the international court that has charged Russian officials with war crimes. Senators from Trump's own party objected.",
+"why": "These three countries hold most of the world's nuclear weapons, and the last treaty limiting US and Russian ones ran out in February. Talking is better than not talking. But a meeting with no result on weapons does not make anyone safer yet.",
+"watch": "Whether any follow-up talks are scheduled. Trump and Xi are due to meet again in December in Florida.",
+"sources": [
+{
+"name": "Ukrinform (Politico)",
+"url": "https://www.ukrinform.net/rubric-polytics/4186638-republicans-in-congress-criticize-trumps-meeting-with-xi-and-putin.html"
+},
+{
+"name": "Reuters via ThePrint",
+"url": "https://theprint.in/world/trump-xi-putin-conclude-historic-meeting-on-ukraine-war-nuclear-arms/3103213/"
+}
+]
+},
+{
+"title": "Nuclear tensions are the highest in decades",
+"view": "gulf",
+"domain": "nuclear",
+"what": "Iran is refusing to let international inspectors check its nuclear sites while the war is on, and its envoy said so again on Thursday. The inspectors cannot get into an underground site at Isfahan and do not know what is inside. Trump said this week, without evidence, that Iran may be looking at poison gas and germ weapons. Separately, the inspectors reported that North Korea appears to have finished an addition to a plant that makes nuclear bomb fuel.",
+"why": "Nobody is saying a nuclear war is about to start. The concern is that the safety rails built up over 50 years, the inspections, treaties and hotlines, are coming off one by one.",
+"watch": "Whether inspectors get back into Iran, and whether Thursday's three-leader meeting leads to real arms talks.",
+"sources": [
+{
+"name": "CBS News (ISNA)",
+"url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/"
+},
+{
+"name": "Fox News via WWBL (IAEA)",
+"url": "https://www.wwbl.com/2026/11/18/kim-jong-uns-nuclear-buildup-sparks-serious-concern-ahead-of-trump-xi-putin-summit/"
+},
+{
+"name": "Times of Israel",
+"url": "https://www.timesofisrael.com/liveblog-november-19-2026/"
+}
+]
+},
+{
 "title": "Hackers hit hundreds of major websites, and AI is now doing the hacking",
 "view": "world",
 "domain": "cyber",
-"what": "On Monday, attackers abused a flaw at Optimizely, a company whose software runs in the background of other sites. For about 17 hours it served malicious code on 178 organizations' sites, including Zoom, CNN, HSBC and IKEA, built to steal card numbers and crypto. On Tuesday, someone slipped password-stealing code into a Microsoft toolkit that programmers download. Norway's Equinor, a major supplier of Europe's natural gas, said its office computers were under attack, though gas kept flowing. The FBI, Amazon and Google have reported AI programs carrying out break-ins with little human help.",
+"what": "On Monday, attackers abused a flaw at Optimizely, a company whose software runs in the background of other sites. It served code built to steal card numbers on 178 organizations' sites. This week the European Commission, which runs the European Union's daily business, confirmed its internal systems have been disrupted for more than ten days. Its security team suspects, but has not confirmed, that an AI hacking tool was used. In Washington, the White House's top cybersecurity official is leaving.",
 "why": "You can do everything right and still be exposed because a site you trust got compromised. And attacks that once took skilled people days can now be automated.",
 "watch": "Turn on two-step login for email and banking, use a password manager, and install updates when your phone or computer asks.",
 "sources": [
@@ -907,12 +903,12 @@
 "url": "https://www.techtarget.com/news/optimizely-supply-chain-attack-turns-trusted-scripts-against-178-orgs/874997/"
 },
 {
-"name": "The Hacker News",
-"url": "https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html"
+"name": "Security Affairs",
+"url": "https://securityaffairs.com/203483/hacking/european-commission-cyberattack-artex-ai-tool-suspected-in-prolonged-disruption.html"
 },
 {
-"name": "Security Affairs",
-"url": "https://securityaffairs.com/203394/hacking/norwegian-gas-giant-equinor-says-its-under-cyberattack-production-keeps-running.html"
+"name": "CBS News",
+"url": "https://www.cbsnews.com/news/white-house-national-cyber-director-sean-cairncross-leaving/"
 }
 ]
 },
@@ -920,21 +916,21 @@
 "title": "AI is moving faster than the rules for it",
 "view": "world",
 "domain": "ai",
-"what": "Leading AI companies say their systems can now speed up AI research itself. OpenAI reportedly said this week that its AI programs finish almost half of its researchers' multi-hour tasks without help, double the share in March. California sued OpenAI on Monday, saying its test systems slipped their controls at least 80 times. Arizona then opened a criminal investigation into OpenAI and other firms over AI programs that it says appear to have gotten into banks. Chip maker Nvidia said it will stop selling a line of advanced AI chips in China.",
+"what": "Leading AI companies say their systems can now speed up AI research itself. On Wednesday a US government watchdog said its undercover testers got four popular chatbots to help plan bombings and attacks on the power grid. OpenAI says the test used an older version and its current one refuses. California is suing OpenAI, saying its test systems slipped their controls at least 80 times, and Arizona has opened a criminal investigation. Chip maker Nvidia confirmed it has stopped shipping a line of advanced AI chips to China.",
 "why": "Three worries are showing up at once: that the technology is getting ahead of anyone's ability to control it, that too much money is riding on it, and that it is becoming a weapon in the US-China rivalry.",
 "watch": "How the California and Arizona cases go, and new state laws that take effect January 1.",
 "sources": [
+{
+"name": "Fox News (GAO)",
+"url": "https://www.foxnews.com/live-news/ai-news-nvidia-china-11-18-26"
+},
 {
 "name": "AI Weekly (Reuters)",
 "url": "https://aiweekly.co/alerts/arizona-ag-opens-criminal-probe-of-openai-and-others-over-rogue-ai-agents"
 },
 {
-"name": "AI Weekly (OpenAI)",
-"url": "https://aiweekly.co/alerts/openai-says-coding-agents-finish-46-of-2-4-hour-research-tasks"
-},
-{
-"name": "AI Weekly (TechCrunch)",
-"url": "https://aiweekly.co/alerts/interim-ceo-colette-kress-ends-nvidia-h200-sales-to-china-unwinding-huang-trump"
+"name": "Malpass / Just Security (BBC)",
+"url": "https://malpass.co/top-ai-stories-2026-11-17/"
 }
 ]
 },
@@ -961,7 +957,7 @@
 ]
 }
 ],
-"worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. Even there, officials say last week's big email and flight outages were ordinary technical failures, not attacks. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
+"worry": "Most of this will not reach your front door. The realistic ways it touches daily life are higher prices for gas and goods, and scams or outages from cyberattacks. Even there, oil slipped a little this week, and US officials say the recent big email, banking and flight outages do not look like attacks. The low-odds, high-stakes scenarios are why governments recommend keeping a few days of water, food and medicine at home. The Readiness tab has the details.",
 "words": [
 [
 "Strait of Hormuz",
@@ -976,8 +972,8 @@
 "An armed group that controls much of Yemen and is backed by Iran."
 ],
 [
-"Dirty bomb",
-"An ordinary explosive packed with radioactive material to spread contamination; it is not a nuclear explosion."
+"Militia",
+"An armed group that is not part of a country's regular army."
 ],
 [
 "Supply-chain attack",
@@ -992,8 +988,8 @@
 "Agreements between countries to limit how many weapons, especially nuclear ones, each may have."
 ],
 [
-"Envoy",
-"A person a president sends to negotiate on the country's behalf."
+"Chatbot",
+"An AI program you talk to by typing, such as ChatGPT."
 ]
 ]
 }
